@@ -11,7 +11,11 @@ class DashboardController extends Controller
     	return view('admin.dashboard');
    
     }
-
+     public function dashboardmitra()
+    {
+    	return view('mitra.dashboardmitra');
+   
+    }
     public function admin()
     {
     	return view('admin.admin');

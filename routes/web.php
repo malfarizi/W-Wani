@@ -12,10 +12,38 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+ 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('dashboard','DashboardController@dashboard');
-Route::get('admin','AdminController@admin');
+Route::get('dashboardmitra','DashboardController@dashboardmitra');
+
+
+//======================Login Admin===================
 Route::get('loginadmin','LoginController@loginadmin');
+
+
+//======================Verifikasi Mitra===================
+Route::get('mitra','MitraController@mitra');
+Route::get('calonmitra','MitraController@calonmitra');
+Route::post('addCalonmitra', 'MitraController@create');
+Route::put('editCalonmitra/{id}','MitraController@update');
+Route::delete('deleteCalonmitra/{id}','MitraController@delete');
+
+
+
+//====================== Kategori ===================
+Route::get('kategori','KategoriController@index');
+Route::post('addkategori', 'KategoriController@create');
+Route::put('editKategori/{id}','KategoriController@update');
+Route::delete('deleteKategori/{id}','KategoriController@delete');
+
+//======================Crud Admin ===================
+Route::get('admin','AdminController@admin');
+Route::post('addAdmin', 'AdminController@create');
+Route::put('editAdmin/{id}','AdminController@update');
+Route::delete('deleteAdmin/{id}','AdminController@delete');
+//====================== Penyewaan Alat ===================
+
+//======================Mengelola Alat Tani===================

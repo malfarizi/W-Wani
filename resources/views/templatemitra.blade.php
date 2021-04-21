@@ -24,13 +24,13 @@
         <div class="sidebar-brand-icon">
           <!---<img src="img/logo/logo2.png">-->
         </div>
-        <div class="sidebar-brand-text mx-3">Dashboard Admin</div>
+        <div class="sidebar-brand-text mx-3">Dashboard Mitra</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{url('dashboardmitra')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Dashboard Mitra</span></a>
       </li>
       <!-----------Side Bar-------->
       <hr class="sidebar-divider">
@@ -38,9 +38,9 @@
         Menu
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin')}}">
+        <a class="nav-link" href="{{url('profilmitra')}}">
           <i class="fas fa-user"></i>
-          <span>Admin</span>
+          <span>Profil Mitra</span>
         </a>
       </li>
 
@@ -48,13 +48,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-mitra"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fas fa-store"></i>
-          <span>Mitra</span>
+          <span>Produk</span>
         </a>
         <div id="collapseBootstrap-mitra" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Daftar Calon Mitra</h6>
-            <a class="collapse-item" href="{{url('calonmitra')}}">Calon Mitra</a>
-            <a class="collapse-item" href="{{url('mitra')}}">Mitra Terdaftar</a>
+            <h6 class="collapse-header">Produk</h6>
+            <a class="collapse-item" href="{{url('produk')}}">Kelola Produk</a>
+            <a class="collapse-item" href="{{url('mitra')}}">Pesanan Produk</a>
           </div>
         </div>
       </li>
@@ -63,17 +63,23 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-kategori"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fas fa-list"></i>
-          <span>Kategori Produk</span>
+          <span>Alat Tani</span>
         </a>
         <div id="collapseBootstrap-kategori" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Kategori Produk</h6>
-            <a class="collapse-item" href="{{url('kategori')}}">Kategori</a>
-            <a class="collapse-item" href="{{url('mitra')}}">Daftar Produk</a>
+            <h6 class="collapse-header">Kelola Alat Tani</h6>
+            <a class="collapse-item" href="{{url('kategori')}}">Data Alat Tani</a>
+            <a class="collapse-item" href="{{url('mitra')}}">Penyewaan Alat Tani</a>
           </div>
         </div>
       </li>
       
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('datapenjualan')}}">
+          <i class="fas fa-user"></i>
+          <span>Data Penjualan</span>
+        </a>
+      </li>
       
     
       <hr class="sidebar-divider">
