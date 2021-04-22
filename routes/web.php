@@ -22,16 +22,17 @@ Route::get('dashboardmitra','DashboardController@dashboardmitra');
 
 //======================Login Admin===================
 Route::get('loginadmin','LoginController@loginadmin');
+//======================Login Mitra===================
+Route::get('loginmitra','LoginController@loginmitra');
 
-
+//======================Pendaftaran Mitra=================== 
+Route::get('pendaftaranmitra','MitraController@pendaftaranmitra');
 //======================Verifikasi Mitra===================
 Route::get('mitra','MitraController@mitra');
 Route::get('calonmitra','MitraController@calonmitra');
 Route::post('addCalonmitra', 'MitraController@create');
 Route::put('editCalonmitra/{id}','MitraController@update');
 Route::delete('deleteCalonmitra/{id}','MitraController@delete');
-
-
 
 //====================== Kategori ===================
 Route::get('kategori','KategoriController@index');
@@ -46,4 +47,11 @@ Route::put('editAdmin/{id}','AdminController@update');
 Route::delete('deleteAdmin/{id}','AdminController@delete');
 //====================== Penyewaan Alat ===================
 
-//======================Mengelola Alat Tani===================
+//====================== Alat Tani=========================
+Route::get('alattani','AlatController@index');
+Route::post('addAlattani', 'AlatController@create');
+Route::put('editAlattani/{id}','AlatController@update');
+Route::delete('deleteAlattani/{id}','AlatController@delete');
+
+//====================== Kelola Pemesanan Alat Tani=========================
+Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');

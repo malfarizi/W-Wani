@@ -8,6 +8,11 @@ use DB;
 
 class MitraController extends Controller
 {
+	public function pendaftaranmitra()
+    {
+    	return view('pendaftaranmitra');
+    }
+
     public function calonmitra()
     {
     	return view('admin.mitra.calonmitra');

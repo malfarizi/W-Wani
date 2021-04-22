@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Login Admin</title>
+  	<title>Login Mitra</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,8 +26,8 @@
 		      	<div class="icon d-flex align-items-center justify-content-center ">
 		      		<span class="fa fa-user-o "></span>
 		      	</div>
-		      	<h3 class="text-center mb-4">Login Admin</h3>
-						<form action="{{url('dashboard')}}" class="login-form">
+		      	<h3 class="text-center mb-4">Login Mitra</h3>
+						<form action="{{url('dashboardmitra')}}" class="login-form">
 		      		<div class="form-group">
 		      			<input type="text" class="form-control rounded-left" placeholder="Email" name="email" required>
 		      		</div>

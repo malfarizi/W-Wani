@@ -10,4 +10,8 @@ class LoginController extends Controller
     {
     	return view('loginadmin');
     }
+        public function loginmitra()
+    {
+    	return view('loginmitra');
+    }
 }
