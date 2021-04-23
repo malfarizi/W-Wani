@@ -19,9 +19,10 @@ Route::get('/', function () {
 Route::get('dashboard','DashboardController@dashboard');
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 
+Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
 
 //======================Login Admin===================
-Route::get('loginadmin','LoginController@loginadmin');
+Route::get('loginadmin','LoginController@loginadmin')->name('login');
 //======================Login Mitra===================
 Route::get('loginmitra','LoginController@loginmitra');
 
@@ -42,9 +43,13 @@ Route::delete('deleteKategori/{id}','KategoriController@delete');
 
 //======================Crud Admin ===================
 Route::get('admin','AdminController@admin');
-Route::post('addAdmin', 'AdminController@create');
-Route::put('editAdmin/{id}','AdminController@update');
-Route::delete('deleteAdmin/{id}','AdminController@delete');
+Route::post('loginAdmin', 'AdminController@login');
+Route::get('logout', 'AdminController@logout');
+
+Route::middleware('auth:admin')->group(function(){
+    
+});
+
 //====================== Penyewaan Alat ===================
 
 //====================== Alat Tani=========================
