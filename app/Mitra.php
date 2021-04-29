@@ -28,6 +28,9 @@ class Mitra extends Authenticatable
         'nama_bank',
         'id_alamat'
     ];
+    protected $hidden = ['password', 'remember_token'];
+
+    public $timestamps = false;
 
     public function alamat(){
         return $this->hasOne('App\Alamat', 'id_alamat');

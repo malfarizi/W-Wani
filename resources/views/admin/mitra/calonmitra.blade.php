@@ -45,111 +45,7 @@
                 </div>
                 @endif
 
-                {{-- Modal Tambah --}}
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <!-- <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
-                        data-target="#exampleModal" id="#myBtn">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">Tambah Data Calon Mitra</span>
-                    </button> -->
-
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Calon Mitra</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form method="POST" action="{{url('#')}}">
-                                    @csrf
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="nama_mitra">Nama Mitra</label>
-                                            <input type="text" class="form-control" id="nama_mitra" name="nama_mitra"
-                                                placeholder="Masukan Nama Kategori">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email"
-                                                placeholder="Masukan email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                placeholder="Masukan password">
-                                        </div>
-                                        <label>Jenis Kelamin</label>
-                                        <br>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jk" id="jk1"
-                                                value="laki-laki">
-                                            <label class="form-check-label" for="jk1">Laki - Laki</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jk" id="jk2"
-                                                value="perempuan">
-                                            <label class="form-check-label" for="jk2">Perempuan</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_telp">Nomor Telephone</label>
-                                            <input type="text" class="form-control" id="no_telp" name="no_telp"
-                                                placeholder="Masukan nomor telepohone">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="foto">Foto</label>
-                                            <input type="file" class="form-control" id="foto" name="foto"
-                                                placeholder="Masukan Foto">
-                                        </div>
-                                         <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <input type="text" class="form-control" id="status" name="status"
-                                                placeholder="Masukan status">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="level">Level</label>
-                                            <input type="text" class="form-control" id="level" name="level"
-                                                placeholder="Masukan nomor telepohone">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_rek">Nomor Rekening</label>
-                                            <input type="text" class="form-control" id="no_rek" name="no_rek"
-                                                placeholder="Masukan nomor rekening">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_rekening">Nama Rekening</label>
-                                            <input type="text" class="form-control" id="nama_rekening" name="nama_rekening"
-                                                placeholder="Masukan nama rekening">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_bank">Nama Bank</label>
-                                            <input type="text" class="form-control" id="nama_bank" name="nama_bank"
-                                                placeholder="Masukan nama bank">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="alamat">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" name="alamat"
-                                                placeholder="Masukan nomor telepohone">
-                                        </div>
-
-
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-danger"
-                                            data-dismiss="modal">Tutup</button>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </form>
-                {{-- Akhir Modal Tambah --}}
+                
 
 
                 <div class="table-responsive p-3">
@@ -161,20 +57,25 @@
                                 <th>Email</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Nomor Telephone</th>
-                                <th>Detail</th>
+                                <th>Detail Mitra</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-    
+                        @foreach($datas as $data)
                             <tr>
-                                <td>1.</td>
-                                <td>Adni</td>
-                                <td>adni@gmail.com</td>
-                                <td>Perempuan</td>
-                                <td>04224242</td>
-                                <td>!Detail</td>
-                                
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->nama_mitra}}</td>
+                                <td>{{$data->email}}</td>
+                                <td>{{$data->jk}}</td>
+                                <td>{{$data->no_telp}}</td>
+
+                                <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"              data-toggle="modal" data-target="#modal-detail-{{$data->id_mitra}}">
+                                  <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
+                                  </span>
+                                  <span class="text">Detail</span>  
+                                  </button>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data">
@@ -189,7 +90,7 @@
                                     </form>
                                 </td>
                             </tr>
-                           
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -197,39 +98,83 @@
         </div>
 
         
-        {{-- Modal edit --}}
+
+        @foreach($datas as $data)
+    <!-- Modal Detail -->
+      <div class="modal fade" id="modal-detail-{{$data->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{$data->nama_mitra }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Foto : <img src="{{ url('images/mitra/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
+              <li class="list-group-item">No Rekening  : {{$data->no_rek}}</li>
+              <li class="list-group-item">Nama Rekening : {{$data->nama_rekening}} </li>
+              <li class="list-group-item">Nama Bank : {{$data->nama_bank}} </li>
+              <li class="list-group-item">Alamat : {{$data->alamat_lengkap}} </li>
+              <li class="list-group-item">Status : {{$data->status}} </li>
+              <li class="list-group-item">Level : {{$data->level}} </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+      </div>
+      @endforeach
+
+
+
+      {{-- Modal edit --}}
+
+        @foreach ($datas as $data)
         <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Kategori</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Status Mitra</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{url('editMitra', $data->id_mitra)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="nama_mitra">Nama Mitra</label>
+                                <label for="username">Nama Mitra</label>
                                 <input type="text" class="form-control" id="nama_mitra" name="nama_mitra"
-                                    value="  " readonly>
+                                    value=" {{ $data->nama_mitra }} " readonly="">
                             </div>
-                        </div>
-                        <div class="modal-body">
+
+                            @if('level' == "Calon Mitra" )
+
+                            <input type="text" value="Aktif" name="status">
+                            @else
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                    value="  " readonly>
+                                <select class="select2-single-placeholder form-control" name="status" id="status" style="width: 100%">
+                                <option value="{{$data->status}}">{{$data->status}}</option>
+                                  <option value="Aktif">Aktif</option>
+                                  <option value="Tidak Aktif">Tidak Aktif</option>
+                              </select>
                             </div>
-                        </div>
-                        <div class="modal-body">
+                            @endif
                             <div class="form-group">
-                                <label for="Level">Level</label>
-                                <input type="text" class="form-control" id="Level" name="Level"
-                                    value="  " readonly>
+                                <label for="level">Level</label>
+                                <select class="select2-single-placeholder form-control" name="level" id="level" style="width: 100%">
+                                <option value="{{$data->level}}">{{$data->level}}</option>
+                                  <option value="Mitra">Mitra</option>
+                                  <option value="Calon Mitra">Calon Mitra</option>
+                              </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -242,6 +187,7 @@
     
     </form>
     {{-- Akhir Modal Edit --}}
+    @endforeach
    </div>
 @endsection
     

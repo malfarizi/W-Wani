@@ -21,30 +21,32 @@ Route::get('dashboardmitra','DashboardController@dashboardmitra');
 
 Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
 
-//======================Login Admin===================
-Route::get('loginadmin','LoginController@loginadmin')->name('login');
+//======================Admin===================
+Route::get('loginadmin','AdminController@loginadmin');
+Route::post('loginAdminPost', 'AdminController@loginAdminPost');
+Route::get('logoutadmin', 'AdminController@logout');
+Route::get('admin', 'AdminController@admin');
+Route::put('editAdmin/{id}', 'AdminController@update');
 //======================Login Mitra===================
-Route::get('loginmitra','LoginController@loginmitra');
-
+Route::get('loginmitra','MitraController@loginmitra');
+Route::post('loginMitraPost', 'MitraController@loginMitraPost');
+Route::get('logoutmitra', 'MitraController@logout');
 //======================Pendaftaran Mitra=================== 
-Route::get('pendaftaranmitra','MitraController@pendaftaranmitra');
+Route::get('register','MitraController@pendaftaranmitra');
 //======================Verifikasi Mitra===================
 Route::get('mitra','MitraController@mitra');
+Route::put('editMitra/{id}','MitraController@update');
+
 Route::get('calonmitra','MitraController@calonmitra');
-Route::post('addCalonmitra', 'MitraController@create');
-Route::put('editCalonmitra/{id}','MitraController@update');
-Route::delete('deleteCalonmitra/{id}','MitraController@delete');
+// Route::put('editCalonmitra/{id}','MitraController@update');
+Route::delete('deleteMitra/{id}','MitraController@delete');
 
 //====================== Kategori ===================
 Route::get('kategori','KategoriController@index');
-Route::post('addkategori', 'KategoriController@create');
+Route::post('addKategori', 'KategoriController@create');
 Route::put('editKategori/{id}','KategoriController@update');
 Route::delete('deleteKategori/{id}','KategoriController@delete');
 
-//======================Crud Admin ===================
-Route::get('admin','AdminController@admin');
-Route::post('loginAdmin', 'AdminController@login');
-Route::get('logout', 'AdminController@logout');
 
 Route::middleware('auth:admin')->group(function(){
     

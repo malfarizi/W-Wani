@@ -12,7 +12,5 @@ class Kategori extends Model
 
     protected $fillable = ['id_kategori', 'nama_kategori'];
 
-    public function produk(){
-        return $this->belongsTo('App\Produk', 'id_produk');
-    }
+    
 }

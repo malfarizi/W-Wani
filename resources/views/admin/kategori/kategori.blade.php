@@ -65,7 +65,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form method="POST" action="{{url('#')}}">
+                                <form method="POST" action="{{url('addKategori')}}">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
@@ -98,18 +98,16 @@
                             </tr>
                         </thead>
                         <tbody>
-    
+                            @foreach($datas as $data)
                             <tr>
-                                <td>1.</td>
-                                <td>Kategori1</td>
-                                
-                                
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->nama_kategori}}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
-                                    <form action="" method="POST"
+                                    <form action="{{url('deleteKategori', $data->id_kategori)}}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -118,7 +116,7 @@
                                     </form>
                                 </td>
                             </tr>
-                           
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -127,6 +125,8 @@
 
         
         {{-- Modal edit --}}
+
+        @foreach ($datas as $data)
         <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -137,14 +137,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{url('editKategori', $data->id_kategori)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="username">Nama Kategori</label>
                                 <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
-                                    value="  " readonly>
+                                    value=" {{ $data->nama_kategori }} " >
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -157,7 +157,9 @@
     
     </form>
     {{-- Akhir Modal Edit --}}
+    @endforeach
    </div>
+
 @endsection
     
 

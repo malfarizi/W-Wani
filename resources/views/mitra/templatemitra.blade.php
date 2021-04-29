@@ -103,7 +103,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Mitra</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">{{session('nama_mitra')}}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -147,7 +147,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
-                  <a href="login.html" class="btn btn-primary">Logout</a>
+                  <a href="{{url('logoutmitra')}}" class="btn btn-primary">Logout</a>
                 </div>
               </div>
             </div>

@@ -4,10 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    public function login(Request $request){
+
+    public function admin(){
+        $datas = Admin::where('email', session('email'))->get();
+    	return view('admin.admin', compact('datas'));
+    }
+
+
+    public function loginadmin(){
+        return view('loginadmin');
+    }
+
+    public function loginAdminPost(Request $request){
         $auth = auth()->guard('admin');
 
         $credentials = $request->only('email', 'password');
@@ -27,6 +40,9 @@ class AdminController extends Controller
         if ($auth->attempt($credentials)) {
             $admin = Admin::where('email', $request->email)->first();
             session()->put('admin', $admin);
+            session()->put('id', $admin->id);
+            session()->put('email', $admin->email);
+            session()->put('nama_admin', $admin->nama_admin);
             return redirect()->intended('dashboard');
         }else{
             return redirect()->back()->withErrors(
@@ -36,20 +52,14 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id){
-        $data = $request->only('foto', 'no_telp');
-        Admin::where('id_admin', $id)->update('data');
-        return redirect()->back();
+        $data = $request->only( 'no_telp');
+        Admin::Where($id)->update($data);
+        return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 
     public function logout(){
         auth()->guard('admin')->logout();
         session()->flush();
-        return redirect()->route('login');
+        return redirect('loginadmin');
     }
-
-    public function admin()
-    {
-    	return view('admin.admin');
-    }
-    //
 }

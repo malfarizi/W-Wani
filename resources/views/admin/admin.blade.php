@@ -45,7 +45,7 @@
     </div>
     @endif
 
-                {{-- Modal Tambah --}}
+                <!-- {{-- Modal Tambah --}}
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
                         data-target="#exampleModal" id="#myBtn">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 </form>
-                {{-- Akhir Modal Tambah --}}
+                {{-- Akhir Modal Tambah --}} -->
 
 
                 <div class="table-responsive p-3">
@@ -121,8 +121,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>No.</th>
-                                <th>Username</th>
-                                <th>Nama</th>
+                                <th>Nama Admin</th>
+                                <th>Email</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Alamat</th>
                                 
@@ -130,13 +130,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                           @foreach($datas as $data)
                             <tr>
-                                <td>1.</td>
-                                <td>Admin1</td>
-                                <td>Andi</td>
-                                <td>Laki-Laki</td>
-                                <td>Indramayu</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$data->nama_admin}}</td>
+                                <td>{{$data->jk}}</td>
+                                <td>{{$data->email}}</td>
+                                <td>{{$data->no_telp}}</td>
                                 
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -152,7 +152,7 @@
                                     </form>
                                 </td>
                             </tr>
-                           
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -161,6 +161,7 @@
 
         
         {{-- Modal edit --}}
+        @foreach($datas as $data)
         <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -171,18 +172,18 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{url('editAdmin', $data->id)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username"
-                                    value="Admin" readonly>
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    value="{{$data->email}}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama" value="Andi">
+                                <label for="nama_admin">Nama Admin</label>
+                                <input type="text" class="form-control" id="nama_admin" name="nama_admin" value="{{$data->nama_admin}}">
                             <label>Jenis Kelamin</label>
                             <br>
                             <div class="form-check form-check-inline">
@@ -196,8 +197,8 @@
                                 <label class="form-check-label" for="jk2">Perempuan</label>
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" id="nama" name="nama" value="Indramayu">
+                                <label for="no_telp">Nomor Telephone</label>
+                                <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{$data->no_telp}}">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -209,8 +210,13 @@
         </div>
     
     </form>
+    </div>
     {{-- Akhir Modal Tambah --}}
+    @endforeach
+    </div>
    
-@endsection
+   
     
+@endsection
+
 

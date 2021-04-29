@@ -45,7 +45,10 @@ return [
             'driver' => 'session',
             'provider' => 'pembeli'
         ],
-        
+        'mitra' => [
+            'driver' => 'session',
+            'provider' => 'mitra'
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admin'
@@ -89,6 +92,10 @@ return [
         'pembeli' => [
             'driver' => 'eloquent',
             'model' => App\Pembeli::class,
+        ],
+        'mitra' => [
+            'driver' => 'eloquent',
+            'model' => App\Mitra::class,
         ],
     ],
 

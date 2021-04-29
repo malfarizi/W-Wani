@@ -60,18 +60,17 @@
       </li>
        
        <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-kategori"
-          aria-expanded="true" aria-controls="collapseBootstrap">
+        <a class="nav-link" href="{{url('kategori')}}">
           <i class="fas fa-list"></i>
-          <span>Kategori Produk</span>
+          <span>Kategori</span>
         </a>
-        <div id="collapseBootstrap-kategori" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Kategori Produk</h6>
-            <a class="collapse-item" href="{{url('kategori')}}">Kategori</a>
-            <a class="collapse-item" href="{{url('mitra')}}">Daftar Produk</a>
-          </div>
-        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('produk')}}">
+          <i class="fas fa-box"></i>
+          <span>Daftar Produk</span>
+        </a>
       </li>
       
       
@@ -97,7 +96,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">{{session('nama_admin')}}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -141,7 +140,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
-                  <a href="login.html" class="btn btn-primary">Logout</a>
+                  <a href="{{url('logoutadmin')}}" class="btn btn-primary">Logout</a>
                 </div>
               </div>
             </div>
