@@ -22,7 +22,7 @@
                   <div class="row align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-uppercase mb-1">Mitra</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">40</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$trm}}</div>
                       
                     </div>
                     <div class="col-auto">
@@ -40,7 +40,7 @@
                   <div class="row align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-uppercase mb-1">Calon Mitra</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$blm}}</div>
                       
                     </div>
                     <div class="col-auto">

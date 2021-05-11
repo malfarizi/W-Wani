@@ -70,6 +70,7 @@ class MitraController extends Controller
         if ($auth->attempt($credentials)) {
             $mitra = Mitra::where('email', $request->email)->first();
             session()->put('mitra', $mitra);
+            session()->put('id_mitra', $mitra->id_mitra);
             session()->put('nama_mitra', $mitra->nama_mitra);
             return redirect()->intended('dashboardmitra');
         }else{

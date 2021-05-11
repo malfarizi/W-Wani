@@ -1,7 +1,7 @@
 @extends('mitra.templatemitra')
 
 @section('title', 'Alat Tani')
-    
+
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
@@ -65,7 +65,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form method="POST" action="{{url('#')}}">
+                                <form method="POST" action="{{url('addAlattani')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
@@ -94,17 +94,20 @@
 
                                         <div class="form-group">
                                             <label for="status">Status</label>
-                                            <input type="text" class="form-control" id="status" name="status"
-                                                placeholder="Masukan Status">
+                                            <select name="status" id="status" class="form-control">
+                                                <option>Pilih Status</option>
+                                                <option value="Tersedia">Tersedia</option>
+                                                <option value="Tidak Tersedia">Tidak Tersedia</option>
+                                            </select>
                                         </div>
 
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <!-- <label for="status">id mitra</label> -->
-                                            <input type="text" hidden="" class="form-control" id="" name=""
-                                                placeholder="Masukan Status">
+                                            <input type="text" hidden class="form-control" id="" name="id_mitra"
+                                                value="{{session('id_mitra')}}">
                                         </div>
 
-                                        
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-danger"
@@ -127,28 +130,28 @@
                                 <th>Nama Alat</th>
                                 <th>Harga</th>
                                 <th>Deskripsi</th>
-                                <th>Harga</th>
                                 <th>Foto</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-    
+                            @foreach($datas as $data)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->nama_alat}}</td>
+                                <td>{{$data->harga}}</td>
+                                <td>{{$data->desc}}</td>
+                                <td><img src="{{ url('images/foto_alat/'.$data->foto) }}"
+                                        style="width: 200px; height: 150px;"></td>
+                                <td>{{$data->status}}</td>
+
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#edit-data">
+                                        data-target="#edit-data-{{$data->id_alat}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
-                                    <form action="" method="POST"
+                                    <form action="{{url('deleteAlattani', $data->id_alat)}}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -157,17 +160,17 @@
                                     </form>
                                 </td>
                             </tr>
-                           
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        
+        @foreach($datas as $data)
         {{-- Modal edit --}}
-        <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-data-{{$data->id_alat}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -176,34 +179,34 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form action="{{url('editAlattani', $data->id_alat)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="nama_alat">Nama Alat</label>
-                                <input type="text" class="form-control" id="nama_alat" name="nama_alat"
-                                    value="  " >
+                                <input type="text" class="form-control" id="nama_alat" name="nama_alat" value=" {{$data->nama_alat}} ">
                             </div>
                             <div class="form-group">
                                 <label for="harga">Harga</label>
-                                <input type="text" class="form-control" id="harga" name="harga"
-                                    value="  " >
+                                <input type="text" class="form-control" id="harga" name="harga" value=" {{$data->harga}} ">
                             </div>
                             <div class="form-group">
                                 <label for="desc">Deskripsi</label>
                                 <textarea input type="text" class="form-control" id="desc" name="desc"
-                                    value="  " > </textarea>
+                                    value=" {{$data->desc}} "> </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto</label>
-                                <input type="file" class="form-control" id="foto" name="foto"
-                                    value="  " >
+                                <input type="file" class="form-control" id="foto" name="foto" value=" {{$data->foto}} ">
                             </div>
                             <div class="form-group">
-                                <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                    value="  " >
+                               <label>Status</label>
+                                <select class="form-control" name="status">
+                                    <option> {{$data->status}}</option>
+                                    <option value="Tersedia"> Tersedia </option>
+                                    <option value="Tidak Tersedia"> Tidak Tersedia</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -213,10 +216,9 @@
                 </div>
             </div>
         </div>
-    
-    </form>
-    {{-- Akhir Modal Edit --}}
-   </div>
-@endsection
-    
 
+        </form>
+        @endforeach
+        {{-- Akhir Modal Edit --}}
+    </div>
+    @endsection

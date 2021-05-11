@@ -33,7 +33,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="text" class="form-control rounded-left" placeholder="Email" name="email"
-                                    required>
+                                autocomplete="off" required>
                             </div>
                             <div class="form-group d-flex">
                                 <input type="password" class="form-control rounded-left" placeholder="Password"

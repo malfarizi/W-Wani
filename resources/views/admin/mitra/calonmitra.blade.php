@@ -155,19 +155,8 @@
                                     value=" {{ $data->nama_mitra }} " readonly="">
                             </div>
 
-                            @if('level' == "Calon Mitra" )
+                            <input type="text" value="Aktif" name="status" hidden>
 
-                            <input type="text" value="Aktif" name="status">
-                            @else
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <select class="select2-single-placeholder form-control" name="status" id="status" style="width: 100%">
-                                <option value="{{$data->status}}">{{$data->status}}</option>
-                                  <option value="Aktif">Aktif</option>
-                                  <option value="Tidak Aktif">Tidak Aktif</option>
-                              </select>
-                            </div>
-                            @endif
                             <div class="form-group">
                                 <label for="level">Level</label>
                                 <select class="select2-single-placeholder form-control" name="level" id="level" style="width: 100%">

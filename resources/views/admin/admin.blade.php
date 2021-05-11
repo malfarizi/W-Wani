@@ -140,7 +140,7 @@
                                 
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#edit-data">
+                                        data-target="#edit-data-{{$data->id}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                     <form action="" method="POST"
@@ -162,7 +162,7 @@
         
         {{-- Modal edit --}}
         @foreach($datas as $data)
-        <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
+        <div class="modal fade" id="edit-data-{{$data->id}}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -184,16 +184,16 @@
                             <div class="form-group">
                                 <label for="nama_admin">Nama Admin</label>
                                 <input type="text" class="form-control" id="nama_admin" name="nama_admin" value="{{$data->nama_admin}}">
-                            <label>Jenis Kelamin</label>
+                                <label>Jenis Kelamin</label>
                             <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jk" id="jk1" value="laki-laki"
-                                    >
+                                <input class="form-check-input" type="radio" name="jk" id="jk1" value="Laki-laki"
+                                    {{ ($data->jk=="Laki-laki")? "checked" : "" }}>
                                 <label class="form-check-label" for="jk1">Laki - Laki</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jk" id="jk2" value=""
-                                    >
+                                <input class="form-check-input" type="radio" name="jk" id="jk2" value="Perempuan"
+                                    {{ ($data->jk=="Perempuan")? "checked" : "" }}>
                                 <label class="form-check-label" for="jk2">Perempuan</label>
                             </div>
                             <div class="form-group">

@@ -52,8 +52,12 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id){
-        $data = $request->only( 'no_telp');
-        Admin::Where($id)->update($data);
+        
+        $data = Admin::findOrFail($id);
+        $data->no_telp = $request->input('no_telp');
+        $data->jk = $request->input('jk');
+        $data->nama_admin = $request->input('nama_admin');
+        $data->save();
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 

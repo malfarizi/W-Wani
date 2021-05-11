@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('dashboard','DashboardController@dashboard');
-Route::get('dashboardmitra','DashboardController@dashboardmitra');
+
 
 Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
 
@@ -34,6 +34,7 @@ Route::get('logoutmitra', 'MitraController@logout');
 //======================Pendaftaran Mitra=================== 
 Route::get('register','MitraController@pendaftaranmitra');
 //======================Verifikasi Mitra===================
+Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
 Route::put('editMitra/{id}','MitraController@update');
 
