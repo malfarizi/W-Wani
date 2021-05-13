@@ -19,11 +19,11 @@ class PembeliApiController extends Controller
         ];
 
         if($auth->attempt($credentials)) {
-            $pembeli = Pembeli::where('email', $email)->first();
+            $pembeli = Pembeli::with('alamat')->where('email', $email)->first();
             return response()->json([
-		        'error'   => 0,
+                'error'   => 0,
                 'message' => 'Login berhasil',
-		        'user'    => $pembeli
+		'user'    => $pembeli
             ]);
         }
         else {
@@ -49,15 +49,12 @@ class PembeliApiController extends Controller
         $create = Pembeli::create($data);
         
         if($create){
-            return response()->json([
-                'error'   => 0, 
-                'message' => 'Data berhasil disimpan'
-            ]);
+            return response()->json($create);
         }
     }
 
     public function show($id){
-        return response()->json(pembeli::where('id_pembeli', $id));
+        return response()->json(Pembeli::where('id_pembeli', $id)->first());
     }
 
     public function update(Request $request, $id)
