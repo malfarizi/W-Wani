@@ -18,14 +18,19 @@ class Produk extends Model
         'harga',
         'qty',
         'berat',
-        'photo',
+        'foto',
         'id_mitra',
+        'id_kategori'
     ];
 
 
     public function mitra(){
        return $this->hasOne('App\Mitra', 'id_mitra');
 	}
+
+    public function kategori(){
+        return $this->hasOne('App\Kategori', 'id_kategori');
+     }
 }
 
    

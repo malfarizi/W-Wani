@@ -61,5 +61,10 @@ Route::post('addAlattani', 'AlatController@create');
 Route::put('editAlattani/{id}','AlatController@update');
 Route::delete('deleteAlattani/{id}','AlatController@delete');
 
+//====================== Produk =========================
+Route::get('produk','ProdukController@index');
+Route::post('addProduk', 'ProdukController@create');
+Route::put('editProduk/{id}','ProdukController@update');
+Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');

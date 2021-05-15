@@ -62,15 +62,6 @@ class AlatController extends Controller
         return redirect()->back()->with('success', 'Data berhasil didubah');
     }
 
-
-
-
-
-
-
-
-
-
     public function delete($id)
     {
         $data = Alat::findOrFail($id);
