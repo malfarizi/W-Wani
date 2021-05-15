@@ -24,7 +24,15 @@ class Pembeli extends Authenticatable
         'id_alamat'
     ];
 
+    protected $hidden = [
+        'password','remember_token'
+    ];
+    
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     public function alamat(){
-        return $this->hasOne('App\Alamat', 'id_alamat');
+        return $this->belongsTo('App\Alamat', 'id_alamat');
     }
 }

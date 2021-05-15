@@ -24,10 +24,10 @@ Route::get('/getKota', 'API\KotaApiController@getAll');
 Route::get('/getKota/{id}', 'API\KotaApiController@getById');
 
 Route::prefix('pembeli')->group(function(){
-    Route::post('/login', 'API\PembeliController@login');
-    Route::get('/getById/{id}', 'API\PembeliController@show');
-    Route::post('/add', 'API\PembeliController@store');
-    Route::put('/edit/{id}', 'API\PembeliController@update');
+    Route::post('/login', 'API\PembeliApiController@login');
+    Route::get('/getById/{id}', 'API\PembeliApiController@show');
+    Route::post('/add', 'API\PembeliApiController@store');
+    Route::put('/edit/{id}', 'API\PembeliApiController@update');
 });
 
 Route::prefix('alamat')->group(function(){
