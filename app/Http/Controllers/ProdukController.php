@@ -9,6 +9,17 @@ use App\Kategori;
 use DB;
 class ProdukController extends Controller
 {
+
+    public function produk_admin()
+    {
+         $datas = DB::table('produk')
+            ->join('mitra', 'mitra.id_mitra', '=', 'produk.id_mitra')
+            ->join('kategori', 'kategori.id_kategori', '=', 'produk.id_kategori')
+            ->select('mitra.*','kategori.*', 'produk.*')
+            ->get();
+
+            return view('admin.produk_admin', compact('datas'));
+    }
     public function index(){
 
             $kategori = Kategori::all();
@@ -24,6 +35,30 @@ class ProdukController extends Controller
     }
 
     public function create(Request $request){
+        $request->validate([
+            'nama_produk'           => 'required|min:3|string|max:100', 
+            'deskripsi'             => 'required|string|min:5',
+            'harga'                 => 'required|string',
+            'qty'                   => 'required|string',
+            'satuan'                => 'required|string',
+            'berat'                 => 'required|string',
+            'id_kategori'           => 'required|string',
+            'foto'                  => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
+            
+        ],
+        [
+            'nama_produk.min'               => 'Nama Produk minimal 3',
+            'nama_produk.required'          => 'Nama Produk harus diisi',
+            'harga.required'                => 'Harga harus diisi',
+            'qty.required'                  => 'Qty harus diisi',
+            'satuan.required'               => 'Satuan harus diisi',
+            'berat.required'                => 'Berat harus diisi',
+            'id_kategori.required'          => 'Kategori harus diisi',
+            'deskripsi.required'            => 'Deskripsi harus diisi', 
+            'max'                           => 'panjang karakter maksima 100',
+            'mimes'                         => 'format gambar tidak didukung'
+        ]);
+
     	$data = new Produk();
     	$data->nama_produk = $request->nama_produk;
     	$data->deskripsi = $request->deskripsi;
@@ -43,6 +78,30 @@ class ProdukController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'nama_produk'           => 'required|min:3|string|max:100', 
+            'deskripsi'             => 'required|string|min:5',
+            'harga'                 => 'required|string',
+            'qty'                   => 'required|string',
+            'satuan'                => 'required|string',
+            'berat'                 => 'required|string',
+            'id_kategori'           => 'required|string',
+            'foto'                  => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
+            
+        ],
+        [
+            'nama_produk.min'               => 'Nama Produk minimal 3',
+            'nama_produk.required'          => 'Nama Produk harus diisi',
+            'harga.required'                => 'Harga harus diisi',
+            'qty.required'                  => 'Qty harus diisi',
+            'satuan.required'               => 'Satuan harus diisi',
+            'berat.required'                => 'Berat harus diisi',
+            'id_kategori.required'          => 'Kategori harus diisi',
+            'deskripsi.required'            => 'Deskripsi harus diisi', 
+            'max'                           => 'panjang karakter maksima 100',
+            'mimes'                         => 'format gambar tidak didukung'
+        ]);
+
     	$data = Produk::findOrFail($id);
         $data->nama_produk = $request->input('nama_produk');
         $data->deskripsi = $request->input('deskripsi');

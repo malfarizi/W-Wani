@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
  
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/','LandingPageController@index');
+
+
+
 Route::get('dashboard','DashboardController@dashboard');
 
 
@@ -32,7 +37,7 @@ Route::get('loginmitra','MitraController@loginmitra');
 Route::post('loginMitraPost', 'MitraController@loginMitraPost');
 Route::get('logoutmitra', 'MitraController@logout');
 //======================Pendaftaran Mitra=================== 
-Route::get('register','MitraController@pendaftaranmitra');
+Route::get('register','MitraController@register');
 //======================Verifikasi Mitra===================
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
@@ -62,6 +67,7 @@ Route::put('editAlattani/{id}','AlatController@update');
 Route::delete('deleteAlattani/{id}','AlatController@delete');
 
 //====================== Produk =========================
+Route::get('produk_admin','ProdukController@produk_admin');
 Route::get('produk','ProdukController@index');
 Route::post('addProduk', 'ProdukController@create');
 Route::put('editProduk/{id}','ProdukController@update');

@@ -17,11 +17,12 @@ class KategoriController extends Controller
      public function create(Request $request)
     {
         $request->validate([
-            'nama_kategori' => 'required|string|min:3',
+            'nama_kategori' => 'required|string|min:3|unique:kategori',
             
 
         ],
         [
+            'nama_kategori.unique'    => 'Nama Kategori sudah ada',
             'nama_kategori.required'    => 'Nama Kategori harus diisi',
             'max'                       => 'panjang karakter maksimal 100',
         ]);

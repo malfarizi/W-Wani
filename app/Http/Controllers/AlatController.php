@@ -23,6 +23,26 @@ class AlatController extends Controller
     }
 
     public function create(Request $request){
+
+        $request->validate([
+            'nama_alat'      => 'required|min:3|string|max:100', 
+            'desc'           => 'required|string|min:5',
+            'harga'          => 'required|string',
+            'status'         => 'required|string',
+            'foto'           => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
+            
+        ],
+        [
+            'nama_alat.unique'           => 'Nama Alat sudah ada yang pakai',
+            'nama_alat.min'              => 'Nama Alat minimal 3',
+            'nama_alat.required'         => 'Nama Alat harus diisi',
+            'harga.required'             => 'Harga harus diisi',
+            'status.required'            => 'Status harus diisi',
+            'desc.required'              => 'Deskripsi harus diisi', 
+            'max'                        => 'panjang karakter maksima 100',
+            'mimes'                      => 'format gambar tidak didukung'
+        ]);
+
     	$data = new Alat();
     	$data->nama_alat = $request->nama_alat;
     	$data->desc = $request->desc;
@@ -39,6 +59,25 @@ class AlatController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'nama_alat'      => 'required|min:3|string|max:100', 
+            'desc'           => 'required|string|min:5',
+            'harga'          => 'required|string',
+            'status'         => 'required|string',
+            'foto'           => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
+            
+        ],
+        [
+            'nama_alat.unique'           => 'Nama Alat sudah ada yang pakai',
+            'nama_alat.min'              => 'Nama Alat minimal 3',
+            'nama_alat.required'         => 'Nama Alat harus diisi',
+            'harga.required'             => 'Harga harus diisi',
+            'status.required'            => 'Status harus diisi',
+            'desc.required'              => 'Deskripsi harus diisi', 
+            'max'                        => 'panjang karakter maksima 100',
+            'mimes'                      => 'format gambar tidak didukung'
+        ]);
+
     	$data = Alat::findOrFail($id);
        
         $data->nama_alat = $request->input('nama_alat');

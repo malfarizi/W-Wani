@@ -67,7 +67,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{url('produk')}}">
+        <a class="nav-link" href="{{url('produk_admin')}}">
           <i class="fas fa-box"></i>
           <span>Daftar Produk</span>
         </a>
