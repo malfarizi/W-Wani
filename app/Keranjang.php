@@ -10,10 +10,7 @@ class Keranjang extends Model
 
     protected $primaryKey = 'id_keranjang';
 
-    protected $fillable = [
-        'id_pembeli', 
-        
-    ];
+    protected $fillable = ['id_pembeli'];
 
     public function pembeli(){
     	return $this->belongsTo('App\Pembeli', 'id_pembeli');

@@ -13,15 +13,18 @@ class Produk extends Model
     protected $fillable = [
         'nama_produk',
         'deskripsi',
-        'kategori', 
+        'id_kategori', 
         'satuan',
         'harga',
         'qty',
         'berat',
-        'photo',
+        'foto',
         'id_mitra',
     ];
 
+    public function kategori(){
+        return $this->hasOne('App\Kategori', 'id_kategori');
+     }
 
     public function mitra(){
        return $this->hasOne('App\Mitra', 'id_mitra');

@@ -20,6 +20,7 @@ Route::get('dashboard','DashboardController@dashboard');
 
 
 Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
+Route::get('test', 'DummyController@test');
 
 //======================Admin===================
 Route::get('loginadmin','AdminController@loginadmin');

@@ -23,6 +23,8 @@ Route::get('/getProvinsi', 'API\ProvinsiApiController@getAll');
 Route::get('/getKota', 'API\KotaApiController@getAll');
 Route::get('/getKota/{id}', 'API\KotaApiController@getById');
 
+Route::post('/keranjang', 'API\KeranjangApiController@store');
+
 Route::prefix('pembeli')->group(function(){
     Route::post('/login', 'API\PembeliApiController@login');
     Route::get('/getById/{id}', 'API\PembeliApiController@show');
