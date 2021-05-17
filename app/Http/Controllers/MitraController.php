@@ -13,7 +13,7 @@ class MitraController extends Controller
 {
 	public function register()
     {
-    	return view('pendaftaranmitra');
+    	return view('register');
     }
 
     public function calonmitra()

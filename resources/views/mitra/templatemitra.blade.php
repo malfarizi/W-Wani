@@ -44,7 +44,7 @@
         </a>
       </li>
 
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-mitra"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fas fa-store"></i>
@@ -54,10 +54,10 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Produk</h6>
             <a class="collapse-item" href="{{url('produk')}}">Kelola Produk</a>
-            <a class="collapse-item" href="{{url('mitra')}}">Pesanan Produk</a>
+            <a class="collapse-item" href="{{url('pesananproduk')}}">Pesanan Produk</a>
           </div>
         </div>
-      </li> -->
+      </li>
        
        <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-alattani"

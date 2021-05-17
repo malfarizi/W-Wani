@@ -20,6 +20,7 @@ class Produk extends Model
         'berat',
         'foto',
         'id_mitra',
+        'id_kategori'
     ];
 
     public function kategori(){
@@ -29,6 +30,10 @@ class Produk extends Model
     public function mitra(){
        return $this->hasOne('App\Mitra', 'id_mitra');
 	}
+
+    public function kategori(){
+        return $this->hasOne('App\Kategori', 'id_kategori');
+     }
 }
 
    

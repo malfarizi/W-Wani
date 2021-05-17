@@ -143,13 +143,13 @@
                                         data-target="#edit-data-{{$data->id}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
-                                    <form action="" method="POST"
+                                    <!-- <form action="" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i
                                                 class="fas fa-trash"></i></button>
-                                    </form>
+                                    </form> -->
                                 </td>
                             </tr>
                            @endforeach
@@ -184,16 +184,16 @@
                             <div class="form-group">
                                 <label for="nama_admin">Nama Admin</label>
                                 <input type="text" class="form-control" id="nama_admin" name="nama_admin" value="{{$data->nama_admin}}">
-                                <label>Jenis Kelamin</label>
+                             <label>Jenis Kelamin</label>
                             <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jk" id="jk1" value="Laki-laki"
-                                    {{ ($data->jk=="Laki-laki")? "checked" : "" }}>
+                                <input class="form-check-input" type="radio" name="jk" id="jk1" value="laki-laki"
+                                    {{ ($data->jk=="laki-laki")? "checked" : "" }}>
                                 <label class="form-check-label" for="jk1">Laki - Laki</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="jk" id="jk2" value="Perempuan"
-                                    {{ ($data->jk=="Perempuan")? "checked" : "" }}>
+                                <input class="form-check-input" type="radio" name="jk" id="jk2" value="perempuan"
+                                    {{ ($data->jk=="perempuan")? "checked" : "" }}>
                                 <label class="form-check-label" for="jk2">Perempuan</label>
                             </div>
                             <div class="form-group">
