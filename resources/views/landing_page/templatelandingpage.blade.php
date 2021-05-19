@@ -64,8 +64,16 @@
                            <nav class="main-menu">
                               <ul class="menu-area-main">
                                  <li> <a href="{{url('/')}}">Home</a> </li>
+                                 
+                                 @if(session('level') == 'Petani')
+                                 <li><a href="{{url('profil-mitra')}}">Profil</a></li>
+                                 <li><a href="{{url('pemesananmitra')}}">Penyewaan</a></li>
+                                 <li><a href="{{url('logoutmitra')}}">Logout</a></li>
+                            
+                                 @else
                                  <li><a href="testmonial.html">Gabung Mitra</a></li>
                                  <li><a href="{{url('loginmitra')}}">Login</a></li>
+                                 @endif
                                 
                                  
                               </ul>
@@ -207,11 +215,11 @@
                </div>
                   <div class="menu_main">
                      <div class="menu_text">
-                        <ul>
+                        <!-- <ul>
                           <li> <a href="{{url('/')}}">Home</a> </li>
                                  <li><a href="testmonial.html">Gabung Mitra</a></li>
                                  <li><a href="{{url('loginmitra')}}">Login</a></li>
-                        </ul>
+                        </ul> -->
                      </div>
                   </div>
        </div>

@@ -51,6 +51,7 @@ class MitraController extends Controller
     }
 
     public function loginMitraPost(Request $request){
+        $level = session('level');
         $auth = auth()->guard('mitra');
 
         $credentials = $request->only('email', 'password');
@@ -72,17 +73,24 @@ class MitraController extends Controller
             session()->put('mitra', $mitra);
             session()->put('id_mitra', $mitra->id_mitra);
             session()->put('nama_mitra', $mitra->nama_mitra);
-            return redirect()->intended('dashboardmitra');
+            session()->put('level', $mitra->level);
+            if($level == 'Vendor'){
+                return redirect()->to('dashboardmitra');
+            }
+             elseif($level == 'Petani'){
+                return redirect()->to('/');
+            }
         }else{
             return redirect()->back()->withErrors(
                 ['Email atau password anda salah']
             );
         }
+        
     }
-
+    
     public function logout(){
         auth()->guard('mitra')->logout();
         session()->flush();
-        return redirect('loginmitra');
+        return redirect('/');
     }
 }

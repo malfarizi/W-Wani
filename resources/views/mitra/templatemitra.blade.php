@@ -70,6 +70,7 @@
             <h6 class="collapse-header">Kelola Alat Tani</h6>
             <a class="collapse-item" href="{{url('alattani')}}">Data Alat Tani</a>
             <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Kelola Pemesanan Alat Tani</a>
+            <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pemesanan Alat Tani  Diterima</a>
           </div>
         </div>
       </li>

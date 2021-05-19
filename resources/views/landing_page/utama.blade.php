@@ -57,6 +57,9 @@
                      <figure><img src="{{ url('images/foto_alat/'.$data->foto)  }}" style="width: 200px; height: 150px;"></figure>
                     <h3> Rp. {{$data->harga}}</h3>
                      <h4>{{$data->nama_alat}}</h4>
+                     @if(session('level') == 'Petani'))
+                     <a href="FormulirSewaAlat{{$data->id_alat}}" ><Strong>Sewa Alat </strong></a>
+                      @endif
                   </div>
                </div>
               @endforeach

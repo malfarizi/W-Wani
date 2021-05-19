@@ -169,14 +169,11 @@
                                  <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;">    
                             </div>
                             <div class="form-group">
-                              <label for="status">Status</label>
-                              <select class="select2-single-placeholder form-control" 
-                                name="status" id="status" style="width: 100%">
-                                <option value="">{{$data->status}}</option>
-                                  <option value="Diterima">Diterima</option>
-                                  <option value="Ditolak">Ditolak</option>
-                                  <option value="Belum Diterima">Belum Diterima</option>
-                              </select>
+                                <label for="status" >Status</label>
+                                <select name="status"  class="form-control"> {{$data->status}}
+                                <option value="Diterima">Diterima</option>
+                                <option value="Ditolak">Ditolak</option>
+                                </select>
                             </div>
                             
                         </div>

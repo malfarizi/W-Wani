@@ -36,6 +36,7 @@ Route::put('editAdmin/{id}', 'AdminController@update');
 Route::get('loginmitra','MitraController@loginmitra');
 Route::post('loginMitraPost', 'MitraController@loginMitraPost');
 Route::get('logoutmitra', 'MitraController@logout');
+
 //======================Pendaftaran Mitra=================== 
 Route::get('register','MitraController@register');
 //======================Verifikasi Mitra===================
@@ -73,4 +74,9 @@ Route::post('addProduk', 'ProdukController@create');
 Route::put('editProduk/{id}','ProdukController@update');
 Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
-Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');
+Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
+Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
+Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
+Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
+
+Route::get('FormulirSewaAlat{id_alat}','PemesananAlatController@index');
