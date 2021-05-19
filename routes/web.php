@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/','LandingPageController@index');
+Route::get('daftar','LandingPageController@daftar');
 
 
 
@@ -37,7 +38,10 @@ Route::get('loginmitra','MitraController@loginmitra');
 Route::post('loginMitraPost', 'MitraController@loginMitraPost');
 Route::get('logoutmitra', 'MitraController@logout');
 //======================Pendaftaran Mitra=================== 
-Route::get('register','MitraController@register');
+Route::get('registerMitra','MitraController@registerMitra');
+Route::post('registerPost','MitraController@Postregister');
+Route::get('registerVendor','MitraController@registerVendor');
+Route::post('registerPostVendor','MitraController@Postregister');
 //======================Verifikasi Mitra===================
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
@@ -74,3 +78,4 @@ Route::put('editProduk/{id}','ProdukController@update');
 Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');
+//====================== Kelola Pembayaran Alat Tani=========================
