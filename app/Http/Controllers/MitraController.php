@@ -21,10 +21,10 @@ class MitraController extends Controller
     }
 
     
-	public function Postregister(Request $request )
+	public function registerPost(Request $request )
     {
         //calon mitra, mitra
-        $request->validate([
+       /*  $request->validate([
             'no_rek'    => 'required|numeric',
             'nama'      => 'required|regex:/^[a-zA-Z\s]*$/',
             'alamat_lengkap'    => 'required',
@@ -49,7 +49,7 @@ class MitraController extends Controller
             'nama_bank'             => "Bank Tidak Boleh Kosong",
             'password'             => "Password Tidak Boleh Kosong",
             ]);
-            
+             */
             
             $alamat = [
                 'id_kota' => $request->id_kota,
@@ -57,6 +57,7 @@ class MitraController extends Controller
             ];
             
             $id_alamat =  Alamat::create($alamat);
+           
         $status = 'Calon Mitra';
         $level = 'Mitra';
         $registermitra = [
@@ -71,10 +72,11 @@ class MitraController extends Controller
             'no_rek' =>$request->no_rek,
             'nama_rekening' =>$request->nama_rekening,
             'nama_bank' =>$request->nama_bank,
-            'id_alamat' => $request->$id_alamat
+            'id_alamat' =>$id_alamat->id_alamat
         ];
         
         Mitra::create($registermitra);
+
         
     	return view('registerMitra')->back()->with('success', 'Data Berhasil Disimpan');
     }

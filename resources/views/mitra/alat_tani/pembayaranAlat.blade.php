@@ -1,26 +1,23 @@
 @extends('mitra.templatemitra')
 
-@section('title', 'Kelola Pembayaran Alat Tani')
+@section('title', 'Pembayaran Sewa Alat Tani')
     
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Kelola Pembayaran Alat Tani</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pembayaran Sewa Alat Tani</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Kelola Pembayaran Alat Tani</li>
+            <li class="breadcrumb-item active" aria-current="page">Pembayaran Sewa Alat Tani</li>
         </ol>
     </div>
 
     <div class="row">
         <!-- Datatables -->
         <div class="col-lg-12">
-            <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Kelola Pemesanan Alat Tani</h6>
-                </div>
-
+           
+                
                 <div class="card-header">
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">
@@ -44,54 +41,100 @@
                     </ul>
                 </div>
                 @endif
+                <div class="row mb-3 mr-1 ml-1">
+                <div class="col-xl-8 col-lg-7 mb-4">
+                    <div class="card">
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          <h6 class="m-0 font-weight-bold text-primary">Detail Penyewaan</h6>
+                          
+                        </div>
+                       
+                        <div class="row m-0">
+                            <div class="col-lg-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Nomer Penyewaan : </li>
+                                    <li class="list-group-item">Nama Penyewa : </li>
+                                    <li class="list-group-item">Nama Alat : </li>
+                                    <li class="list-group-item">Tanggal Sewa : </li>
+                                    
+                                  </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                
+                                <div class="align-items-center">
+                                    <div class=" font-weight-bold text-truncate message-title">Luas Tanah</div>
+                                    <div class="medium text-black message-time font-weight-normal">130 Bata</div>
+                                </div>
+                                <hr>
+                                <div class="align-items-center">
+                                    <div class=" font-weight-bold text-truncate message-title">Total Biaya</div>
+                                    <div class="medium text-black message-time font-weight-normal">Rp.1.150.000</div>
+                                </div>
+                                <hr>
+                                <div class="align-items-center">
+                                    <div class=" font-weight-bold text-truncate message-title">Alamat</div>
+                                    <div class="medium text-black message-time font-weight-normal">Desa Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iure, aut iste voluptatibus et voluptatem numquam nisi ut cupiditate laudantium deserunt totam consequatur tempore nam qui quia cumque exercitationem dignissimos!</div>
+                                </div>
+                                <hr>
+                                <div class="align-items-center">
+                                    <div class=" font-weight-bold  text-warning text-truncate message-title">Batas Pembayaran : 22 Jam 59 Menit</div>
+                                    
+                                </div>
+                                <hr>
+                            </div>
+                            
+                        </div>
+                           
+                      
+                    </div>
+                  </div>
+                  <!-- Message From Customer-->
+                  <div class="col-xl-4 col-lg-5 ">
+                    <div class="card">
+                      <div class="card-header py-2 bg-primary d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-light">Data Rekening</h6>
+                      </div>
+                      <div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Bank BCA</li>
+                            <li class="list-group-item">3020676611</li>
+                            <li class="list-group-item">A.N Achmad Farhan Mushafa</li>
+                            
+                          </ul>
+                       
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header py-2 bg-primary d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-light">Bukti Transfer Pembayaran</h6>
+                    </div>
+                    <div>
+                        <form>
+                            <div class="form-group mt-2 ml-3">
+                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            
+                          
+                      <div class="card-footer text-center">      
+                        <button type="submit" class="btn btn-success btn-icon-split">
+                          <span class="text">Bayar</span>
+                          <span class="icon text-white-50">
+                            <i class="fas fa-arrow-right"></i>
+                          </span>
+                        </button>
+                      </div>
+                    </form>
+            </div>
+            
+                </div>
+                </div>
+                <!--Row-->
+
 
                 
-
-
-                <div class="table-responsive p-3">
-                    <table class="table align-items-center table-flush" id="dataTable">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama Alat</th>
-                                <th>Mitra Pemesan</th>
-                                <th>Tanggal Pemesanan</th>
-                                <th>Luas Tanah</th>
-                                <th>Total Harga</th>
-                                <th>Alamat</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-    
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#edit-data">
-                                        <i class="fas fa-user-edit"></i>
-                                    </button>
-                                    <form action="" method="POST"
-                                        class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger"><i
-                                                class="fas fa-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                           
-                        </tbody>
-                    </table>
-                </div>
             </div>
-        </div>
+     
 
         
         {{-- Modal edit --}}

@@ -230,7 +230,7 @@
                 name="id_kota" id="id_kota" style="width: 100%">
                 <option value="">Select</option>                             
                @foreach ($kota as $item)
-                   <option value="{{$item->id_kota}}">{{$item->nama_kota}} - {{$item->kodepos}}</option>
+                   <option value="{{$item->id_kota}}">{{$item->tipe}} {{$item->nama_kota}} - {{$item->kodepos}}</option>
                @endforeach
               </select>
               </div>

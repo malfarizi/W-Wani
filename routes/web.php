@@ -39,7 +39,7 @@ Route::post('loginMitraPost', 'MitraController@loginMitraPost');
 Route::get('logoutmitra', 'MitraController@logout');
 //======================Pendaftaran Mitra=================== 
 Route::get('registerMitra','MitraController@registerMitra');
-Route::post('registerPost','MitraController@Postregister');
+Route::post('registerPost','MitraController@registerPost');
 Route::get('registerVendor','MitraController@registerVendor');
 Route::post('registerPostVendor','MitraController@Postregister');
 //======================Verifikasi Mitra===================
@@ -79,3 +79,4 @@ Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');
 //====================== Kelola Pembayaran Alat Tani=========================
+Route::get('pembayranAlat', 'PembayaranAlatController@postMitra');
