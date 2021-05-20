@@ -27,7 +27,7 @@
 
         <div class="col-lg-8 mt-5 mt-lg-0">
             <img src="{{ url('images/foto_alat/'.$datas->foto) }}" style="width: 200px; height: 150px;">
-            <form action="{{url('')}}" method="post" role="form" class="button-register" enctype="multipart/form-data">
+            <form action="{{url('aksipesanalat')}}" method="post" role="form" class="button-register" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
 
-                    <input type="text" class="form-control" name="id_mitra" id="id_mitra" value="{{$mitra->id_mitra}}}"
+                    <input type="text" class="form-control" name="id_mitra" id="id_mitra" value="{{session('id_mitra')}}"
                         hidden />
                 </div>
 
@@ -85,7 +85,7 @@
                         <input type="text" class="form-control" id="text" name="luas_tanah">
                     </div>
                 </div>
-
+        
                 
 
 

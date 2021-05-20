@@ -91,7 +91,7 @@ class MitraController extends Controller
     {
        
         $kota = Kota::all();
-         return view('registervendor', compact('kota'));
+         return view('registervendor', compact('kota')); 
     }
 
     public function PostregisterVendor(Request $request )
@@ -216,6 +216,7 @@ class MitraController extends Controller
             session()->put('id_mitra', $mitra->id_mitra);
             session()->put('nama_mitra', $mitra->nama_mitra);
             session()->put('level', $mitra->level);
+            session()->put('status', $mitra->status);
             if($level == 'Vendor'){
                 return redirect()->to('dashboardmitra');
             }

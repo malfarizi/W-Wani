@@ -56,8 +56,11 @@
           
           <li><a href="{{url('/alattani-list')}}">Alat Tani</a></li>
           @if(session('level') == 'Petani')
-          <li><a href="{{url('pemesananmitra')}}">Penyewaan</a></li>
-          <li><a href="{{url('dashboardmitra')}}">Dashboard</a></li>
+          
+              @if(session('status') == 'Diterima')
+              <li><a href="{{url('pemesananmitra')}}">Penyewaan</a></li>
+              <li><a href="{{url('dashboardmitra')}}">Dashboard</a></li>
+              @endif
           @else
           <li><a href="{{url('/daftar')}}">Gabung Mitra</a></li>
          @endif

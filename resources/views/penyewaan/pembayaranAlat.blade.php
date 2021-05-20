@@ -48,14 +48,14 @@
                           <h6 class="m-0 font-weight-bold text-primary">Detail Penyewaan</h6>
                           
                         </div>
-                       
+                       @foreach($datas as $data)
                         <div class="row m-0">
                             <div class="col-lg-6">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Nomer Penyewaan : </li>
-                                    <li class="list-group-item">Nama Penyewa : </li>
-                                    <li class="list-group-item">Nama Alat : </li>
-                                    <li class="list-group-item">Tanggal Sewa : </li>
+                                    <li class="list-group-item">Nomer Penyewaan : {{$data->id_pemesanan_alat}}</li>
+                                    <li class="list-group-item">Nama Penyewa : {{$data->nama_mitra}}</li>
+                                    <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
+                                    <li class="list-group-item">Tanggal Sewa : {{$data->tanggal}}</li>
                                     
                                   </ul>
                             </div>
@@ -63,17 +63,17 @@
                                 
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold text-truncate message-title">Luas Tanah</div>
-                                    <div class="medium text-black message-time font-weight-normal">130 Bata</div>
+                                    <div class="medium text-black message-time font-weight-normal">{{$data->luas_tanah}}</div>
                                 </div>
                                 <hr>
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold text-truncate message-title">Total Biaya</div>
-                                    <div class="medium text-black message-time font-weight-normal">Rp.1.150.000</div>
+                                    <div class="medium text-black message-time font-weight-normal">{{$data->total_harga}}</div>
                                 </div>
                                 <hr>
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold text-truncate message-title">Alamat</div>
-                                    <div class="medium text-black message-time font-weight-normal">Desa Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iure, aut iste voluptatibus et voluptatem numquam nisi ut cupiditate laudantium deserunt totam consequatur tempore nam qui quia cumque exercitationem dignissimos!</div>
+                                    <div class="medium text-black message-time font-weight-normal">{{$data->alamat_lengkap}}</div>
                                 </div>
                                 <hr>
                                 <div class="align-items-center">
@@ -84,7 +84,7 @@
                             </div>
                             
                         </div>
-                           
+                          @endforeach 
                       
                     </div>
                   </div>
@@ -96,7 +96,7 @@
                       </div>
                       <div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Bank BCA</li>
+                            <li class="list-group-item">{{$data->nama_rekening}}</li>
                             <li class="list-group-item">3020676611</li>
                             <li class="list-group-item">A.N Achmad Farhan Mushafa</li>
                             
@@ -127,6 +127,7 @@
                     </form>
             </div>
             
+
                 </div>
                 </div>
                 <!--Row-->

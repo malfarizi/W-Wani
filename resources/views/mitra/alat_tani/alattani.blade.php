@@ -46,7 +46,9 @@
                 @endif
 
                 {{-- Modal Tambah --}}
+                
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                @if(session('status') == 'Diterima')
                     <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
                         data-target="#exampleModal" id="#myBtn">
                         <span class="icon text-white-50">
@@ -55,16 +57,19 @@
                         <span class="text">Tambah Data Alat Tani</span>
                     </button>
 
+                    @endif
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
+                                
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data Alat Tani</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                            
                                 <form method="POST" action="{{url('addAlattani')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-body">

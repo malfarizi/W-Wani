@@ -42,12 +42,12 @@ Route::get('logoutmitra', 'MitraController@logout');
 Route::get('registerMitra','MitraController@registerMitra');
 Route::post('registerPost','MitraController@registerPost');
 Route::get('registerVendor','MitraController@registerVendor');
-Route::post('registerPostVendor','MitraController@Postregister');
+Route::post('registerPostVendor','MitraController@PostregisterVendor');
 //======================Verifikasi Mitra===================
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
 Route::get('calonmitra','MitraController@calonmitra');
-Route::put('editMitra/{id}','MitraController@update');
+Route::put('editMitra/{id}','MitraController@update'); 
 Route::delete('deleteMitra/{id}','MitraController@delete');
 
 //====================== Kategori ===================
@@ -85,4 +85,5 @@ Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 
 Route::get('alattani-list','PemesananAlatController@alattani_list');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
-Route::get('pembayaran','PembayaranAlatController@index');
+Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
+Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');

@@ -1,5 +1,5 @@
 @extends('landing_page.templatelandingpage')
-@section('title', 'Warung Tani | Registrasi Vendor')
+@section('title', 'Warung Tani | Registrasi Mitra')
 
 @section('content')
 
@@ -22,11 +22,11 @@
   <div class="container">
 
     <div class="top1">
-      <img style="width: 100%; " src="frontend/img/traktor.jpg" alt="">
+      <img style="width: 100%; " src="frontend/img/sayuran.jpg" alt="">
     </div>
     <div class="daftar">
       <br>
-      <h4>Registrasi Vendor</h4>
+      <h4>Daftar Vendor</h4>
     </div>
     <div class="row mt-5">
 
@@ -57,7 +57,7 @@
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="jk1" name="jk" class="custom-control-input" value="laki - laki">
+            <input type="radio" id="jk1" name="jk" class="custom-control-input" value="laki-laki">
             <label class="custom-control-label" for="jk1">Laki - Laki</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
@@ -230,7 +230,7 @@
                 name="id_kota" id="id_kota" style="width: 100%">
                 <option value="">Select</option>                             
                @foreach ($kota as $item)
-                   <option value="{{$item->id_kota}}">{{$item->nama_kota}} - {{$item->kodepos}}</option>
+                   <option value="{{$item->id_kota}}">{{$item->tipe}} {{$item->nama_kota}} - {{$item->kodepos}}</option>
                @endforeach
               </select>
               </div>
