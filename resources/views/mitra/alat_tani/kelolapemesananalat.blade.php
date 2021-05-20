@@ -51,6 +51,7 @@
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
+                        
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Alat</th>
@@ -121,7 +122,7 @@
               <li class="list-group-item">Foto : <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
               <li class="list-group-item">Nama Alat  : {{$data->nama_alat}}</li>
               <li class="list-group-item">Tanggal Bukti : {{$data->tanggal}} </li>
-              <!-- <li class="list-group-item">Status : {{$data->status}} </li> -->
+              <li class="list-group-item">Status : {{$data->status}} </li>
               
             </ul>
           </div>
@@ -172,7 +173,7 @@
                               <label for="status">Status</label>
                               <select class="select2-single-placeholder form-control" 
                                 name="status" id="status" style="width: 100%">
-                                <option value="">{{$data->status}}</option>
+                                <option value="">Pilih Status</option>
                                   <option value="Diterima">Diterima</option>
                                   <option value="Ditolak">Ditolak</option>
                                   <option value="Belum Diterima">Belum Diterima</option>

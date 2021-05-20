@@ -10,12 +10,24 @@ use App\PembayaranAlat;
 use Session;
 class PemesananAlatController extends Controller
 {
-        public function index($id_alat)
+
+    public function alattani_list()
+    {
+    	$datas = Alat::all();
+
+    	
+    	return view('penyewaan.alattani-list', compact('datas'));
+    }
+    public function index($id_alat)
     {
     	$datas = Alat::find($id_alat);
-
-    	dd($datas);
-    	return view('penyewaan.formulirpenyewaan');
+        $mitra = DB::table('mitra')
+        ->join('alamat', 'alamat.id_alamat', '=', 'mitra.id_alamat')
+        ->select('mitra.*','alamat.*')
+        ->where('mitra.id_mitra', session('id_mitra'))
+        ->first();
+    	
+    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra'));
     }
 
 

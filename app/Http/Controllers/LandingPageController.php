@@ -13,4 +13,8 @@ class LandingPageController extends Controller
     	$datas = Alat::where('status', 'Tersedia')->get();
     	return view('landing_page.utama', compact('datas','produk'));
     }
+    public function daftar()
+    {
+       return view('landing_page.daftar');
+    }
 }
