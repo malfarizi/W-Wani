@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class PembayaranAlatController extends Controller
 {
-    public function index($id_alat)
+    public function index()
     {
-    	$datas = Alat::find($id_gedung);
+    
 
-    	dd($datas);
-    	return view('penyewaan.formulirpenyewaan')
+    
+    	return view('mitra.alat_tani.pembayaranAlat');
     }
 }

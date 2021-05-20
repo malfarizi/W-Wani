@@ -58,15 +58,21 @@ class MitraController extends Controller
             
             $id_alamat =  Alamat::create($alamat);
            
-        $status = 'Calon Mitra';
-        $level = 'Mitra';
+        $status = 'Belum Diterima';
+        $level = 'Petani';
+
+        $image      = $request->file('foto');
+        $imageName  = time() . "_" . $image->getClientOriginalName();
+        $image->move(public_path('images/foto_mitra/'), $imageName);
+      
+
         $registermitra = [
             'nama_mitra' =>$request->nama_mitra,
             'email' =>$request->email,
             'password' =>$request->password, 
             'jk' =>$request->jk,
             'no_telp' =>$request->no_telp,
-            'foto' =>$request->foto,
+            'foto' =>$image,
             'status' =>$status,
             'level' =>$level,
             'no_rek' =>$request->no_rek,
@@ -77,8 +83,8 @@ class MitraController extends Controller
         
         Mitra::create($registermitra);
 
-        
-    	return view('registerMitra')->back()->with('success', 'Data Berhasil Disimpan');
+        return redirect()->back()->with('success', 'Data Berhasil Disimpan');
+    	
     }
     
     public function registerVendor()
@@ -91,7 +97,7 @@ class MitraController extends Controller
     public function PostregisterVendor(Request $request )
     {
         //calon mitra, mitra
-        $request->validate([
+       /*  $request->validate([
             'no_rek'    => 'required|numeric',
             'nama'      => 'required|regex:/^[a-zA-Z\s]*$/',
             'alamat_lengkap'    => 'required',
@@ -116,7 +122,7 @@ class MitraController extends Controller
             'nama_bank'             => "Bank Tidak Boleh Kosong",
             'password'             => "Password Tidak Boleh Kosong",
         ]);
-
+ */
 
         $alamat = [
             'id_kota' => $request->id_kota,
@@ -124,26 +130,32 @@ class MitraController extends Controller
         ];
         
         $id_alamat =  Alamat::create($alamat);
-        $status = 'Calon Vendor';
+        $status = 'Belum Diterima';
         $level = 'Vendor';
+
+        $image      = $request->file('foto');
+        $imageName  = time() . "_" . $image->getClientOriginalName();
+        $image->move(public_path('images/foto_mitra/'), $imageName);
+       
+
         $registervendor = [
             'nama_mitra' =>$request->nama_mitra,
             'email' =>$request->email,
             'password' =>$request->password, 
             'jk' =>$request->jk,
             'no_telp' =>$request->no_telp,
-            'foto' =>$request->foto,
+            'foto' =>$image,
             'status' =>$status,
             'level' =>$level,
             'no_rek' =>$request->no_rek,
             'nama_rekening' =>$request->nama_rekening,
             'nama_bank' =>$request->nama_bank,
-            'id_alamat' => $request->$id_alamat
+            'id_alamat' => $id_alamat->id_alamat
         ];
 
         Mitra::create($registervendor);
 
-    	return view('registerVendor')->back()->with('success', 'Data Berhasil Disimpan');
+    	return redirect()->back()->with('success', 'Data Berhasil Disimpan');
     }
 
     public function calonmitra()
