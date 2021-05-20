@@ -78,6 +78,7 @@ Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
 Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
+Route::get('pemesananalat-petani','PemesananAlatController@pemesananalat_petani');
 Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
 Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 

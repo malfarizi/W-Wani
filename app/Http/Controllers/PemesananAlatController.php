@@ -15,7 +15,6 @@ class PemesananAlatController extends Controller
     {
     	$datas = Alat::all();
 
-    	
     	return view('penyewaan.alattani-list', compact('datas'));
     }
     public function index($id_alat)
@@ -30,6 +29,18 @@ class PemesananAlatController extends Controller
     	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra'));
     }
 
+    public function pemesananalat_petani()
+    {
+        $datas = DB::table('pembayaran_alat')
+            ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+            ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
+            ->where('mitra.id_mitra', session('id_mitra'))
+            ->get();
+
+        return view('penyewaan.pemesananalat_petani',compact('datas'));
+    }
 
      public function pemesananalat_diterima()
     {
@@ -42,8 +53,6 @@ class PemesananAlatController extends Controller
             ->where('pembayaran_alat.status', 'Diterima')
             ->get();
 
-            
-        
         return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));
     }
 
