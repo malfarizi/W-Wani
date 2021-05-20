@@ -1,4 +1,4 @@
-@extends('mitra.templatemitra')
+@extends('landing_page.templatelandingpage')
 
 @section('title', 'Pembayaran Sewa Alat Tani')
     

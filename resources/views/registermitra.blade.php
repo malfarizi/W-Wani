@@ -57,11 +57,11 @@
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="jk1" name="jk" class="custom-control-input" value="Laki - Laki">
+            <input type="radio" id="jk1" name="jk" class="custom-control-input" value="laki-laki">
             <label class="custom-control-label" for="jk1">Laki - Laki</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="jk2" name="jk" class="custom-control-input" value="Perempuan">
+            <input type="radio" id="jk2" name="jk" class="custom-control-input" value="perempuan">
             <label class="custom-control-label" for="jk2">Perempuan</label>
           </div>
 
