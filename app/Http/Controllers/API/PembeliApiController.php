@@ -23,7 +23,7 @@ class PembeliApiController extends Controller
             return response()->json([
                 'error'   => 0,
                 'message' => 'Login berhasil',
-		'user'    => $pembeli
+		        'user'    => $pembeli
             ]);
         }
         else {
@@ -42,7 +42,7 @@ class PembeliApiController extends Controller
             'password'      => $request->password, 
             'jk'            => $request->jk,
             'no_telp'       => $request->no_telp,
-            'foto'          => $request->foto,
+            'foto'          => '',
             'id_alamat'     => $request->id_alamat
         ];
         
