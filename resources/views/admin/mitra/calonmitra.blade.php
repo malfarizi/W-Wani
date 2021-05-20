@@ -1,7 +1,7 @@
 @extends('admin.templateadmin')
 
 @section('title', 'Calon Mitra')
-    
+
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
@@ -45,9 +45,6 @@
                 </div>
                 @endif
 
-                
-
-
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
@@ -62,7 +59,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($datas as $data)
+                            @foreach($datas as $data)
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
                                 <td>{{$data->nama_mitra}}</td>
@@ -70,19 +67,19 @@
                                 <td>{{$data->jk}}</td>
                                 <td>{{$data->no_telp}}</td>
 
-                                <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"              data-toggle="modal" data-target="#modal-detail-{{$data->id_mitra}}">
-                                  <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
-                                  </span>
-                                  <span class="text">Detail</span>  
-                                  </button>
+                                <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
+                                        data-toggle="modal" data-target="#modal-detail-{{$data->id_mitra}}">
+                                        <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
+                                        </span>
+                                        <span class="text">Detail</span>
+                                    </button>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#edit-data">
+                                        data-target="#edit-data-{{$data->id_mitra}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
-                                    <form action="" method="POST"
-                                        class="d-inline">
+                                    <form action="" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i
@@ -90,53 +87,54 @@
                                     </form>
                                 </td>
                             </tr>
-                           @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        
+
 
         @foreach($datas as $data)
-    <!-- Modal Detail -->
-      <div class="modal fade" id="modal-detail-{{$data->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{$data->nama_mitra }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Foto : <img src="{{ url('images/mitra/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
-              <li class="list-group-item">No Rekening  : {{$data->no_rek}}</li>
-              <li class="list-group-item">Nama Rekening : {{$data->nama_rekening}} </li>
-              <li class="list-group-item">Nama Bank : {{$data->nama_bank}} </li>
-              <li class="list-group-item">Alamat : {{$data->alamat_lengkap}} </li>
-              <li class="list-group-item">Status : {{$data->status}} </li>
-              <li class="list-group-item">Level : {{$data->level}} </li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
-          </div>
+        <!-- Modal Detail -->
+        <div class="modal fade" id="modal-detail-{{$data->id_mitra}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{$data->nama_mitra }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Foto : <img src="{{ url('images/mitra/'.$data->foto) }}"
+                                    style="width: 200px; height: 150px;"> </li>
+                            <li class="list-group-item">No Rekening : {{$data->no_rek}}</li>
+                            <li class="list-group-item">Nama Rekening : {{$data->nama_rekening}} </li>
+                            <li class="list-group-item">Nama Bank : {{$data->nama_bank}} </li>
+                            <li class="list-group-item">Alamat : {{$data->alamat_lengkap}} </li>
+                            <li class="list-group-item">Status : {{$data->status}} </li>
+                            <li class="list-group-item">Level : {{$data->level}} </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
-      @endforeach
+        @endforeach
 
 
 
-      {{-- Modal edit --}}
+        {{-- Modal edit --}}
 
         @foreach ($datas as $data)
-        <div class="modal fade" id="edit-data" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit-data-{{$data->id_mitra}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -155,15 +153,20 @@
                                     value=" {{ $data->nama_mitra }} " readonly="">
                             </div>
 
-                            <input type="text" value="Aktif" name="status" hidden>
-
                             <div class="form-group">
                                 <label for="level">Level</label>
-                                <select class="select2-single-placeholder form-control" name="level" id="level" style="width: 100%">
-                                <option value="{{$data->level}}">{{$data->level}}</option>
-                                  <option value="Mitra">Mitra</option>
-                                  <option value="Calon Mitra">Calon Mitra</option>
-                              </select>
+                                <input type="text" class="form-control" id="level" name="level"
+                                    value=" {{ $data->level }} " readonly="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="level">Status</label>
+                                <select class="select2-single-placeholder form-control" name="status" id="level"
+                                    style="width: 100%">
+                                    <option value="{{$data->status}}">{{$data->status}}</option>
+                                    <option value="Diterima">Diterima</option>
+                                    <option value="Belum Diterima">Belum Diterima</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -173,11 +176,9 @@
                 </div>
             </div>
         </div>
-    
-    </form>
-    {{-- Akhir Modal Edit --}}
-    @endforeach
-   </div>
-@endsection
-    
 
+        </form>
+        {{-- Akhir Modal Edit --}}
+        @endforeach
+    </div>
+    @endsection

@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-end align-items-center">
      
       <ol>
-        <li><a href="/">Home</a></li>
+        <li><a href="{{url('/')}}">Home</a></li>
         <li>Daftar</li>
       </ol>
     </div>

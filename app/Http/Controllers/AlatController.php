@@ -17,11 +17,7 @@ class AlatController extends Controller
     		->get();
     	return view('mitra.alat_tani.alattani', compact('datas'));
     }
-    public function kelolapemesananalat()
-    {
-    	return view('mitra.alat_tani.kelolapemesananalat');
-    }
-
+    
     public function create(Request $request){
 
         $request->validate([

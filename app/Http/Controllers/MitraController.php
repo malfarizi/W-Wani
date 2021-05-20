@@ -151,7 +151,7 @@ class MitraController extends Controller
          $datas = DB::table('mitra')
             ->join('alamat', 'alamat.id_alamat', '=', 'mitra.id_mitra')
             ->select('mitra.*','alamat.*')
-            ->where('mitra.level', 'Calon Mitra')
+            ->where('mitra.status', 'Belum Diterima')
             ->get();
     	return view('admin.mitra.calonmitra', compact('datas'));
     }
@@ -161,7 +161,7 @@ class MitraController extends Controller
         $datas = DB::table('mitra')
             ->join('alamat', 'alamat.id_alamat', '=', 'mitra.id_mitra')
             ->select('mitra.*','alamat.*')
-            ->where('mitra.level', 'Mitra')
+            ->where('mitra.status', 'Diterima')
             ->get();
     
         return view('admin.mitra.mitra', compact('datas'));
@@ -181,6 +181,7 @@ class MitraController extends Controller
     }
 
     public function loginMitraPost(Request $request){
+        $level = session('level');
         $auth = auth()->guard('mitra');
 
         $credentials = $request->only('email', 'password');
@@ -202,17 +203,35 @@ class MitraController extends Controller
             session()->put('mitra', $mitra);
             session()->put('id_mitra', $mitra->id_mitra);
             session()->put('nama_mitra', $mitra->nama_mitra);
-            return redirect()->intended('dashboardmitra');
+            session()->put('level', $mitra->level);
+            if($level == 'Vendor'){
+                return redirect()->to('dashboardmitra');
+            }
+             elseif($level == 'Petani'){
+                return redirect()->to('/');
+            }
         }else{
             return redirect()->back()->withErrors(
                 ['Email atau password anda salah']
             );
         }
+        
     }
-
+    
     public function logout(){
         auth()->guard('mitra')->logout();
         session()->flush();
-        return redirect('loginmitra');
+        return redirect('/');
+    }
+
+    public function delete($id)
+    {
+        $data = Mitra::findOrFail($id);
+        try {
+            $data->delete();
+            return redirect()->back()->with('success', 'Data Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Data Gagal Dihapus');
+        }
     }
 }

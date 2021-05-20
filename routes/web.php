@@ -37,6 +37,7 @@ Route::put('editAdmin/{id}', 'AdminController@update');
 Route::get('loginmitra','MitraController@loginmitra');
 Route::post('loginMitraPost', 'MitraController@loginMitraPost');
 Route::get('logoutmitra', 'MitraController@logout');
+
 //======================Pendaftaran Mitra=================== 
 Route::get('registerMitra','MitraController@registerMitra');
 Route::post('registerPost','MitraController@registerPost');
@@ -45,10 +46,8 @@ Route::post('registerPostVendor','MitraController@Postregister');
 //======================Verifikasi Mitra===================
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
-Route::put('editMitra/{id}','MitraController@update');
-
 Route::get('calonmitra','MitraController@calonmitra');
-// Route::put('editCalonmitra/{id}','MitraController@update');
+Route::put('editMitra/{id}','MitraController@update');
 Route::delete('deleteMitra/{id}','MitraController@delete');
 
 //====================== Kategori ===================
@@ -77,6 +76,11 @@ Route::post('addProduk', 'ProdukController@create');
 Route::put('editProduk/{id}','ProdukController@update');
 Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
-Route::get('kelolapemesananalat','AlatController@kelolapemesananalat');
-//====================== Kelola Pembayaran Alat Tani=========================
-Route::get('pembayranAlat', 'PembayaranAlatController@postMitra');
+Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
+Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
+Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
+Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
+
+
+Route::get('alattani-list','PemesananAlatController@alattani_list');
+Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
