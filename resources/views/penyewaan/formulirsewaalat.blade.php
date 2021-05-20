@@ -3,27 +3,15 @@
 
 @section('content')
 
-<section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
 
-        <!-- <div class="d-flex justify-content-end align-items-center">
-    
-      <ol>
-        <li><a href="/">Home</a></li>
-        <li><a href="/daftar">Daftar</a></li>
-        <li>Registrasi Petani</li>
-      </ol>
-    </div> -->
-
-    </div>
 </section><!-- End Breadcrumbs -->
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
     <div class="container">
 
-        <div class="top1">
+        <!-- <div class="top1">
             <img style="width: 100%; " src="frontend/img/sayuran.jpg" alt="">
-        </div>
+        </div> -->
         <div class="daftar">
             <br>
             <h4>Pemesanan Alat</h4>
@@ -39,7 +27,7 @@
 
         <div class="col-lg-8 mt-5 mt-lg-0">
             <img src="{{ url('images/foto_alat/'.$datas->foto) }}" style="width: 200px; height: 150px;">
-            <form action="{{url('')}}" method="post" role="form" class="form-horizontal" enctype="multipart/form-data">
+            <form action="{{url('')}}" method="post" role="form" class="button-register" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">

@@ -5,13 +5,13 @@
 <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
 
-    <div class="d-flex justify-content-end align-items-center">
+    <!-- <div class="d-flex justify-content-end align-items-center">
      
       <ol>
         <li><a href="{{url('/')}}">Home</a></li>
         <li>Daftar</li>
       </ol>
-    </div>
+    </div> -->
 
   </div>
 </section><!-- End Breadcrumbs -->
