@@ -86,4 +86,7 @@ Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 Route::get('alattani-list','PemesananAlatController@alattani_list');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
-Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
+Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranController@pembayaranalat');
+Route::get('pembayaranAlat', function () {
+    return view('penyewaan.pembayaranAlat');
+});
