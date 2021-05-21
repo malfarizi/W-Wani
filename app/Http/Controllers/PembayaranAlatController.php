@@ -18,18 +18,17 @@ class PembayaranAlatController extends Controller
                 'status' => 'Ditolak'
             ]
         );
-        $datas = DB::table('pemesanan_alat')
+        $vendor = DB::table('pemesanan_alat')
        
         ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
         ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
         ->where('mitra.level', '=', 'Vendor')
-        ->get();
-
-        //  $datas = PemesananAlat::find($id);
+        ->first();
+        $datas = PemesananAlat::find($id);
         //  $vendor = PemesananAlat::where('')
-        //  dd($datas);
-    	return view('penyewaan.pembayaranAlat', compact('datas','waktu'));
+          
+    	return view('penyewaan.pembayaranAlat', compact('datas','waktu', 'vendor'));
     }
 
     // public function pembayaranalat($id)

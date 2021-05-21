@@ -96,9 +96,10 @@
                       </div>
                       <div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{{$datas->nama_rekening}}</li>
-                            <li class="list-group-item">3020676611</li>
-                            <li class="list-group-item">A.N Achmad Farhan Mushafa</li>
+                            <li class="list-group-item">Nama Rekening {{$vendor->nama_rekening}}</li>
+                            <li class="list-group-item">No Rekening {{$vendor->no_rek}}</li>
+                            <li class="list-group-item">Nama Bank {{$vendor->nama_bank}}</li>
+                            <li class="list-group-item">A.N {{$vendor->nama_rekening}}</li>
                             
                           </ul>
                        
