@@ -71,7 +71,7 @@ class PemesananAlatController extends Controller
     	return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));
     }
 
-    public function aksipesanalat( Request $request) {
+    public function aksipesanalat(Request $request) {
         
        
         $data = new PemesananAlat();
@@ -84,22 +84,11 @@ class PemesananAlatController extends Controller
         $data->id_alat = $request->id_alat;
     
         $data->save();
-
-        return redirect('penyewaan.pembayaranAlat/'.$request->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
-    }
-
-    public function pembayaranalat($id_pemesanan_alat)
-    {
-        $datas = DB::table('pemesanan_alat')
         
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-            ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
-            ->where('mitra.id_mitra', session('id_mitra'))
-            ->get();
-        // dd($datas);
-    	return view('penyewaan.pembayaranAlat', compact('datas'));
+        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
+
+   
    public function update(Request $request, $id)
     {
         $request->validate([

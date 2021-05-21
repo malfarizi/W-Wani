@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','LandingPageController@index');
 Route::get('daftar','LandingPageController@daftar');
 
-
-
 Route::get('dashboard','DashboardController@dashboard');
 
 
@@ -91,3 +89,7 @@ Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayarana
 //====================== Kelola Pembayaran Produk =========================
 Route::get('pembayaranProduk', 'PembayaranController@index');
 
+Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
+// Route::get('pembayaranAlat', function () {
+//     return view('penyewaan.pembayaranAlat');
+// });

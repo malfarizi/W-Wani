@@ -217,12 +217,7 @@ class MitraController extends Controller
             session()->put('nama_mitra', $mitra->nama_mitra);
             session()->put('level', $mitra->level);
             session()->put('status', $mitra->status);
-            if($level == 'Vendor'){
-                return redirect()->to('dashboardmitra');
-            }
-             elseif($level == 'Petani'){
-                return redirect()->to('/');
-            }
+            return redirect()->intended('dashboardmitra');
         }else{
             return redirect()->back()->withErrors(
                 ['Email atau password anda salah']
