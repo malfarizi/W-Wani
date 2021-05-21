@@ -30,6 +30,19 @@ class PemesananAlatController extends Controller
     	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra'));
     }
 
+    public function listpenyewaanPetani()
+    {
+        //pembayaran selesai, Menunggu Pembayaran, Ditolak
+        $datas = DB::table('pembayaran_alat')
+    		->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+    		->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
+    		->where('alat.id_mitra', session('id_mitra'))
+            ->where('pembayaran_alat.status', 'Menunggu Pembayaran')
+    		->get();
+            return view('penyewaan.penyewaan', compact('datas'));
+    }
     public function pemesananalat_petani()
     {
         $datas = DB::table('pembayaran_alat')

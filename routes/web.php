@@ -77,8 +77,10 @@ Route::delete('deleteProduk/{id}','ProdukController@delete');
 Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
 Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
 Route::get('pemesananalat-petani','PemesananAlatController@pemesananalat_petani');
+Route::get('pemesananmitra', 'PemesananAlatController@listpenyewaanPetani');
 Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
 Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
+
 
 
 Route::get('alattani-list','PemesananAlatController@alattani_list');
