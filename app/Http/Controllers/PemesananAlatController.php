@@ -84,8 +84,8 @@ class PemesananAlatController extends Controller
         $data->id_alat = $request->id_alat;
     
         $data->save();
-
-        return redirect('pembayaranAlat'.$request->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
+        
+        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
 
    

@@ -12,7 +12,7 @@
             <li class="breadcrumb-item active" aria-current="page">Pembayaran Sewa Alat Tani</li>
         </ol>
     </div>
-
+ 
     <div class="row">
         <!-- Datatables -->
         <div class="col-lg-12">
@@ -52,9 +52,9 @@
                         <div class="row m-0">
                             <div class="col-lg-6">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Nomer Penyewaan : {{$datas->id_pemesanan_alat}}</li>
-                                    <li class="list-group-item">Nama Penyewa : {{$datas->Mitra->nama_mitra}}</li>
-                                    <li class="list-group-item">Nama Alat : {{$datas->Alat->nama_alat}}</li>
+                                    <li class="list-group-item">Nomor Penyewaan : {{$datas->id_pemesanan_alat}}</li>
+                                    <li class="list-group-item">Nama Penyewa : {{$datas->nama_mitra}}</li>
+                                    <li class="list-group-item">Nama Alat : {{$datas->nama_alat}}</li>
                                     <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
                                     
                                   </ul>
@@ -77,7 +77,7 @@
                                 </div>
                                 <hr>
                                 <div class="align-items-center">
-                                    <div class=" font-weight-bold  text-warning text-truncate message-title">Batas Pembayaran : 22 Jam 59 Menit</div>
+                                    <div class=" font-weight-bold  text-warning text-truncate message-title">Batas Pembayaran : {{$waktu}}</div>
                                     
                                 </div>
                                 <hr>

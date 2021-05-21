@@ -12,11 +12,5 @@ use Session;
 
 class PembayaranController extends Controller
 {
-    public function pembayaranalat($id_pemesanan_alat)
-    {
-        
-        $datas = PemesananAlat::find($id_pemesanan_alat);
-        // dd($datas);
-    	return view('penyewaan.pembayaranAlat', compact('datas'));
-    }
+   
 }

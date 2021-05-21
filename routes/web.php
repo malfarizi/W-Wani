@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','LandingPageController@index');
 Route::get('daftar','LandingPageController@daftar');
 
-
-
 Route::get('dashboard','DashboardController@dashboard');
 
 
@@ -86,7 +84,7 @@ Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 Route::get('alattani-list','PemesananAlatController@alattani_list');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
-Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranController@pembayaranalat');
-Route::get('pembayaranAlat', function () {
-    return view('penyewaan.pembayaranAlat');
-});
+Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
+// Route::get('pembayaranAlat', function () {
+//     return view('penyewaan.pembayaranAlat');
+// });
