@@ -25,11 +25,10 @@ class PembayaranAlatController extends Controller
         ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
         ->where('mitra.level', '=', 'Vendor')
         ->first();
-
         $datas = PemesananAlat::find($id);
         //  $vendor = PemesananAlat::where('')
-        //  dd($datas);
-    	return view('penyewaan.pembayaranAlat', compact('datas','waktu','vendor'));
+          
+    	return view('penyewaan.pembayaranAlat', compact('datas','waktu', 'vendor'));
     }
 
     // public function pembayaranalat($id)
