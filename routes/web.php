@@ -87,3 +87,7 @@ Route::get('alattani-list','PemesananAlatController@alattani_list');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
 Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
+
+//====================== Kelola Pembayaran Produk =========================
+Route::get('pembayaranProduk', 'PembayaranController@index');
+
