@@ -58,7 +58,7 @@
           @if(session('level') == 'Petani')
           
               @if(session('status') == 'Diterima')
-              <li><a href="{{url('pemesananmitra')}}">Penyewaan</a></li>
+              <li><a href="{{url('pemesananmitra')}}">Pemesanan</a></li>
               <li><a href="{{url('dashboardmitra')}}">Dashboard</a></li>
               @endif
           @else

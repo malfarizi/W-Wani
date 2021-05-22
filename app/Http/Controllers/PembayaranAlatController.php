@@ -9,6 +9,8 @@ use DB;
 use App\PemesananAlat;
 use App\PembayaranAlat;
 use Session;
+use Carbon\Carbon;
+
 class PembayaranAlatController extends Controller
 {
     public function pembayaranalat($id)
@@ -19,36 +21,34 @@ class PembayaranAlatController extends Controller
             ]
         );
         $vendor = DB::table('pemesanan_alat')
-       
         ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
         ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
         ->where('mitra.level', '=', 'Vendor')
         ->first();
+
         $datas = PemesananAlat::find($id);
-        //  $vendor = PemesananAlat::where('')
           
     	return view('penyewaan.pembayaranAlat', compact('datas','waktu', 'vendor'));
     }
 
-    // public function pembayaranalat($id)
-    // {
-    // 	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
-    //         [
-    //             'status' => 'Ditolak'
-    //         ]
-    //     );
-    //     $datas = DB::table('pemesanan_alat')
-       
-    //     ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-    //     ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
-    //     ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
-    //     ->where('mitra.level', '=', 'Vendor')
-    //     ->get();
+    public function aksibayaralat(Request $request){
 
-    //     //  $datas = PemesananAlat::find($id);
-    //     //  $vendor = PemesananAlat::where('')
-    //     //  dd($datas);
-    // 	return view('penyewaan.pembayaranAlat', compact('datas','waktu'));
-    // }
+        $date = Carbon::now();
+
+        $data = new pembayaranalat();
+        $data->id_pemesanan_alat = $request->id_pemesanan_alat;
+        $data->tanggal = $date;
+        $data->status = $request->status;
+
+        $image      = $request->file('foto');
+        $imageName  = time() . "_" . $image->getClientOriginalName();
+        $image->move(public_path('images/foto_alat/'), $imageName);
+        $data->foto = $imageName;
+    
+        $data->save();
+        // dd($data);
+        return redirect('pemesananmitra');
+    }
+
 }

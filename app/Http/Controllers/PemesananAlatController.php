@@ -34,13 +34,14 @@ class PemesananAlatController extends Controller
     {
         //pembayaran selesai, Menunggu Pembayaran, Ditolak
         $datas = DB::table('pembayaran_alat')
-    		->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-    		->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
-    		->where('alat.id_mitra', session('id_mitra'))
-            ->where('pembayaran_alat.status', 'Menunggu Pembayaran')
-    		->get();
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
+        ->where('mitra.id_mitra', session('id_mitra'))
+        ->where('pembayaran_alat.status', 'Menunggu Pembayaran Diterima')
+        ->get();
+        // dd($datas);
             return view('penyewaan.penyewaan', compact('datas'));
     }
     public function pemesananalat_petani()
@@ -57,7 +58,7 @@ class PemesananAlatController extends Controller
     }
 
      public function pemesananalat_diterima()
-    {
+    { 
         $datas = DB::table('pembayaran_alat')
             ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
             ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
@@ -78,7 +79,6 @@ class PemesananAlatController extends Controller
             ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
     		->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
     		->where('alat.id_mitra', session('id_mitra'))
-            ->where('pembayaran_alat.status', 'Belum Diterima')
     		->get();
         
     	return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));

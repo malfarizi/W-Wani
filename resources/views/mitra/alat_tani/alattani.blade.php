@@ -145,7 +145,7 @@
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
                                 <td>{{$data->nama_alat}}</td>
-                                <td>{{$data->harga}}</td>
+                                <td>@currency($data->harga)</td>
                                 <td>{{$data->desc}}</td>
                                 <td><img src="{{ url('images/foto_alat/'.$data->foto) }}"
                                         style="width: 200px; height: 150px;"></td>

@@ -104,7 +104,7 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img src="{{ url('images/bukti/'.$data->foto) }}"
+                            <li class="list-group-item">Foto : <img src="{{ url('images/foto_bukti/'.$data->foto) }}"
                                     style="width: 200px; height: 150px;"> </li>
                             <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
                             <li class="list-group-item">Tanggal Bukti : {{$data->tanggal}} </li>

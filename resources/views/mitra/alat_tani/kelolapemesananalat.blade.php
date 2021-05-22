@@ -119,7 +119,7 @@
           </div>
           <div class="modal-body">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Foto : <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
+              <li class="list-group-item">Foto : <img src="{{ url('images/foto_bukti/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
               <li class="list-group-item">Nama Alat  : {{$data->nama_alat}}</li>
               <li class="list-group-item">Tanggal Bukti : {{$data->tanggal}} </li>
               <li class="list-group-item">Status : {{$data->status}} </li>
@@ -167,7 +167,7 @@
 
                             <div class="form-group">
                                 <label for="tanggal">Bukti Foto : </label>
-                                 <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;">    
+                                 <img src="{{ url('images/foto_bukti/'.$data->foto) }}" style="width: 200px; height: 150px;">    
                             </div>
                             <div class="form-group">
                               <label for="status">Status</label>

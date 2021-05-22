@@ -38,7 +38,7 @@
                         </div>
                         <br>
                         <h1>{{$data->nama_alat}}</h1>
-                        <h4>Rp. {{$data->harga}}</h4>
+                        <h4>@currency($data->harga)</h4>
                         <p>{{$data->desc}}</p>
                         @if(session('status') == 'Diterima')
                         @if(session('level') == 'Petani')
@@ -47,7 +47,7 @@
                         </div>
                         @endif
                         @else
-                        <p>Akun Belum Diterima</p>
+                        <p></p>
                         @endif
                     </div>
                 </div>
