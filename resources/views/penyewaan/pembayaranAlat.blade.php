@@ -126,11 +126,11 @@
                                         value="{{$datas->id_pemesanan_alat}}" id="exampleFormControlFile1" hidden>
                                 </div>
                                 <div class="form-group mt-2 ml-3">
-                                    <input type="text" class="form-control-file" name="status"
-                                        value="Menunggun Pembayaran Diterima" id="exampleFormControlFile1" hidden>
+                                    <input type="text" class="form-control-file" name="status_pembayaran"
+                                        value="Menunggu Pembayaran Diterima" id="exampleFormControlFile1" hidden>
                                 </div>
                                 <div class="form-group mt-2 ml-3">
-                                    <input type="file" class="form-control-file" name="foto" id="exampleFormControlFile1">
+                                    <input type="file" class="form-control-file" name="foto_bukti" id="exampleFormControlFile1">
                                 </div>
                                 <div class="card-footer text-center">
                                     <button type="submit" class="btn btn-success btn-icon-split">

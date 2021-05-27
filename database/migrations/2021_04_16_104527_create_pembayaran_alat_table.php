@@ -17,9 +17,9 @@ class CreatePembayaranAlatTable extends Migration
             $table->increments('id_pembayaran_alat');
             $table->unsignedInteger('id_pemesanan_alat');
             $table->foreign('id_pemesanan_alat')->references('id_pemesanan_alat')->on('pemesanan_alat');
-            $table->date('tanggal');
-            $table->string('status');
-            $table->string('foto');
+            $table->date('tanggal_bukti');
+            $table->string('status_pembayaran');
+            $table->string('foto_bukti');
             $table->timestamps();
         });
     }

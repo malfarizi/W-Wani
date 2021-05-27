@@ -17,8 +17,8 @@ class PembayaranAlatController extends Controller
     {
     	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
             [
-                'status' => 'Ditolak'
-            ]
+                'status_pembayaran' => 'Ditolak'
+            ] 
         );
         $vendor = DB::table('pemesanan_alat')
         ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
@@ -38,13 +38,13 @@ class PembayaranAlatController extends Controller
 
         $data = new pembayaranalat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
-        $data->tanggal = $date;
-        $data->status = $request->status;
+        $data->tanggal_bukti = $date;
+        $data->status_pembayaran = $request->status_pembayaran;
 
-        $image      = $request->file('foto');
+        $image      = $request->file('foto_bukti');
         $imageName  = time() . "_" . $image->getClientOriginalName();
-        $image->move(public_path('images/foto_alat/'), $imageName);
-        $data->foto = $imageName;
+        $image->move(public_path('images/foto_bukti/'), $imageName);
+        $data->foto_bukti = $imageName;
     
         $data->save();
         // dd($data);
