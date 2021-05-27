@@ -92,3 +92,4 @@ Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayarana
 Route::get('pembayaranProduk', 'PembayaranController@index');
 Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
 Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
+Route::get('cari','PembayaranAlatController@cari');

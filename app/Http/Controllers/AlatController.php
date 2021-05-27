@@ -29,7 +29,7 @@ class AlatController extends Controller
             
         ],
         [
-            'nama_alat.unique'           => 'Nama Alat sudah ada yang pakai',
+            
             'nama_alat.min'              => 'Nama Alat minimal 3',
             'nama_alat.required'         => 'Nama Alat harus diisi',
             'harga.required'             => 'Harga harus diisi',

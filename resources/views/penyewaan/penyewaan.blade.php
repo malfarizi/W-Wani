@@ -26,7 +26,16 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary"> Pemesanan Alat Tani</h6>
                 </div>
-
+                <div class="col-md-6">
+                                    <form action="{{url('cari')}}" method="GET">
+                                        <div class="input-group">
+                                            <input type="text" name="q" class="form-control" placeholder="Nomor Pemesanan">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-warning" type="submit"><i class="lnr lnr-magnifier"></i>Cari</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
                 <div class="card-header">
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">
@@ -66,6 +75,7 @@
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
                                 
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -84,6 +94,13 @@
                                         </span>
                                         <span class="text">Detail</span>
                                     </button>
+                                    <!-- <form action="{{url('deletePemesananAlat', $data->id_pembayaran_alat)}}"
+                                        method="POST" class="d-inline">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger btn-sm" ><i
+                                                class="fas fa-trash"></i><span class="text">Batal</span></button>
+                                    </form> -->
                                 </td>
                             </tr>
                             @endforeach

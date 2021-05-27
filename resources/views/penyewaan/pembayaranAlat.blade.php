@@ -1,15 +1,15 @@
 @extends('landing_page.templatelandingpage')
 
-@section('title', 'Pembayaran Sewa Alat Tani')
+@section('title', 'Pembayaran Pemesanan Alat Tani')
 
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pembayaran Sewa Alat Tani</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pembayaran Pemesanan Alat Tani</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Pembayaran Sewa Alat Tani</li>
+            <li class="breadcrumb-item active" aria-current="page">Pembayaran Pemesanan Alat Tani</li>
         </ol>
     </div>
 
@@ -45,15 +45,15 @@
                 <div class="col-xl-8 col-lg-7 mb-4">
                     <div class="card">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Detail Penyewaan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Detail Pemesanan</h6>
 
                         </div>
 
                         <div class="row m-0">
                             <div class="col-lg-6">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Nomor Penyewaan : {{$datas->id_pemesanan_alat}}</li>
-                                    <li class="list-group-item">Nama Penyewa : {{$datas->Mitra->nama_mitra}}</li>
+                                    <li class="list-group-item">Nomor Pemesanan : {{$datas->id_pemesanan_alat}}</li>
+                                    <li class="list-group-item">Nama Pemesan : {{$datas->Mitra->nama_mitra}}</li>
                                     <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
                                     <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
 
@@ -80,8 +80,8 @@
                                 </div>
                                 <hr>
                                 <div class="align-items-center">
-                                    <div class=" font-weight-bold  text-warning text-truncate message-title">Batas
-                                        Pembayaran : {{$waktu}}</div>
+                                    <div class=" font-weight-bold  text-warning text-truncate message-title">
+                                        Batas Pembayaran Sampai : <br>{{$besok}} WIB</div>
 
                                 </div>
                                 <hr>

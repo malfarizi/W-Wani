@@ -47,7 +47,6 @@ class PemesananAlatController extends Controller
         ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
         ->where('mitra.id_mitra', session('id_mitra'))
-        
         ->get();
         
             return view('penyewaan.penyewaan', compact('datas'));

@@ -29,10 +29,55 @@ class PembayaranAlatController extends Controller
 
         $datas = PemesananAlat::find($id);
           
-    	return view('penyewaan.pembayaranAlat', compact('datas','waktu', 'vendor'));
+          Carbon::setLocale('id');
+        $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor'));
+    }
+
+    public function cari(Request $request)
+    {
+        Carbon::setLocale('id');
+
+        $query = $request->get('q');
+        $datas = PemesananAlat::find($query);
+
+        if (empty($datas)) {
+            return redirect('pemesananmitra')->with('alert-danger','Kode Penyewaan tidak ditemukan !');
+        }else{
+
+            $waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
+                [
+                    'status_pembayaran' => 'Ditolak'
+                ] 
+            );
+            $vendor = DB::table('pemesanan_alat')
+            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+            ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
+            ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
+            ->where('mitra.level', '=', 'Vendor')
+            ->first();
+              
+             
+            $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
+            return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor'));
+        }
     }
 
     public function aksibayaralat(Request $request){
+
+        $request->validate([
+            'foto_bukti'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048', 
+            'id_pemesanan_alat'           => 'required|unique:pembayaran_alat',
+            
+        ],
+        [
+            
+            
+            'id_pemesanan_alat.unique'           => 'Sudah melakukan transaksi',
+            'foto_bukti.required'             => 'Foto bukti harus diisi',
+            'mimes'                           => 'Upload berupa gambar'
+        
+        ]);
 
         $date = Carbon::now();
 
@@ -48,7 +93,7 @@ class PembayaranAlatController extends Controller
     
         $data->save();
         // dd($data);
-        return redirect('pemesananmitra');
+        return redirect('pemesananmitra')->with('success', 'Data berhasil ditambah');
     }
 
 }
