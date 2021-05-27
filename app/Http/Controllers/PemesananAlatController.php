@@ -20,6 +20,14 @@ class PemesananAlatController extends Controller
     }
     public function index($id_alat)
     {
+        $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
+    	
+        $tgl = array(
+    		0=>"2020-06-25",
+    		1=>"2020-06-18",
+    		2=>"2020-06-30",
+    	); 
+
     	$datas = Alat::find($id_alat);
         $mitra = DB::table('mitra')
         ->join('alamat', 'alamat.id_alamat', '=', 'mitra.id_alamat')
@@ -27,7 +35,7 @@ class PemesananAlatController extends Controller
         ->where('mitra.id_mitra', session('id_mitra'))
         ->first();
     	
-    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra'));
+    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgldisable','tgl'));
     }
 
     public function listpenyewaanPetani()
@@ -86,7 +94,19 @@ class PemesananAlatController extends Controller
 
     public function aksipesanalat(Request $request) {
         
-       
+        $request->validate([
+            'luas_tanah'      => 'required', 
+            'tanggal'           => 'required',
+            
+        ],
+        [
+            
+            
+            'luas_tanah.required'         => 'Luas tanah harus diisi',
+            'tanggal.required'             => 'Tanggal harus diisi',
+        
+        ]);
+
         $data = new PemesananAlat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
         $data->tanggal = $request->tanggal;
@@ -111,7 +131,7 @@ class PemesananAlatController extends Controller
             'status.required'            => 'Status harus dipilih',
             
         ]);
-
+ 
         $data = $request->only('status');
         PembayaranAlat::whereIdPembayaranAlat($id)->update($data);
         return redirect()->back()->with('success', 'Data Berhasil Diubah');

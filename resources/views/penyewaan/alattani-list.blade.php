@@ -26,39 +26,40 @@
 
         </div>
 </section>
-< <!--=======Pricing Section=======-->
-    <section id="pricing" class="pricing">
-        <div class="container">
+<!--=======Pricing Section=======-->
 
-            <div class="row">
-                @foreach($datas as $data)
-                <div class="col-lg-6">
-                    <div class="box">
-                        <div class="pic"><img src="{{ url('images/foto_alat/'.$data->foto) }}" class="img-fluid" alt="">
-                        </div>
-                        <br>
-                        <h1>{{$data->nama_alat}}</h1>
-                        <h4>@currency($data->harga)</h4>
-                        <p>{{$data->desc}}</p>
-                        @if(session('status') == 'Diterima')
-                        @if(session('level') == 'Petani')
-                        <div class="btn-wrap">
-                            <a href="{{url('FormulirSewaAlat', $data->id_alat)}}" class="btn-buy">Pesan</a>
-                        </div>
-                        @endif
-                        @else
-                        <p></p>
-                        @endif
+<section id="pricing" class="pricing">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+            @foreach($datas as $data)
+                <div class="box">
+                    <div class="pic"><img src="{{ url('images/foto_alat/'.$data->foto) }}"
+                            style="width: 200px; height: 150px;" class="img-fluid" alt="">
                     </div>
+                    <br>
+                    <h1>{{$data->nama_alat}}</h1>
+                    <h4>@currency($data->harga)</h4>
+                    <p>{{$data->desc}}</p>
+                    @if(session('status') == 'Diterima')
+                    @if(session('level') == 'Petani')
+                    <div class="btn-wrap">
+                        <a href="{{url('FormulirSewaAlat', $data->id_alat)}}" class="btn-buy">Pesan</a>
+                    </div>
+                    @endif
+                    @else
+                    <p></p>
+                    @endif
                 </div>
             </div>
             @endforeach
-
         </div>
+    </div>
+    </div>
+    
+</section>
 
-        </div>
 
-    </section>
-
-
-    @endsection
+@endsection
