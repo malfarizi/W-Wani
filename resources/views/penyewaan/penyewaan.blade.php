@@ -7,17 +7,17 @@
 <div class="container-fluid" id="container-wrapper">
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
-      
-          <div class="d-flex justify-content-end align-items-center">
-          
-            <ol>
-              <li><a href="/">Home</a></li>
-              <li>Pemesanan Alat Tani</li>
-            </ol>
-          </div>
-      
+
+            <div class="d-flex justify-content-end align-items-center">
+
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Pemesanan Alat Tani</li>
+                </ol>
+            </div>
+
         </div>
-      </section>
+    </section>
 
     <div class="row">
         <!-- Datatables -->
@@ -27,22 +27,24 @@
                     <h6 class="m-0 font-weight-bold text-primary"> Pemesanan Alat Tani</h6>
                 </div>
                 <div class="col-md-6">
-                                    <form action="{{url('cari')}}" method="GET">
-                                        <div class="input-group">
-                                            <input type="text" name="q" class="form-control" placeholder="Nomor Pemesanan">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-warning" type="submit"><i class="lnr lnr-magnifier"></i>Cari</button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
+                    <form action="{{url('cari')}}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control col-md-5" placeholder="Nomor Pemesanan">
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning" type="submit"><i
+                                        class="lnr lnr-magnifier"></i>Cari</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="card-header">
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h6><i class="fas fa-check"></i><b> Berhasil!</b></h6>
+                        <h6><i class="fas fa-check"></i><b></b></h6>
                         {{ session('success') }}
                     </div>
                     @endif
@@ -74,8 +76,8 @@
                                 <th>Total Harga</th>
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
-                                
-                                
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +89,7 @@
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>
-                              
+
                                 <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
                                         data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran_alat}}">
                                         <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
@@ -127,7 +129,8 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
+                            <li class="list-group-item">Foto : <img
+                                    src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
                                     style="width: 200px; height: 150px;"> </li>
                             <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
                             <li class="list-group-item">Tanggal Bukti : {{$data->tanggal_bukti}} </li>

@@ -42,7 +42,7 @@ class PembayaranAlatController extends Controller
         $datas = PemesananAlat::find($query);
 
         if (empty($datas)) {
-            return redirect('pemesananmitra')->with('alert-danger','Kode Penyewaan tidak ditemukan !');
+            return redirect('pemesananmitra')->with('success','Nomor Pemesanan tidak ditemukan');
         }else{
 
             $waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
