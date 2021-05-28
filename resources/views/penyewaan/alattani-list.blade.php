@@ -2,24 +2,25 @@
 @section('title', 'Warung Tani')
 
 @section('content')
-<section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-
-        <!-- <div class="d-flex justify-content-end align-items-center">
-     
-      <ol>
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li>Daftar</li>
-      </ol>
-    </div> -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+          
+              <div class="d-flex justify-content-end align-items-center">
+              
+                <ol>
+                  <li><a href="/">Home</a></li>
+                  <li>List Alat Tani</li>
+                </ol>
+              </div>
+          
+            </div>
+          </section>
 
     </div>
 </section><!-- End Breadcrumbs -->
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
     <div class="container mt-5">
-
-        <h1>Alat Tani</h1>
         <!-- <h5>Bergabung bersama Warung Tani untuk menjadi penyuplai produk pada platform kami.
         Silakan Pilih sesuai kriteria Anda.</h5> -->
         <div>
