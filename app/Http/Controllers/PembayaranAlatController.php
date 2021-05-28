@@ -13,7 +13,7 @@ use Carbon\Carbon;
 
 class PembayaranAlatController extends Controller
 {
-    public function pembayaranalat($id)
+    public function pembayaranalat($id_pemesanan_alat)
     {
     	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
             [
@@ -27,7 +27,7 @@ class PembayaranAlatController extends Controller
         ->where('mitra.level', '=', 'Vendor')
         ->first();
 
-        $datas = PemesananAlat::find($id);
+        $datas = PemesananAlat::find($id_pemesanan_alat);
           
           Carbon::setLocale('id');
         $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');

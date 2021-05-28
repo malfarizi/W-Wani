@@ -20,6 +20,7 @@ class PemesananAlatController extends Controller
     }
     public function index($id_alat)
     {
+        
         $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
     	
         $tgl = array(
@@ -109,7 +110,6 @@ class PemesananAlatController extends Controller
         
         ]);
 
-            
         $data = new PemesananAlat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
         $data->tanggal = $request->tanggal;
@@ -122,7 +122,7 @@ class PemesananAlatController extends Controller
         $data->total_harga = $jumlah;
         $data->save();
         
-        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
+        return redirect('pembayaranAlat/'.$request->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
 
    

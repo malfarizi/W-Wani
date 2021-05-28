@@ -19,6 +19,6 @@ class PembayaranAlat extends Model
     ];
 
     public function pemesanana_alat(){
-    	return $this->belongsTo('App\PemesananAlat', 'id_pemesanan_alat');
+    	return $this->hasOne('App\PemesananAlat', 'id_pemesanan_alat');
     }
 }

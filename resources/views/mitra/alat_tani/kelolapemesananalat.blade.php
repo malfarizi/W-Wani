@@ -161,7 +161,7 @@
                                 <label for="id_mitra">Mitra Pemesan : {{$data->nama_mitra}}</label>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal}}</label>
+                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal_bukti}}</label>
                             </div>
 
                             <div class="form-group">
