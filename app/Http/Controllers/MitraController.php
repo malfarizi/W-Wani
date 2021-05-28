@@ -24,10 +24,10 @@ class MitraController extends Controller
 	public function registerPost(Request $request )
     {
         //calon mitra, mitra
-       /*  $request->validate([
+         $request->validate([
             'no_rek'    => 'required|numeric',
-            'nama'      => 'required|regex:/^[a-zA-Z\s]*$/',
-            'alamat_lengkap'    => 'required',
+            'nama_mitra'      => 'required|regex:/^[a-zA-Z\s]*$/',
+            'alamat'    => 'required',
             'email'     => 'required|email',
             'no_telp'   => 'required|numeric',
             'foto'      => 'file|required|image:jpeg,jpg,png|max:2048',
@@ -36,20 +36,21 @@ class MitraController extends Controller
             'password' =>  'required',
         ],
         [
-            'id_kota'               =>"Kota Tidak Boleh Kosong",
+            'id_kota.required'               =>"Kota Tidak Boleh Kosong",
+            'no_rek.required'               =>"Nomor Rekening Tidak Boleh Kosong",
             'numeric'               => "Format Harus Berupa Angka",
-            'nama.required'         => 'Nama Tidak Boleh Kosong',
-            'alamat_lengkap.required'       => 'Alamat Tidak Boleh Kosong',
+            'nama_mitra.required'         => 'Nama Tidak Boleh Kosong',
+            'alamat.required'       => 'Alamat Tidak Boleh Kosong',
             'email.required'        => 'Email Tidak Boleh Kosong',
             'no_telp.required'    => 'No Ponsel Tidak Boleh Kosong',
             'foto.required'         => 'foto Tidak Boleh Kosong',
             'nama.regex'            => 'Format Nama Salah',
             'foto.uploaded'         => 'Ukuran File Melebihi Batas 2 MB',
             'foto.image'            => 'File Harus Berupa jpeg, jpg, png',
-            'nama_bank'             => "Bank Tidak Boleh Kosong",
-            'password'             => "Password Tidak Boleh Kosong",
+            'nama_bank.required'             => "Bank Tidak Boleh Kosong",
+            'password.required'             => "Password Tidak Boleh Kosong",
             ]);
-             */
+        
             
             $alamat = [
                 'id_kota' => $request->id_kota,
@@ -83,7 +84,7 @@ class MitraController extends Controller
         
         Mitra::create($registermitra);
 
-        return redirect()->back()->with('success', 'Data Berhasil Disimpan');
+        return redirect()->back()->with('success', 'Akun Berhasil Dibuat');
     	
     }
     
@@ -97,10 +98,10 @@ class MitraController extends Controller
     public function PostregisterVendor(Request $request )
     {
         //calon mitra, mitra
-       /*  $request->validate([
+        $request->validate([
             'no_rek'    => 'required|numeric',
-            'nama'      => 'required|regex:/^[a-zA-Z\s]*$/',
-            'alamat_lengkap'    => 'required',
+            'nama_mitra'      => 'required|regex:/^[a-zA-Z\s]*$/',
+            'alamat'    => 'required',
             'email'     => 'required|email',
             'no_telp'   => 'required|numeric',
             'foto'      => 'file|required|image:jpeg,jpg,png|max:2048',
@@ -109,20 +110,21 @@ class MitraController extends Controller
             'password' =>  'required',
         ],
         [
-            'id_kota'               =>"Kota Tidak Boleh Kosong",
+            'id_kota.required'               =>"Kota Tidak Boleh Kosong",
+            'no_rek.required'               =>"Nomor Rekening Tidak Boleh Kosong",
             'numeric'               => "Format Harus Berupa Angka",
-            'nama.required'         => 'Nama Tidak Boleh Kosong',
-            'alamat_lengkap.required'       => 'Alamat Tidak Boleh Kosong',
+            'nama_mitra.required'         => 'Nama Tidak Boleh Kosong',
+            'alamat.required'       => 'Alamat Tidak Boleh Kosong',
             'email.required'        => 'Email Tidak Boleh Kosong',
             'no_telp.required'    => 'No Ponsel Tidak Boleh Kosong',
             'foto.required'         => 'foto Tidak Boleh Kosong',
             'nama.regex'            => 'Format Nama Salah',
             'foto.uploaded'         => 'Ukuran File Melebihi Batas 2 MB',
             'foto.image'            => 'File Harus Berupa jpeg, jpg, png',
-            'nama_bank'             => "Bank Tidak Boleh Kosong",
-            'password'             => "Password Tidak Boleh Kosong",
+            'nama_bank.required'             => "Bank Tidak Boleh Kosong",
+            'password.required'             => "Password Tidak Boleh Kosong",
         ]);
- */
+ 
 
         $alamat = [
             'id_kota' => $request->id_kota,
@@ -155,7 +157,7 @@ class MitraController extends Controller
 
         Mitra::create($registervendor);
 
-    	return redirect()->back()->with('success', 'Data Berhasil Disimpan');
+    	return redirect()->back()->with('success', 'Akun Berhasil Dibuat');
     }
 
     public function calonmitra()
@@ -217,7 +219,7 @@ class MitraController extends Controller
             session()->put('nama_mitra', $mitra->nama_mitra);
             session()->put('level', $mitra->level);
             session()->put('status', $mitra->status);
-            return redirect()->intended('dashboardmitra');
+            return redirect('dashboardmitra')->with('success', 'Selamat Datang');
         }else{
             return redirect()->back()->withErrors(
                 ['Email atau password anda salah']

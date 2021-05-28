@@ -81,8 +81,8 @@
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_mitra}}">
                                         <i class="fas fa-user-edit"></i>
-                                    </button>
-                                    <form action="" method="POST" class="d-inline">
+                                    </button> 
+                                    <form action="{{url('deleteMitra', $data->id_mitra)}}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i
@@ -113,7 +113,7 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img src="{{ url('images/mitra/'.$data->foto) }}"
+                            <li class="list-group-item">Foto : <img src="{{ url('images/foto_mitra/'.$data->foto) }}"
                                     style="width: 200px; height: 150px;"> </li>
                             <li class="list-group-item">No Rekening : {{$data->no_rek}}</li>
                             <li class="list-group-item">Nama Rekening : {{$data->nama_rekening}} </li>

@@ -105,7 +105,7 @@
             <div class="form-group row">
                 <label for="text" class="col-sm-2  col-form-label">Tanggal</label>
                 <div class="form-group col-md-5">
-                    <input type="text" class="form-control" id="tanggalan" name="tanggal">
+                    <input type="text" class="form-control" id="tanggalan" readonly name="tanggal">
                 </div>
             </div>
 

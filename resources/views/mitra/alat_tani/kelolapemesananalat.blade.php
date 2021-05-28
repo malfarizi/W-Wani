@@ -57,7 +57,7 @@
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
                                 <th>Tanggal Pemesanan</th>
-                                <th>Luas Tanah</th>
+                                <th>Luas Tanah(bahu)</th>
                                 <th>Total Harga</th>
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
