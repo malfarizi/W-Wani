@@ -64,7 +64,7 @@
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold text-truncate message-title">Luas Tanah</div>
                                     <div class="medium text-black message-time font-weight-normal">
-                                        {{$datas->luas_tanah}}</div>
+                                        {{$datas->luas_tanah}} bahu</div>
                                 </div>
                                 <hr>
                                 <div class="align-items-center">

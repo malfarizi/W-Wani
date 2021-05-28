@@ -76,7 +76,7 @@
                     <label for="static" class="col-sm-2 col-form-label">Harga :</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control-plaintext" name="harga" id="static"
-                            value="{{$datas->harga}}">
+                            value="@currency($datas->harga)">
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="luas_tanah" class="col-sm-2  col-form-label">Luas Tanah</label>
+                    <label for="luas_tanah" class="col-sm-2  col-form-label">Luas Tanah /bahu</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="text" name="luas_tanah">
                     </div>

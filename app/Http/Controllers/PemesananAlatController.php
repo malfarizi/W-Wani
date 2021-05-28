@@ -109,15 +109,17 @@ class PemesananAlatController extends Controller
         
         ]);
 
+            
         $data = new PemesananAlat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
         $data->tanggal = $request->tanggal;
         $data->alamat_lengkap = $request->alamat_lengkap;
-        $data->total_harga = 10000;
         $data->luas_tanah = $request->luas_tanah;
         $data->id_mitra = $request->id_mitra;
         $data->id_alat = $request->id_alat;
-    
+
+        $jumlah = $data->Alat->harga * $data->luas_tanah;
+        $data->total_harga = $jumlah;
         $data->save();
         
         return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
