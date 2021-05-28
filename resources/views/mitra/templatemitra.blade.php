@@ -72,12 +72,13 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pesanan Alat Tani</h6>
+                        <a class="collapse-item" href="{{url('alattani-list')}}">Alat Tani</a>
                         <a class="collapse-item" href="{{url('pemesananalat-petani')}}">Pesanan Alat Tani</a>
                     </div>
                 </div>
             </li>
             @endif
-            @if(session('level') == 'Vendor'))
+            @if(session('level') == 'Vendor')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap-alattani"
                     aria-expanded="true" aria-controls="collapseBootstrap">
@@ -89,9 +90,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Kelola Alat Tani</h6>
                         <a class="collapse-item" href="{{url('alattani')}}">Data Alat Tani</a>
-                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Kelola Pemesanan Alat Tani</a>
-                        <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pemesanan Alat Tani
-                            <br>Diterima</a>
+                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima </a>
+                        <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pesanan Diterima</a>
                     </div>
                 </div>
             </li>

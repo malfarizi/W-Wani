@@ -20,6 +20,15 @@ class PemesananAlatController extends Controller
     }
     public function index($id_alat)
     {
+        
+        $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
+    	
+        $tgl = array(
+    		0=>"2020-06-25",
+    		1=>"2020-06-18",
+    		2=>"2020-06-30",
+    	); 
+
     	$datas = Alat::find($id_alat);
         $mitra = DB::table('mitra')
         ->join('alamat', 'alamat.id_alamat', '=', 'mitra.id_alamat')
@@ -27,13 +36,14 @@ class PemesananAlatController extends Controller
         ->where('mitra.id_mitra', session('id_mitra'))
         ->first();
     	
-    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra'));
+    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgldisable','tgl'));
     }
 
     public function listpenyewaanPetani()
     {
         //pembayaran selesai, Menunggu Pembayaran, Ditolak
         $datas = DB::table('pembayaran_alat')
+<<<<<<< HEAD
     		->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
             // ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
             ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
@@ -42,31 +52,42 @@ class PemesananAlatController extends Controller
             ->where('pembayaran_alat.status', 'Menunggu Pembayaran')
     		->get();
             dd($datas);
+=======
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('mitra.id_mitra', session('id_mitra'))
+        ->get();
+        
+>>>>>>> 6687e72c2f0c41eab26d60ab47567955ab212c85
             return view('penyewaan.penyewaan', compact('datas'));
     }
     public function pemesananalat_petani()
     {
         $datas = DB::table('pembayaran_alat')
-            ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-            ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
-            ->where('mitra.id_mitra', session('id_mitra'))
-            ->get();
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('mitra.id_mitra', session('id_mitra'))
+        
+        ->get();
 
         return view('penyewaan.pemesananalat_petani',compact('datas'));
     }
 
      public function pemesananalat_diterima()
-    {
+    { 
         $datas = DB::table('pembayaran_alat')
-            ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-            ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
-            ->where('alat.id_mitra', session('id_mitra'))
-            ->where('pembayaran_alat.status', 'Diterima')
-            ->get();
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('alat.id_mitra', session('id_mitra'))
+        ->where('pembayaran_alat.status_pembayaran', 'Diterima')
+        
+        ->get();
 
         return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));
     }
@@ -74,32 +95,45 @@ class PemesananAlatController extends Controller
     public function kelolapemesananalat()
     {
     	$datas = DB::table('pembayaran_alat')
-    		->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-            ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-    		->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
-    		->where('alat.id_mitra', session('id_mitra'))
-            ->where('pembayaran_alat.status', 'Belum Diterima')
-    		->get();
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra') 
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('alat.id_mitra', session('id_mitra'))
+        ->where('pembayaran_alat.status_pembayaran', 'Menunggu Pembayaran Diterima')
+        ->get();
         
     	return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));
     }
 
     public function aksipesanalat(Request $request) {
         
-       
+        $request->validate([
+            'luas_tanah'      => 'required', 
+            'tanggal'           => 'required',
+            
+        ],
+        [
+            
+            
+            'luas_tanah.required'         => 'Luas tanah harus diisi',
+            'tanggal.required'             => 'Tanggal harus diisi',
+        
+        ]);
+
         $data = new PemesananAlat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
         $data->tanggal = $request->tanggal;
         $data->alamat_lengkap = $request->alamat_lengkap;
-        $data->total_harga = 10000;
         $data->luas_tanah = $request->luas_tanah;
         $data->id_mitra = $request->id_mitra;
         $data->id_alat = $request->id_alat;
-    
+
+        $jumlah = $data->Alat->harga * $data->luas_tanah;
+        $data->total_harga = $jumlah;
         $data->save();
         
-        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
+        return redirect('pembayaranAlat/'.$request->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
     public function aksibayar($id)
     {
@@ -111,15 +145,18 @@ class PemesananAlatController extends Controller
    public function update(Request $request, $id)
     {
         $request->validate([
-            'status'         => 'required|string',
+            'status_pembayaran'         => 'required|string',
         ],
         [
-            'status.required'            => 'Status harus dipilih',
+            'status_pembayaran.required'            => 'Status Pembayaran harus dipilih',
             
         ]);
-
-        $data = $request->only('status');
-        PembayaranAlat::whereIdPembayaranAlat($id)->update($data);
+ 
+        $data = PembayaranAlat::findOrFail($id);
+       
+        $data->status_pembayaran = $request->input('status_pembayaran');
+       
+        $data->save();
         return redirect()->back()->with('success', 'Data Berhasil Diubah');
     }
 

@@ -1,7 +1,7 @@
 @extends('mitra.templatemitra')
 
 @section('title', 'Kelola Pemesanan Alat Tani')
-    
+
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
@@ -45,13 +45,13 @@
                 </div>
                 @endif
 
-                
+
 
 
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
-                        
+
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Alat</th>
@@ -65,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($datas as $data)
+                            @foreach($datas as $data)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->nama_alat}}</td>
@@ -74,20 +74,21 @@
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>{{$data->total_harga}}</td>
                                 <td>{{$data->alamat_lengkap}}</td>
-                               <td><button type="button" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran_alat}}">
-                              <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
-                              </span>
-                              <span class="text">Detail</span>  
-                              </button>
-                      </td>
+                                <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
+                                        data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran_alat}}">
+                                        <span class="icon text-white-50"><i class="fas fa-info-circle"></i>
+                                        </span>
+                                        <span class="text">Detail</span>
+                                    </button>
+                                </td>
                                 <td>
 
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_pembayaran_alat}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
-                                    <form action="{{url('deletePemesananAlat', $data->id_pembayaran_alat)}}" method="POST"
-                                        class="d-inline">
+                                    <form action="{{url('deletePemesananAlat', $data->id_pembayaran_alat)}}"
+                                        method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i
@@ -95,7 +96,7 @@
                                     </form>
                                 </td>
                             </tr>
-                           @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -105,35 +106,37 @@
 
 
 
-    @foreach($datas as $data)
+        @foreach($datas as $data)
 
-      <div class="modal fade" id="modal-detail-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Foto : <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;"> </li>
-              <li class="list-group-item">Nama Alat  : {{$data->nama_alat}}</li>
-              <li class="list-group-item">Tanggal Bukti : {{$data->tanggal}} </li>
-              <li class="list-group-item">Status : {{$data->status}} </li>
-              
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
-          </div>
+        <div class="modal fade" id="modal-detail-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Foto : <img
+                                    src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
+                                    style="width: 200px; height: 150px;"> </li>
+                            <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
+                            <li class="list-group-item">Tanggal Bukti : {{$data->tanggal_bukti}} </li>
+                            <li class="list-group-item">Status : {{$data->status_pembayaran}} </li>
+
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
-      @endforeach
-        
+        @endforeach
+
 
         @foreach($datas as $data)
         {{-- Modal edit --}}
@@ -158,28 +161,28 @@
                                 <label for="id_mitra">Mitra Pemesan : {{$data->nama_mitra}}</label>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal}}</label>    
+                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal_bukti}}</label>
                             </div>
 
                             <div class="form-group">
-                                <label for="tanggal">Total Harga : {{$data->total_harga}}</label>    
+                                <label for="tanggal">Total Harga : {{$data->total_harga}}</label>
                             </div>
 
                             <div class="form-group">
                                 <label for="tanggal">Bukti Foto : </label>
-                                 <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;">    
+                                <img src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
+                                    style="width: 200px; height: 150px;">
                             </div>
                             <div class="form-group">
-                              <label for="status">Status</label>
-                              <select class="select2-single-placeholder form-control" 
-                                name="status" id="status" style="width: 100%">
-                                <option value="">Pilih Status</option>
-                                  <option value="Diterima">Diterima</option>
-                                  <option value="Ditolak">Ditolak</option>
-                                  <option value="Belum Diterima">Belum Diterima</option>
-                              </select>
+                                <label for="status">Status</label>
+                                <select class="form-control" name="status_pembayaran" id="status_pembayaran"
+                                    style="width: 100%">
+                                    <option value="">Pilih Status</option>
+                                    <option value="Diterima">Diterima</option>
+                                    <option value="Ditolak">Ditolak</option>
+                                </select>
                             </div>
-                            
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Tutup</button>
@@ -188,10 +191,8 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    </form>
-    {{-- Akhir Modal Edit --}}
-   </div>
-@endsection
-    
-
+        @endforeach
+        </form>
+        {{-- Akhir Modal Edit --}}
+    </div>
+    @endsection

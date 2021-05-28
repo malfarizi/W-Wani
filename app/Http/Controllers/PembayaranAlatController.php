@@ -9,46 +9,91 @@ use DB;
 use App\PemesananAlat;
 use App\PembayaranAlat;
 use Session;
+use Carbon\Carbon;
+
 class PembayaranAlatController extends Controller
 {
-    public function pembayaranalat($id)
+    public function pembayaranalat($id_pemesanan_alat)
     {
     	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
             [
-                'status' => 'Ditolak'
-            ]
+                'status_pembayaran' => 'Ditolak'
+            ] 
         );
         $vendor = DB::table('pemesanan_alat')
-       
         ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
         ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
         ->where('mitra.level', '=', 'Vendor')
         ->first();
-        $datas = PemesananAlat::find($id);
-        //  $vendor = PemesananAlat::where('')
+
+        $datas = PemesananAlat::find($id_pemesanan_alat);
           
-    	return view('penyewaan.pembayaranAlat', compact('datas','waktu', 'vendor'));
+          Carbon::setLocale('id');
+        $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor'));
     }
 
-    // public function pembayaranalat($id)
-    // {
-    // 	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
-    //         [
-    //             'status' => 'Ditolak'
-    //         ]
-    //     );
-    //     $datas = DB::table('pemesanan_alat')
-       
-    //     ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-    //     ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
-    //     ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
-    //     ->where('mitra.level', '=', 'Vendor')
-    //     ->get();
+    public function cari(Request $request)
+    {
+        Carbon::setLocale('id');
 
-    //     //  $datas = PemesananAlat::find($id);
-    //     //  $vendor = PemesananAlat::where('')
-    //     //  dd($datas);
-    // 	return view('penyewaan.pembayaranAlat', compact('datas','waktu'));
-    // }
+        $query = $request->get('q');
+        $datas = PemesananAlat::find($query);
+
+        if (empty($datas)) {
+            return redirect('pemesananmitra')->with('success','Nomor Pemesanan tidak ditemukan');
+        }else{
+
+            $waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
+                [
+                    'status_pembayaran' => 'Ditolak'
+                ] 
+            );
+            $vendor = DB::table('pemesanan_alat')
+            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+            ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
+            ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
+            ->where('mitra.level', '=', 'Vendor')
+            ->first();
+              
+             
+            $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
+            return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor'));
+        }
+    }
+
+    public function aksibayaralat(Request $request){
+
+        $request->validate([
+            'foto_bukti'      => 'required|file|image|mimes:jpeg,png,jpg|max:2048', 
+            'id_pemesanan_alat'           => 'required|unique:pembayaran_alat',
+            
+        ],
+        [
+            
+            
+            'id_pemesanan_alat.unique'           => 'Sudah melakukan transaksi',
+            'foto_bukti.required'             => 'Foto bukti harus diisi',
+            'mimes'                           => 'Upload berupa gambar'
+        
+        ]);
+
+        $date = Carbon::now();
+
+        $data = new pembayaranalat();
+        $data->id_pemesanan_alat = $request->id_pemesanan_alat;
+        $data->tanggal_bukti = $date;
+        $data->status_pembayaran = $request->status_pembayaran;
+
+        $image      = $request->file('foto_bukti');
+        $imageName  = time() . "_" . $image->getClientOriginalName();
+        $image->move(public_path('images/foto_bukti/'), $imageName);
+        $data->foto_bukti = $imageName;
+    
+        $data->save();
+        // dd($data);
+        return redirect('pemesananmitra')->with('success', 'Data berhasil ditambah');
+    }
+
 }

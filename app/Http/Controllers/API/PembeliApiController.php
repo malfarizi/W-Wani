@@ -19,7 +19,7 @@ class PembeliApiController extends Controller
         ];
 
         if($auth->attempt($credentials)) {
-            $pembeli = Pembeli::with('alamat')->where('email', $email)->first();
+            $pembeli = Pembeli::with('alamat.kota.provinsi')->where('email', $email)->first();
             return response()->json([
                 'error'   => 0,
                 'message' => 'Login berhasil',
@@ -42,7 +42,7 @@ class PembeliApiController extends Controller
             'password'      => $request->password, 
             'jk'            => $request->jk,
             'no_telp'       => $request->no_telp,
-            'foto'          => $request->foto,
+            'foto'          => '',
             'id_alamat'     => $request->id_alamat
         ];
         

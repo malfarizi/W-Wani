@@ -14,8 +14,7 @@ class Pembayaran extends Model
         'no_resi',
         'status',
         'foto',
-        'id_pemesanan', 
-        
+        'id_pemesanan',   
     ];
 
     public function pemesanan(){

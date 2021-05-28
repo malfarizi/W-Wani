@@ -25,7 +25,9 @@
   <link href="{{url('frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{url('frontend/vendor/venobox/venobox.css')}}" rel="stylesheet">
   <link href="{{url('frontend/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <!-- Template Main CSS File -->
   <link href="{{url('frontend/css/style.css')}}" rel="stylesheet">
   
@@ -58,7 +60,7 @@
           @if(session('level') == 'Petani')
           
               @if(session('status') == 'Diterima')
-              <li><a href="{{url('pemesananmitra')}}">Penyewaan</a></li>
+              <li><a href="{{url('pemesananmitra')}}">Pemesanan</a></li>
               <li><a href="{{url('dashboardmitra')}}">Dashboard</a></li>
               @endif
           @else
@@ -153,6 +155,35 @@
   <!-- Template Main JS File -->
   <script src="frontend/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		
+		<?php if (isset($tgldisable)): ?>
+			var datesToBeDisabled = <?php echo json_encode($tgldisable);  ?>;
+			
+			$.ajaxSetup({
+				headers:{
+					'X-CSRF-TOKEN':$('meta[name="_token"]').attr('content')
+				}
+			})
+		<?php endif ?>
+		
+
+		$('#tanggalan').datepicker({
+			beforeShowDay: function (date) {
+              var dateStr = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                  return [datesToBeDisabled.indexOf(dateStr) == -1];
+          	},
+
+          	dateFormat: 'yy-mm-dd',
+	        minDate: '-Infinity +1d',
+	        showOn: 'button',
+	        buttonImage: '{{url('img/calendar.png')}}',
+	        buttonImageOnly: true      
+
+		});		
+	});
+</script>
  @yield('js')
 </body>
 

@@ -24,6 +24,7 @@ Route::get('dashboard','DashboardController@dashboard');
 
 
 Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
+Route::get('test', 'DummyController@test');
 
 //======================Admin===================
 Route::get('loginadmin','AdminController@loginadmin');
@@ -88,10 +89,8 @@ Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
 Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
 
-//====================== Kelola Pembayaran Produk =========================
-Route::get('pembayaranProduk', 'PembayaranController@index');
 
+Route::get('pembayaranProduk', 'PembayaranController@index');
+Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
 Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
-// Route::get('pembayaranAlat', function () {
-//     return view('penyewaan.pembayaranAlat');
-// });
+Route::get('cari','PembayaranAlatController@cari');

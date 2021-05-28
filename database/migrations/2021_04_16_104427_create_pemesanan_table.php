@@ -15,7 +15,8 @@ class CreatePemesananTable extends Migration
     {
         Schema::create('pemesanan', function (Blueprint $table) {
             $table->increments('id_pemesanan');
-            $table->integer('pembeli');
+            $table->unsignedInteger('id_pembeli');
+            $table->foreign('id_pembeli')->references('id_pembeli')->on('pembeli');
             $table->double('total_harga');
             $table->date('tanggal');
             $table->string('kurir');

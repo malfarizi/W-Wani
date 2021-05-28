@@ -15,7 +15,8 @@ class CreateKeranjangTable extends Migration
     {
         Schema::create('keranjang', function (Blueprint $table) {
             $table->increments('id_keranjang');
-            $table->integer('pembeli');
+            $table->unsignedInteger('id_pembeli');
+            $table->foreign('id_pembeli')->references('id_pembeli')->on('pembeli');
             $table->timestamps();
         });
     }
