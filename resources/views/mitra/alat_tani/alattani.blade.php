@@ -169,8 +169,8 @@
 
         @foreach($datas as $data)
         {{-- Modal edit --}}
-        <div class="modal fade" id="edit-data-{{$data->id_alat}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="edit-data-{{$data->id_alat}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -185,23 +185,24 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="nama_alat">Nama Alat</label>
-                                <input type="text" class="form-control" id="nama_alat" name="nama_alat" value=" {{$data->nama_alat}} ">
+                                <input type="text" class="form-control" id="nama_alat" name="nama_alat"
+                                    value=" {{$data->nama_alat}} ">
                             </div>
                             <div class="form-group">
                                 <label for="harga">Harga</label>
-                                <input type="text" class="form-control" id="harga" name="harga" value=" {{$data->harga}} ">
+                                <input type="text" class="form-control" id="harga" name="harga"
+                                    value=" {{$data->harga}} ">
                             </div>
                             <div class="form-group">
                                 <label for="desc">Deskripsi</label>
-                                <input type="text" class="form-control" id="desc" name="desc"
-                                    value=" {{$data->desc}} ">
+                                <input type="text" class="form-control" id="desc" name="desc" value=" {{$data->desc}} ">
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto</label>
                                 <input type="file" class="form-control" id="foto" name="foto" value=" {{$data->foto}} ">
                             </div>
                             <div class="form-group">
-                               <label>Status</label>
+                                <label>Status</label>
                                 <select class="form-control" name="status">
                                     <option> {{$data->status}}</option>
                                     <option value="Tersedia"> Tersedia </option>

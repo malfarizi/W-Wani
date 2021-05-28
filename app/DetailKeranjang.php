@@ -22,6 +22,6 @@ class DetailKeranjang extends Model
     }
 
     public function keranjang(){
-    	return $this->hasOne('App\Keranjang', 'id_keranjang');
+    	return $this->belongsTo('App\Keranjang', 'id_keranjang');
     }
 }

@@ -24,16 +24,13 @@ class Produk extends Model
     ];
 
     public function kategori(){
-        return $this->hasOne('App\Kategori', 'id_kategori');
+        return $this->belongsTo('App\Kategori', 'id_kategori');
      }
 
     public function mitra(){
-       return $this->hasOne('App\Mitra', 'id_mitra');
-	}
+       return $this->belongsTo('App\Mitra', 'id_mitra');
+    }
 
-    public function kategori(){
-        return $this->hasOne('App\Kategori', 'id_kategori');
-     }
 }
 
    

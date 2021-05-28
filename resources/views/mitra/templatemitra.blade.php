@@ -38,9 +38,9 @@
         Menu
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('profilmitra')}}">
+        <a class="nav-link" href="{{url('profilvendor')}}">
           <i class="fas fa-user"></i>
-          <span>Profil Mitra</span>
+          <span>Profil Vendor</span>
         </a>
       </li>
 
@@ -70,6 +70,7 @@
             <h6 class="collapse-header">Kelola Alat Tani</h6>
             <a class="collapse-item" href="{{url('alattani')}}">Data Alat Tani</a>
             <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Kelola Pemesanan Alat Tani</a>
+            <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pemesanan Alat Tani  <br>Diterima</a>
           </div>
         </div>
       </li>

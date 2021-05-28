@@ -55,7 +55,7 @@ class RajaOngkirController extends Controller
         }
     } 
 
-    public function getCost($destination, $weight, $courier){
+    public function getCost($origin, $destination, $weight, $courier){
         $client = new Client();
         $options = [
             'headers' => [
@@ -63,7 +63,7 @@ class RajaOngkirController extends Controller
                 'content-Type'  => 'application/x-www-form-urlencoded',
             ],
             'form_params' => [
-                'origin'        => '149',
+                'origin'        => $origin,
                 'destination'   => $destination,
                 'weight'        => $weight,
                 'courier'       => $courier

@@ -12,8 +12,8 @@ class DashboardController extends Controller
 {
     public function dashboard(){
 
-        $trm = Mitra::where('Level','Mitra')->count();
-        $blm = Mitra::where('Level','Calon Mitra')->count();
+        $trm = Mitra::where('status','Diterima')->count();
+        $blm = Mitra::where('status','Belum Diterima')->count();
     	return view('admin.dashboard', compact('trm','blm'));
    
     }

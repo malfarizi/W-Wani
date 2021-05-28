@@ -10,7 +10,7 @@ class KotaApiController extends Controller
 {
     public function getAll()
     {
-        return response()->json(Kota::all());
+        return response()->json(Kota::with('provinsi')->get());
     }
 
     public function getById($id)

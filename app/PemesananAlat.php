@@ -23,7 +23,7 @@ class PemesananAlat extends Model
     	return $this->hasOne('App\Alat', 'id_alat');
     }
 
-    public function alat(){
+    public function mitra(){
     	return $this->belongsTo('App\Mitra', 'id_mitra');
     }
 }
