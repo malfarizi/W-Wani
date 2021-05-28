@@ -35,12 +35,13 @@ class PemesananAlatController extends Controller
         //pembayaran selesai, Menunggu Pembayaran, Ditolak
         $datas = DB::table('pembayaran_alat')
     		->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
-            ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+            // ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
             ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
-    		->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.*', 'mitra.*')
-    		->where('alat.id_mitra', session('id_mitra'))
+    		->select('pemesanan_alat.*','pembayaran_alat.*',  'mitra.*')
+    		->where('pemesanan_alat.id_mitra', session('id_mitra'))
             ->where('pembayaran_alat.status', 'Menunggu Pembayaran')
     		->get();
+            dd($datas);
             return view('penyewaan.penyewaan', compact('datas'));
     }
     public function pemesananalat_petani()
@@ -98,6 +99,11 @@ class PemesananAlatController extends Controller
     
         $data->save();
         
+        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
+    }
+    public function aksibayar($id)
+    {
+        $datas = PemesananAlat::find($id);
         return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
 

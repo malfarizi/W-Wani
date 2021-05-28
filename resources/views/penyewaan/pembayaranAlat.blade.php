@@ -53,9 +53,9 @@
                             <div class="col-lg-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Nomor Penyewaan : {{$datas->id_pemesanan_alat}}</li>
-                                    <li class="list-group-item">Nama Penyewa : {{$datas->nama_mitra}}</li>
-                                    <li class="list-group-item">Nama Alat : {{$datas->nama_alat}}</li>
-                                    <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
+                                    <li class="list-group-item">Nama Penyewa : {{$datas->Mitra->nama_mitra}}</li>
+                                    <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
+                                    <li class="list-group-item">Tanggal Sewa : {{date('d-m-Y', strtotime($datas->tanggal))}}</li>
                                     
                                   </ul>
                             </div>
@@ -98,8 +98,8 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Nama Rekening {{$vendor->nama_rekening}}</li>
                             <li class="list-group-item">No Rekening {{$vendor->no_rek}}</li>
-                            <li class="list-group-item">Nama Bank {{$vendor->nama_bank}}</li>
-                            <li class="list-group-item">A.N {{$vendor->nama_rekening}}</li>
+                            <li class="list-group-item">{{$vendor->nama_bank}}</li>
+                          
                             
                           </ul>
                        
