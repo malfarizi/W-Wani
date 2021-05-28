@@ -37,11 +37,11 @@ Route::prefix('keranjang')->group(function() {
 
 Route::get('/pemesananBarang/add/{id}', 'API\PemesananBarangApiController@create');
 
-Route::prefix('pemesanan')->group(function(){
+Route::prefix('pemesanan')->group(function() {
     Route::post('/add', 'API\PemesananApiController@store');
     Route::put('/uploadBuktiTF', 'API\PemesananApiController@update');
     //Route::delete('delete', 'API\PemesananApiController@destroy');
-}
+});
 
 Route::prefix('pembeli')->group(function(){
     Route::post('/login', 'API\PembeliApiController@login');
