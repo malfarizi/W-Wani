@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','LandingPageController@index');
 Route::get('daftar','LandingPageController@daftar');
 
-
-
 Route::get('dashboard','DashboardController@dashboard');
 
 
@@ -43,12 +41,12 @@ Route::get('logoutmitra', 'MitraController@logout');
 Route::get('registerMitra','MitraController@registerMitra');
 Route::post('registerPost','MitraController@registerPost');
 Route::get('registerVendor','MitraController@registerVendor');
-Route::post('registerPostVendor','MitraController@Postregister');
+Route::post('registerPostVendor','MitraController@PostregisterVendor');
 //======================Verifikasi Mitra===================
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
 Route::get('calonmitra','MitraController@calonmitra');
-Route::put('editMitra/{id}','MitraController@update');
+Route::put('editMitra/{id}','MitraController@update'); 
 Route::delete('deleteMitra/{id}','MitraController@delete');
 
 //====================== Kategori ===================
@@ -79,9 +77,20 @@ Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
 Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
+Route::get('pemesananalat-petani','PemesananAlatController@pemesananalat_petani');
+Route::get('pemesananmitra', 'PemesananAlatController@listpenyewaanPetani');
 Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
 Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 
 
+
 Route::get('alattani-list','PemesananAlatController@alattani_list');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
+Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
+Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
+
+
+Route::get('pembayaranProduk', 'PembayaranController@index');
+Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
+Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
+Route::get('cari','PembayaranAlatController@cari');

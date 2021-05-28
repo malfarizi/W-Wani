@@ -21,7 +21,7 @@ class AlatController extends Controller
     public function create(Request $request){
 
         $request->validate([
-            'nama_alat'      => 'required|min:3|string|max:100', 
+            'nama_alat'      => 'required|min:3|string', 
             'desc'           => 'required|string|min:5',
             'harga'          => 'required|string',
             'status'         => 'required|string',
@@ -29,7 +29,7 @@ class AlatController extends Controller
             
         ],
         [
-            'nama_alat.unique'           => 'Nama Alat sudah ada yang pakai',
+            
             'nama_alat.min'              => 'Nama Alat minimal 3',
             'nama_alat.required'         => 'Nama Alat harus diisi',
             'harga.required'             => 'Harga harus diisi',
