@@ -52,21 +52,12 @@
                         <div class="row m-0">
                             <div class="col-lg-6">
                                 <ul class="list-group list-group-flush">
-<<<<<<< HEAD
-                                    <li class="list-group-item">Nomor Penyewaan : {{$datas->id_pemesanan_alat}}</li>
-                                    <li class="list-group-item">Nama Penyewa : {{$datas->Mitra->nama_mitra}}</li>
-                                    <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
-                                    <li class="list-group-item">Tanggal Sewa : {{date('d-m-Y', strtotime($datas->tanggal))}}</li>
-                                    
-                                  </ul>
-=======
                                     <li class="list-group-item">Nomor Pemesanan : {{$datas->id_pemesanan_alat}}</li>
                                     <li class="list-group-item">Nama Pemesan : {{$datas->Mitra->nama_mitra}}</li>
                                     <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
                                     <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
 
                                 </ul>
->>>>>>> 6687e72c2f0c41eab26d60ab47567955ab212c85
                             </div>
                             <div class="col-lg-6">
 
@@ -91,37 +82,15 @@
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold  text-warning text-truncate message-title">
                                         Batas Pembayaran Sampai : <br>{{$besok}} WIB</div>
-                                        <p hidden>{{$waktupemesanan}}<p>
+                                        <!--  -->
 
                                 </div>
                                 <hr>
                             </div>
 
                         </div>
-<<<<<<< HEAD
-                           
-                      
-                    </div>
-                  </div>
-                  <!-- Message From Customer-->
-                  <div class="col-xl-4 col-lg-5 ">
-                    <div class="card">
-                      <div class="card-header py-2 bg-primary d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-light">Data Rekening</h6>
-                      </div>
-                      <div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Nama Rekening {{$vendor->nama_rekening}}</li>
-                            <li class="list-group-item">No Rekening {{$vendor->no_rek}}</li>
-                            <li class="list-group-item">{{$vendor->nama_bank}}</li>
-                          
-                            
-                          </ul>
-                       
-=======
 
 
->>>>>>> 6687e72c2f0c41eab26d60ab47567955ab212c85
                     </div>
                 </div>
                 <!-- Message From Customer-->

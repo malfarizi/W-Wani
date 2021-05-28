@@ -71,7 +71,7 @@
                                 <td>{{$data->nama_mitra}}</td>
                                 <td>{{$data->tanggal}}</td>
                                 <td>{{$data->luas_tanah}}</td>
-                                <td>{{$data->total_harga}}</td>
+                                <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>
                                 <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
                                         data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran_alat}}">

@@ -32,7 +32,7 @@ class PembayaranAlatController extends Controller
           
           Carbon::setLocale('id');
         $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
-    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor', 'waktu','waktupemesanan'));
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor', 'waktu'));
     }
 
     public function cari(Request $request)

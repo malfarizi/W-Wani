@@ -70,6 +70,7 @@
                                 <th>Nama Alat</th>
                                 <th>Tanggal Pemesanan</th>
                                 <th>Luas Tanah</th>
+                                <th>Total harga</th>
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
 
