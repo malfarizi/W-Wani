@@ -19,7 +19,7 @@
         </div>
     </section>
 
-    <div class="row">
+    <div class="row mt-3">
         <!-- Datatables -->
         <div class="col-lg-12">
             <div class="card mb-4">
@@ -38,8 +38,8 @@
                     </form>
                 </div>
 
+                @if (session('success'))
                 <div class="card-header">
-                    @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -47,8 +47,8 @@
                         <h6><i class="fas fa-check"></i><b></b></h6>
                         {{ session('success') }}
                     </div>
-                    @endif
                 </div>
+                @endif
                 @if($errors->any())
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -62,9 +62,6 @@
                 </div>
                 @endif
 
-
-
-
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
@@ -73,7 +70,7 @@
                                 <th>Nama Alat</th>
                                 <th>Tanggal Pemesanan</th>
                                 <th>Luas Tanah</th>
-                                <th>Total Harga</th>
+                                <th>Total harga</th>
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
 
@@ -104,6 +101,7 @@
                                                 class="fas fa-trash"></i><span class="text">Batal</span></button>
                                     </form> -->
                                 </td>
+                                
                             </tr>
                             @endforeach
                         </tbody>

@@ -15,6 +15,7 @@ class PembayaranAlatController extends Controller
 {
     public function pembayaranalat($id_pemesanan_alat)
     {
+        $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
     	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
             [
                 'status_pembayaran' => 'Ditolak'
@@ -31,7 +32,7 @@ class PembayaranAlatController extends Controller
           
           Carbon::setLocale('id');
         $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
-    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor'));
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor', 'waktu'));
     }
 
     public function cari(Request $request)

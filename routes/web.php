@@ -46,7 +46,7 @@ Route::post('registerPostVendor','MitraController@PostregisterVendor');
 Route::get('dashboardmitra','DashboardController@dashboardmitra');
 Route::get('mitra','MitraController@mitra');
 Route::get('calonmitra','MitraController@calonmitra');
-Route::put('editMitra/{id}','MitraController@update'); 
+Route::put('editMitra/{id}','MitraController@update');  
 Route::delete('deleteMitra/{id}','MitraController@delete');
 
 //====================== Kategori ===================

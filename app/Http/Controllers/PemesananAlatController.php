@@ -124,6 +124,11 @@ class PemesananAlatController extends Controller
         
         return redirect('pembayaranAlat/'.$request->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
     }
+    public function aksibayar($id)
+    {
+        $datas = PemesananAlat::find($id);
+        return redirect('pembayaranAlat/'.$data->id_pemesanan_alat.'')->with('alert-success','Data berhasil disimpan, Silahkan Melakukan Pembayaran');
+    }
 
    
    public function update(Request $request, $id)

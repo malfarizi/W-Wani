@@ -43,7 +43,7 @@ class AdminController extends Controller
             session()->put('id', $admin->id);
             session()->put('email', $admin->email);
             session()->put('nama_admin', $admin->nama_admin);
-            return redirect()->intended('dashboard');
+            return redirect('dashboard')->with('success', 'Selamat Datang');
         }else{
             return redirect()->back()->withErrors(
                 ['Email atau password anda salah']

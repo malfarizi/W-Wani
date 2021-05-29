@@ -29,6 +29,18 @@
 		      	<h3 class="text-center mb-4">Login Admin</h3>
 						<form action="{{url('loginAdminPost')}}" method="Post" class="login-form">
 					@csrf
+					 @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
 		      		<div class="form-group">
 		      			<input type="text" class="form-control rounded-left" placeholder="Email" name="email" required autocomplete="off">
 		      		</div>

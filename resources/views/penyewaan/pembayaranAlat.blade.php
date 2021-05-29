@@ -82,6 +82,7 @@
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold  text-warning text-truncate message-title">
                                         Batas Pembayaran Sampai : <br>{{$besok}} WIB</div>
+                                        <!--  -->
 
                                 </div>
                                 <hr>

@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 
-</head>
+</head> 
 
 <body>
     <section class="ftco-section">
@@ -31,6 +31,28 @@
                         <h3 class="text-center mb-4">Login Mitra</h3>
                         <form action="{{url('loginMitraPost')}}" method="post" class="login-form">
                             @csrf
+                            @if (session('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h6><i class="fas fa-check"></i><b> Berhasil!</b></h6>
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                </div>
+                @if($errors->any())
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                             <div class="form-group">
                                 <input type="text" class="form-control rounded-left" placeholder="Email" name="email"
                                 autocomplete="off" required>

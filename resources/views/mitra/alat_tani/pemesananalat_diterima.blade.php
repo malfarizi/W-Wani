@@ -56,7 +56,7 @@
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
                                 <th>Tanggal Pemesanan</th>
-                                <th>Luas Tanah</th>
+                                <th>Luas Tanah(bahu)</th>
                                 <th>Total Harga</th>
                                 <th>Alamat</th>
                                 <th>Detail Pembayaran</th>
@@ -71,7 +71,7 @@
                                 <td>{{$data->nama_mitra}}</td>
                                 <td>{{$data->tanggal}}</td>
                                 <td>{{$data->luas_tanah}}</td>
-                                <td>{{$data->total_harga}}</td>
+                                <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>
                                 <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
                                         data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran_alat}}">
@@ -82,10 +82,10 @@
                                 </td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_pembayaran_alat}}">
                                         <i class="fas fa-user-edit"></i>
-                                    </button>
+                                    </button> -->
                                     <form action="{{url('deletePemesananAlat', $data->id_pembayaran_alat)}}"
                                         method="POST" class="d-inline">
                                         @csrf
