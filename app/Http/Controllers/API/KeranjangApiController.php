@@ -9,7 +9,7 @@ class KeranjangApiController extends Controller
 {
     public function store(Request $request)
     {
-        $create = App\Keranjang::create($request->only('id_pembeli'));
+        $create = \App\Keranjang::create($request->only('id_pembeli'));
         return response()->json($create);
     }
 
