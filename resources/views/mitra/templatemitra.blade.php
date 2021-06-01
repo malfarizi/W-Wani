@@ -90,7 +90,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Kelola Alat Tani</h6>
                         <a class="collapse-item" href="{{url('alattani')}}">Data Alat Tani</a>
-                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima </a>
+                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima
+                        </a>
                         <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pesanan Diterima</a>
                     </div>
                 </div>
@@ -102,13 +103,14 @@
           <span>Data Penjualan</span>
         </a>
       </li> -->
+      @if(session('level') == 'Petani')
             <li class="nav-item">
-        <a class="nav-link" href="{{url('pencairan')}}">
-            <i class="fas fa-wallet"></i>
-          <span>Pencairan Saldo</span>
-        </a>
-      </li> 
-
+                <a class="nav-link" href="{{url('pencairan')}}">
+                    <i class="fas fa-wallet"></i>
+                    <span>Pencairan Saldo</span>
+                </a>
+            </li>
+        @endif
 
             <hr class="sidebar-divider">
             <div class="version" id="version-ruangadmin"></div>

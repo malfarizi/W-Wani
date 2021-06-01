@@ -68,7 +68,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama Alat</th>
-                                <th>Tanggal Pemesanan</th>
+                                <th>Tanggal Sewa / Sampai</th>
                                 <th>Luas Tanah</th>
                                 <th>Total harga</th>
                                 <th>Alamat</th>
@@ -82,7 +82,7 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->nama_alat}}</td>
-                                <td>{{$data->tanggal}}</td>
+                                <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>

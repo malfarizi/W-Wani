@@ -55,7 +55,9 @@
                                     <li class="list-group-item">Nomor Pemesanan : {{$datas->id_pemesanan_alat}}</li>
                                     <li class="list-group-item">Nama Pemesan : {{$datas->Mitra->nama_mitra}}</li>
                                     <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
-                                    <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
+                                    <li class="list-group-item">Harga : @currency($datas->alat->harga)/bahu</li>
+                                    <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal_sewa}}</li>
+                                    <li class="list-group-item">Sampai Tanggal : {{$datas->tanggal_kembali}}</li>
 
                                 </ul>
                             </div>

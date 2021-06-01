@@ -103,9 +103,16 @@
             </div>
 
             <div class="form-group row">
-                <label for="text" class="col-sm-2  col-form-label">Tanggal</label>
+                <label for="text" class="col-sm-2  col-form-label">Tanggal Sewa</label>
                 <div class="form-group col-md-5">
-                    <input type="text" class="form-control" id="tanggalan" readonly name="tanggal">
+                    <input type="date" class="form-control" id="datepicker"  name="tanggal_sewa">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="text" class="col-sm-2  col-form-label">Sampai Tanggal</label>
+                <div class="form-group col-md-5">
+                    <input type="date" class="form-control" id="datepicker"  name="tanggal_kembali">
                 </div>
             </div>
 

@@ -9,6 +9,7 @@ use DB;
 use App\PemesananAlat;
 use App\PembayaranAlat;
 use Session;
+use Carbon\Carbon;
 class PemesananAlatController extends Controller
 {
 
@@ -21,7 +22,7 @@ class PemesananAlatController extends Controller
     public function index($id_alat)
     {
         
-        $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
+        // $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
     	
         $tgl = array(
     		0=>"2020-06-25",
@@ -36,7 +37,7 @@ class PemesananAlatController extends Controller
         ->where('mitra.id_mitra', session('id_mitra'))
         ->first();
     	
-    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgldisable','tgl'));
+    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgl'));
     }
 
     public function listpenyewaanPetani()
@@ -74,11 +75,11 @@ class PemesananAlatController extends Controller
         ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
         ->where('alat.id_mitra', session('id_mitra'))
-        ->where('pembayaran_alat.status_pembayaran', 'Diterima')
+        ->where('pembayaran_alat.status_pembayaran', 'Diterima' == 'Selesai')
         
         ->get();
 
-        return view('mitra.alat_tani.kelolapemesananalat',compact('datas'));
+        return view('mitra.alat_tani.pemesananalat_diterima',compact('datas'));
     }
 
     public function kelolapemesananalat()
@@ -99,26 +100,27 @@ class PemesananAlatController extends Controller
         
         $request->validate([
             'luas_tanah'      => 'required', 
-            'tanggal'           => 'required',
+            'tanggal_sewa'           => 'required',
             
         ],
         [
             
             
             'luas_tanah.required'         => 'Luas tanah harus diisi',
-            'tanggal.required'             => 'Tanggal harus diisi',
+            'tanggal_sewa.required'             => 'Tanggal harus diisi',
         
         ]);
 
         $data = new PemesananAlat();
         $data->id_pemesanan_alat = $request->id_pemesanan_alat;
-        $data->tanggal = $request->tanggal;
+        $data->tanggal_sewa = $request->tanggal_sewa;
+        $data->tanggal_kembali = $request->tanggal_kembali;
         $data->alamat_lengkap = $request->alamat_lengkap;
         $data->luas_tanah = $request->luas_tanah;
         $data->id_mitra = $request->id_mitra;
         $data->id_alat = $request->id_alat;
 
-        $jumlah = $data->Alat->harga * $data->luas_tanah;
+        $jumlah = Carbon::parse($request->tanggal_sewa)->diffInDays($request->tanggal_kembali) * $data->Alat->harga * $data->luas_tanah;
         $data->total_harga = $jumlah;
         $data->save();
         
