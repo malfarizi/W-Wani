@@ -20,7 +20,10 @@ class Admin extends Authenticatable
         'password',
         'jk',
         'no_telp',
-        'foto', 
+        'foto',
+        'nama_bank',
+        'no_rek',
+        'nama_rek' 
     ];
 
     protected $hidden = ['password', 'remember_token'];

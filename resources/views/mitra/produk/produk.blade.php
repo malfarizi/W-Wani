@@ -88,20 +88,20 @@
 
                                         <div class="form-group">
                                             <label for="qty">Qty</label>
-                                            <textarea input type="text" class="form-control" id="qty" name="qty"
+                                            <input type="text" class="form-control" id="qty" name="qty"
                                                 placeholder="Masukan qty"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="satuan">Satuan</label>
-                                            <textarea input type="text" class="form-control" id="satuan" name="satuan"
+                                            <input type="text" class="form-control" id="satuan" name="satuan"
                                                 placeholder="Masukan satuan"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="berat">Berat</label>
-                                            <textarea input type="text" class="form-control" id="berat" name="berat"
-                                                placeholder="Masukan berat"></textarea>
+                                            <input type="text" class="form-control" id="berat" name="berat"
+                                                placeholder="Masukan berat">
                                         </div>
 
 
@@ -110,15 +110,17 @@
                                             <input type="file" class="form-control" id="foto" name="foto"
                                                 placeholder="Masukan foto">
                                         </div>
-                                        @foreach($kategori as $kat)
+                                       
                                         <div class="form-group">
                                             <label for="kategori">Kategori</label>
                                             <select name="id_kategori" id="kategori" class="form-control">
                                                 <option>Pilih Kategori</option>
+                                                @foreach($kategori as $kat)
                                                 <option value="{{$kat->id_kategori}}">{{$kat->nama_kategori}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                        @endforeach
+                                        
                                         <div class="form-group">
                                             <!-- <label for="status">id mitra</label> -->
                                             <input type="text" hidden class="form-control" id="" name="id_mitra"
@@ -249,12 +251,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="kategori">Kategori</label>
-                                <select name="id_kategori" id="kategori" class="form-control">
-                                    <option>Pilih Kategori</option>
-                                    <option value="{{$data->id_kategori}}">{{$data->nama_kategori}}</option>
-                                </select>
-                            </div>
+                                            <label for="kategori">Kategori</label>
+                                            <select name="id_kategori" id="kategori" class="form-control">
+                                                <option>Pilih Kategori</option>
+                                                @foreach($kategori as $kat)
+                                                <option value="{{$kat->id_kategori}}">{{$kat->nama_kategori}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
 
                         </div>
                         <div class="modal-footer">

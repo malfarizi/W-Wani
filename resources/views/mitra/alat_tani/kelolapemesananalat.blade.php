@@ -106,36 +106,7 @@
 
 
 
-        @foreach($datas as $data)
 
-        <div class="modal fade" id="modal-detail-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img
-                                    src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
-                                    style="width: 200px; height: 150px;"> </li>
-                            <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
-                            <li class="list-group-item">Tanggal Bukti : {{$data->tanggal_bukti}} </li>
-                            <li class="list-group-item">Status : {{$data->status_pembayaran}} </li>
-
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
 
 
         @foreach($datas as $data)
