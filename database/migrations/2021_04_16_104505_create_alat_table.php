@@ -19,6 +19,7 @@ class CreateAlatTable extends Migration
             $table->double('harga');
             $table->text('desc');
             $table->string('foto');
+            $table->string('kategori');
             $table->string('status');
             $table->unsignedInteger('id_mitra');
             $table->foreign('id_mitra')->references('id_mitra')->on('mitra');

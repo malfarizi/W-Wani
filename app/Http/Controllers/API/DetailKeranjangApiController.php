@@ -22,7 +22,7 @@ class DetailKeranjangApiController extends Controller
     public function getByUser($id)
     {
         $data = DetailKeranjang::where('id_keranjang', $id)
-                    ->with('produk')
+                    ->with('produk.mitra')
                     ->get();
         return response()->json($data);
     }

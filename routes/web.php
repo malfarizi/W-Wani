@@ -32,6 +32,12 @@ Route::post('loginAdminPost', 'AdminController@loginAdminPost');
 Route::get('logoutadmin', 'AdminController@logout');
 Route::get('admin', 'AdminController@admin');
 Route::put('editAdmin/{id}', 'AdminController@update');
+
+//======================Saldo===================
+Route::get('pencairan-saldo','PencairanController@index');
+Route::get('pencairan','PencairanController@create');
+Route::post('Aksipencairan','PencairanController@store');
+
 //======================Login Mitra===================
 Route::get('loginmitra','MitraController@loginmitra');
 Route::post('loginMitraPost', 'MitraController@loginMitraPost');

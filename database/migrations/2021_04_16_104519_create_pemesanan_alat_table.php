@@ -14,7 +14,7 @@ class CreatePemesananAlatTable extends Migration
     public function up()
     {
         Schema::create('pemesanan_alat', function (Blueprint $table) {
-            $table->increments('id_pemesanan_alat');
+            $table->String('id_pemesanan_alat')->primary();
             $table->unsignedInteger('id_alat');
             $table->foreign('id_alat')->references('id_alat')->on('alat');
             $table->unsignedInteger('id_mitra');

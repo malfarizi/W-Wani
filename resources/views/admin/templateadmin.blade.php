@@ -71,6 +71,13 @@
           <i class="fas fa-box"></i>
           <span>Daftar Produk</span>
         </a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('pencairan-saldo')}}">
+          <i class="fas fa-wallet"></i>
+          <span>Saldo</span>
+        </a>
       </li>
       
       

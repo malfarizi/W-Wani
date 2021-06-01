@@ -24,9 +24,9 @@ Route::get('/getKota', 'API\KotaApiController@getAll');
 Route::get('/getKota/{id}', 'API\KotaApiController@getById');
 
 Route::get('/produk/getAll', 'API\ProdukApiController@getAll');
-Route::get('/produk/getByKategori', 'API\ProdukApiController@getByKategori');
+Route::get('/produk/getByKategori/{id}', 'API\ProdukApiController@getByKategori');
 
-Route::get('/kategori/getAll', 'APi\KategoriApiController@getAll');
+Route::get('/kategori/getAll', 'API\KategoriApiController@getAll');
 
 Route::prefix('keranjang')->group(function() {
     Route::post('/createCart', 'API\KeranjangApiController@store');

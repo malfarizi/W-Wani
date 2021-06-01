@@ -102,6 +102,12 @@
           <span>Data Penjualan</span>
         </a>
       </li> -->
+            <li class="nav-item">
+        <a class="nav-link" href="{{url('pencairan')}}">
+            <i class="fas fa-wallet"></i>
+          <span>Pencairan Saldo</span>
+        </a>
+      </li> 
 
 
             <hr class="sidebar-divider">

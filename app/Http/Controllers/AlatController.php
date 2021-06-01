@@ -43,6 +43,7 @@ class AlatController extends Controller
     	$data->nama_alat = $request->nama_alat;
     	$data->desc = $request->desc;
         $data->harga = $request->harga;
+        $data->kategori = $request->kategori;
         $data->status = $request->status;
         $data->id_mitra = $request->id_mitra;
 

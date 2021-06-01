@@ -9,6 +9,6 @@ class KategoriApiController extends Controller
 {
     public function getAll()
     {
-        return response()->json(App\Kaetgori::all());
+        return response()->json(\App\Kategori::all());
     }
 }

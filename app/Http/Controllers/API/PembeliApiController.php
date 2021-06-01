@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Pembeli;
+use App\Keranjang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,11 +20,13 @@ class PembeliApiController extends Controller
         ];
 
         if($auth->attempt($credentials)) {
-            $pembeli = Pembeli::with('alamat.kota.provinsi')->where('email', $email)->first();
+            $pembeli   = Pembeli::with('alamat.kota.provinsi')->where('email', $email)->first();
+	    $keranjang = Keranjang::whereIdPembeli($pembeli->id_pembeli)->value('id_keranjang');
             return response()->json([
                 'error'   => 0,
-                'message' => 'Login berhasil',
-		'user'    => $pembeli
+                'message'   => 'Login berhasil',
+		'user'      => $pembeli,
+		'keranjang' => $keranjang
             ]);
         }
         else {

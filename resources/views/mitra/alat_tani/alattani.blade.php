@@ -46,9 +46,9 @@
                 @endif
 
                 {{-- Modal Tambah --}}
-                
+
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                @if(session('status') == 'Diterima')
+                    @if(session('status') == 'Diterima')
                     <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
                         data-target="#exampleModal" id="#myBtn">
                         <span class="icon text-white-50">
@@ -62,14 +62,14 @@
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                
+
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data Alat Tani</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            
+
                                 <form method="POST" action="{{url('addAlattani')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-body">
@@ -105,6 +105,14 @@
                                                 <option value="Tidak Tersedia">Tidak Tersedia</option>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label>kategori</label>
+                                            <select class="form-control" name="kategori">
+                                                <option>Pilih Kategori</option>
+                                                <option value="Perontok Padi"> Perontok Padi </option>
+                                                <option value="Traktor"> Traktor</option>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group">
                                             <!-- <label for="status">id mitra</label> -->
@@ -137,6 +145,7 @@
                                 <th>Deskripsi</th>
                                 <th>Foto</th>
                                 <th>Status</th>
+                                <th>Kategori</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -150,6 +159,7 @@
                                 <td><img src="{{ url('images/foto_alat/'.$data->foto) }}"
                                         style="width: 200px; height: 150px;"></td>
                                 <td>{{$data->status}}</td>
+                                <td>{{$data->kategori}}</td>
 
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -212,6 +222,14 @@
                                     <option> {{$data->status}}</option>
                                     <option value="Tersedia"> Tersedia </option>
                                     <option value="Tidak Tersedia"> Tidak Tersedia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>kategori</label>
+                                <select class="form-control" name="kategori">
+                                    <option>Pilih Kategori</option>
+                                    <option value="Perontok Padi"> Perontok Padi </option>
+                                    <option value="Traktor"> Traktor</option>
                                 </select>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 @extends('admin.templateadmin')
 
-@section('title', 'Admin')
+@section('title', 'Produk')
     
 @section('content')
 
