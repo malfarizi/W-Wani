@@ -15,7 +15,7 @@ class CreatePembayaranAlatTable extends Migration
     {
         Schema::create('pembayaran_alat', function (Blueprint $table) {
             $table->increments('id_pembayaran_alat');
-            $table->unsignedInteger('id_pemesanan_alat');
+            $table->String('id_pemesanan_alat');
             $table->foreign('id_pemesanan_alat')->references('id_pemesanan_alat')->on('pemesanan_alat');
             $table->date('tanggal_bukti');
             $table->string('status_pembayaran');

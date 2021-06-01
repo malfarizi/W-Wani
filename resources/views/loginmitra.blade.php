@@ -40,7 +40,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                </div>
+               
                 @if($errors->any())
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
