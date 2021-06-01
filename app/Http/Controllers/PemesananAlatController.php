@@ -120,7 +120,8 @@ class PemesananAlatController extends Controller
         $data->id_mitra = $request->id_mitra;
         $data->id_alat = $request->id_alat;
 
-        $jumlah = Carbon::parse($request->tanggal_sewa)->diffInDays($request->tanggal_kembali) * $data->Alat->harga * $data->luas_tanah;
+        $interval = Carbon::parse($request->tanggal_sewa)->diffInDays($request->tanggal_kembali);
+        $jumlah = $interval * $data->Alat->harga * $data->luas_tanah;
         $data->total_harga = $jumlah;
         $data->save();
         

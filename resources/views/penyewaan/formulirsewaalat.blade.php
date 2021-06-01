@@ -105,21 +105,21 @@
             <div class="form-group row">
                 <label for="text" class="col-sm-2  col-form-label">Tanggal Sewa</label>
                 <div class="form-group col-md-5">
-                    <input type="date" class="form-control" id="datepicker"  name="tanggal_sewa">
+                    <input type="text" class="form-control" id="datepicker1"  autocomplete="off"  name="tanggal_sewa">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="text" class="col-sm-2  col-form-label">Sampai Tanggal</label>
                 <div class="form-group col-md-5">
-                    <input type="date" class="form-control" id="datepicker"  name="tanggal_kembali">
+                    <input type="text" class="form-control" id="datepicker2"  autocomplete="off" name="tanggal_kembali">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="luas_tanah" class="col-sm-2  col-form-label">Luas Tanah /bahu</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="text" name="luas_tanah">
+                    <input type="text" class="form-control" autocomplete="off" id="text" name="luas_tanah">
                 </div>
             </div>
 
