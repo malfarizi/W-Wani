@@ -94,6 +94,7 @@ Route::put('editPembayaran/{id}','PembayaranController@update');
 Route::delete('deletePembayaran/{id}','PembayaranController@delete');
 
 Route::get('alattani-list','PemesananAlatController@alattani_list');
+Route::get('alattani-traktor','PemesananAlatController@alattani_traktor');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
 Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
@@ -103,3 +104,4 @@ Route::get('pembayaranProduk', 'PembayaranController@index');
 Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
 Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
 Route::get('cari','PembayaranAlatController@cari');
+

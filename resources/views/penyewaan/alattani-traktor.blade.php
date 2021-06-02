@@ -30,7 +30,7 @@
 
 <section id="pricing" class="pricing">
     <div class="container">
-<h4>Alat Tani</h4>
+<h4>Alat Tani Traktor</h4>
         <div class="row">
             @foreach($datas as $data)
             <div class="col-lg-6">

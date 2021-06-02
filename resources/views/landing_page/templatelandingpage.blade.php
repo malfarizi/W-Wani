@@ -20,7 +20,7 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <script src="https://momentjs.com/downloads/moment.js"></script> 
+    <script src="https://momentjs.com/downloads/moment.js"></script>
     <link href="{{url('frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -28,38 +28,21 @@
     <link href="{{url('frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/venobox/venobox.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{{url('frontend/css/style.css')}}" rel="stylesheet">
 
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <!-- Dropdown Search CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
-
-    <!-- <link href="{{url('datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{url('datepicker/js/bootstrap-datepicker.min.js')}}" rel="stylesheet" type="text/javascript">  -->
-    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
+        type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
-    
-    <!-- <script> 
-        // $(function () {
-        //     $("#datepicker1").datepicker({
-        //         minDate: moment().add('d', 1).toDate(),
-        //         dateFormat: 'yy-mm-dd'
-        //     });
-        // });
-        // $(function () {
-        //     $("#datepicker2").datepicker({
-        //         minDate: moment().add('d', 1).toDate(),
-        //         dateFormat: 'yy-mm-dd'
-        //     });
-        // })
-        </script>-->
+
+
     <script type="text/javascript">
         $(function () {
             $(".datepicker").datepicker({
@@ -68,7 +51,7 @@
                 autoclose: true,
                 todayHighlight: true,
             });
-            
+
             $("#tanggal_sewa").on('changeDate', function (selected) {
                 var startDate = new Date(selected.date.valueOf());
                 $("#tanggal_kembali").datepicker('setStartDate', startDate);
@@ -80,11 +63,7 @@
 
     </script>
 
-    <!-- Template Main CSS File -->
-    <link href="{{url('frontend/css/style.css')}}" rel="stylesheet">
 
-    <!-- Dropdown Search CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- =======================================================
   * Template Name: Sailor - v2.3.1
   * Template URL: https://bootstrapmade.com/sailor-free-bootstrap-theme/
@@ -107,18 +86,31 @@
             <nav class="nav-menu d-none d-lg-block">
 
                 <ul>
-                    <li><a href="{{url('/')}}">Home</a></li>
+                   
+                <div><li><a  class="btn" href="{{url('/')}}">Home</a></li></div>
+                    
+                        <a class="btn dropdown-toggle" href="#"   id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Alat Tani
+                        </a>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{url('alattani-list')}}">Perontok Padi</a>
+                            <a class="dropdown-item" href="{{url('alattani-traktor')}}">Traktor</a>
 
-                    <li><a href="{{url('/alattani-list')}}">Alat Tani</a></li>
-                    @if(session('level') == 'Petani')
+                        </div>
+                
 
-                    @if(session('status') == 'Diterima')
-                    <li><a href="{{url('pemesananmitra')}}">Pemesanan</a></li>
-                    <li><a href="{{url('dashboardmitra')}}">Dashboard</a></li>
-                    @endif
-                    @else
-                    <li><a href="{{url('/daftar')}}">Gabung Mitra</a></li>
-                    @endif
+                        @if(session('level') == 'Petani')
+
+                        @if(session('status') == 'Diterima')
+                        
+                        <div><li><a class="btn"href="{{url('pemesananmitra')}}">Pemesanan</a></li></div>
+                        <div><li><a class="btn" href="{{url('dashboardmitra')}}">Dashboard</a></li></div>
+                        @endif
+                        @else
+                        <div><li><a class="btn" href="{{url('/daftar')}}">Gabung Mitra</a></li></div>
+                        @endif
 
                 </ul>
 
@@ -206,7 +198,7 @@
     <script src="frontend/vendor/owl.carousel/owl.carousel.min.js"></script>
 
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <!-- Template Main JS File -->
     <script src="frontend/js/main.js"></script>

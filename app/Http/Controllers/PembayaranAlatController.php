@@ -15,7 +15,7 @@ class PembayaranAlatController extends Controller
 {
     public function pembayaranalat($id_pemesanan_alat)
     {
-        $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
+        // $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
     	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
             [
                 'status_pembayaran' => 'Ditolak'

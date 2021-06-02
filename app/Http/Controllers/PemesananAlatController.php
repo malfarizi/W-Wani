@@ -15,10 +15,26 @@ class PemesananAlatController extends Controller
 
     public function alattani_list()
     {
-    	$datas = Alat::all();
+    	$datas = DB::table('alat')
+        ->join('mitra', 'mitra.id_mitra', '=', 'alat.id_mitra')
+        ->select('mitra.*','alat.*')
+        ->where('alat.kategori', 'Perontok Padi')
+        ->get();
 
     	return view('penyewaan.alattani-list', compact('datas'));
     }
+
+    public function alattani_traktor()
+    {
+    	$datas = DB::table('alat')
+        ->join('mitra', 'mitra.id_mitra', '=', 'alat.id_mitra')
+        ->select('mitra.*','alat.*')
+        ->where('alat.kategori', 'Traktor')
+        ->get();
+
+    	return view('penyewaan.alattani-traktor', compact('datas'));
+    }
+
     public function index($id_alat)
     {
         
