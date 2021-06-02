@@ -54,6 +54,7 @@
 
                             <tr>
                                 <th>No.</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
                                 <th>Tanggal Sewa / Sampai</th>
@@ -67,7 +68,8 @@
                         <tbody>
                             @foreach($datas as $data)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->id_pemesanan_alat}}</td>
                                 <td>{{$data->nama_alat}}</td>
                                 <td>{{$data->nama_mitra}}</td>
                                 <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>
@@ -177,8 +179,6 @@
                                 <select class="form-control" name="status_pembayaran" id="status_pembayaran"
                                     style="width: 100%">
                                     <option value="">Pilih Status</option>
-                                    <option value="Diterima">Diterima</option>
-                                    <option value="Ditolak">Ditolak</option>
                                     <option value="Selesai">Selesai</option>
                                 </select>
                             </div>

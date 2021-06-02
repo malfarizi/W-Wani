@@ -162,12 +162,12 @@
                                 <td>{{$data->kategori}}</td>
 
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    <button type="button" class="btn btn-primary"  data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_alat}}">
                                         <i class="fas fa-user-edit"></i>
                                     </button>
                                     <form action="{{url('deleteAlattani', $data->id_alat)}}" method="POST"
-                                        class="d-inline">
+                                        class="inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i

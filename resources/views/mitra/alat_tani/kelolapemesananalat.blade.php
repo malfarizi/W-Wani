@@ -54,6 +54,7 @@
 
                             <tr>
                                 <th>No.</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
                                 <th>Tanggal Sewa / Sampai</th>
@@ -68,6 +69,7 @@
                             @foreach($datas as $data)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$data->id_pemesanan_alat}}</td>
                                 <td>{{$data->nama_alat}}</td>
                                 <td>{{$data->nama_mitra}}</td>
                                 <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>

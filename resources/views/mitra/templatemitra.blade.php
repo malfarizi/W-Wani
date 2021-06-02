@@ -93,6 +93,7 @@
                         <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima
                         </a>
                         <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pesanan Diterima</a>
+                        <a class="collapse-item" href="{{url('pemesananalat-selesai')}}">Pesanan Selesai</a>
                     </div>
                 </div>
             </li>

@@ -20,6 +20,7 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
+    <script src="https://momentjs.com/downloads/moment.js"></script> 
     <link href="{{url('frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -27,26 +28,58 @@
     <link href="{{url('frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/venobox/venobox.css')}}" rel="stylesheet">
     <link href="{{url('frontend/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+
+
+
+    <!-- <link href="{{url('datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url('datepicker/js/bootstrap-datepicker.min.js')}}" rel="stylesheet" type="text/javascript">  -->
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script> -->
     <script src="https://momentjs.com/downloads/moment.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
+    
+    <!-- <script> 
+        // $(function () {
+        //     $("#datepicker1").datepicker({
+        //         minDate: moment().add('d', 1).toDate(),
+        //         dateFormat: 'yy-mm-dd'
+        //     });
+        // });
+        // $(function () {
+        //     $("#datepicker2").datepicker({
+        //         minDate: moment().add('d', 1).toDate(),
+        //         dateFormat: 'yy-mm-dd'
+        //     });
+        // })
+        </script>-->
+    <script type="text/javascript">
         $(function () {
-            $("#datepicker1").datepicker({
+            $(".datepicker").datepicker({
                 minDate: moment().add('d', 1).toDate(),
-                dateFormat: 'yy-mm-dd'
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+            });
+            
+            $("#tanggal_sewa").on('changeDate', function (selected) {
+                var startDate = new Date(selected.date.valueOf());
+                $("#tanggal_kembali").datepicker('setStartDate', startDate);
+                if ($("#tanggal_sewa").val() > $("#tanggal_kembali").val()) {
+                    $("#tanggal_kembali").val($("#tanggal_sewa").val());
+                }
             });
         });
-        $(function () {
-            $("#datepicker2").datepicker({
-                minDate: moment().add('d', 1).toDate(),
-                dateFormat: 'yy-mm-dd'
-            });
-        })
+
     </script>
+
     <!-- Template Main CSS File -->
     <link href="{{url('frontend/css/style.css')}}" rel="stylesheet">
 
@@ -171,6 +204,9 @@
     <script src="frontend/vendor/venobox/venobox.min.js"></script>
     <script src="frontend/vendor/waypoints/jquery.waypoints.min.js"></script>
     <script src="frontend/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <!-- Template Main JS File -->
     <script src="frontend/js/main.js"></script>

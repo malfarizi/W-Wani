@@ -105,14 +105,14 @@
             <div class="form-group row">
                 <label for="text" class="col-sm-2  col-form-label">Tanggal Sewa</label>
                 <div class="form-group col-md-5">
-                    <input type="text" class="form-control" id="datepicker1"  autocomplete="off"  name="tanggal_sewa">
+                    <input type="text" class="form-control datepicker" id="tanggal_sewa"  autocomplete="off" placeholder="masukkan tanggal Awal" name="tanggal_sewa">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="text" class="col-sm-2  col-form-label">Sampai Tanggal</label>
                 <div class="form-group col-md-5">
-                    <input type="text" class="form-control" id="datepicker2"  autocomplete="off" name="tanggal_kembali">
+                    <input type="text" class="form-control datepicker" id="tanggal_kembali"  placeholder="masukkan tanggal Akhir" autocomplete="off" name="tanggal_kembali">
                 </div>
             </div>
 

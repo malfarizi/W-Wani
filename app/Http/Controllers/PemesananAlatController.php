@@ -75,11 +75,24 @@ class PemesananAlatController extends Controller
         ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
         ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
         ->where('alat.id_mitra', session('id_mitra'))
-        ->where('pembayaran_alat.status_pembayaran', 'Diterima' == 'Selesai')
-        
+        ->where('pembayaran_alat.status_pembayaran', 'Diterima')
         ->get();
 
         return view('mitra.alat_tani.pemesananalat_diterima',compact('datas'));
+    }
+
+    public function pemesananalat_selesai()
+    { 
+        $datas = DB::table('pembayaran_alat')
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('alat.id_mitra', session('id_mitra'))
+        ->where('pembayaran_alat.status_pembayaran', 'Selesai')
+        ->get();
+
+        return view('mitra.alat_tani.pemesananalat_selesai',compact('datas'));
     }
 
     public function kelolapemesananalat()
@@ -119,9 +132,10 @@ class PemesananAlatController extends Controller
         $data->luas_tanah = $request->luas_tanah;
         $data->id_mitra = $request->id_mitra;
         $data->id_alat = $request->id_alat;
-
+          
+        $hitung =  $data->Alat->harga * $data->luas_tanah;
         $interval = Carbon::parse($request->tanggal_sewa)->diffInDays($request->tanggal_kembali);
-        $jumlah = $interval * $data->Alat->harga * $data->luas_tanah;
+        $jumlah = $hitung * $interval;
         $data->total_harga = $jumlah;
         $data->save();
         
