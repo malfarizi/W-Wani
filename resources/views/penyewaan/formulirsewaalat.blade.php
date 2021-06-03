@@ -122,11 +122,7 @@
                     <input type="text" class="form-control" autocomplete="off" id="text" name="luas_tanah">
                 </div>
             </div>
-
-
-
-
-
+            <label hidden>{{$waktupemesanan}}</label>
 
             <div class=" text-center"><button type="submit">Pesan</button></div>
         </form>

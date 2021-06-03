@@ -45,6 +45,11 @@
                 </div>
                 @endif
 
+                <div class="input-group col-md-5  ml-5">
+                    <input type="date" name="created_at" id="created_at" class="form-control col-md-5" />
+                    <a href="" onclick="this.href='/cetaklaporanproduk/'+document.getElementById('created_at').value"
+                        target="_blank" class="btn btn-primary col-md-2" target="_blank"> PDF</a>
+                </div>
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">

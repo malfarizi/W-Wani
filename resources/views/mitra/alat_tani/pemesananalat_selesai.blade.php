@@ -47,7 +47,14 @@
 
 
 
+                <div class="input-group col-md-5  ml-5">
+                    <input type="date" name="tanggal_bukti" id="tanggal_bukti" class="form-control col-md-5" />
+                    <a href="" onclick="this.href='/cetaklaporanalat/'+document.getElementById('tanggal_bukti').value"
+                        target="_blank" class="btn btn-primary col-md-2" target="_blank"> PDF</a>
+                </div>  
+                    
 
+                <!-- <a href="{{url('cetaklaporanalat')}}" class="btn btn-primary col-md-2" target="_blank">CETAK PDF</a> -->
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
@@ -120,7 +127,8 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
+                            <li class="list-group-item">Foto : <img
+                                    src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
                                     style="width: 200px; height: 150px;"> </li>
                             <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
                             <li class="list-group-item">Tanggal Bukti : {{$data->tanggal_bukti}} </li>

@@ -37,7 +37,7 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="{{ url('images/foto_alat/'.$data->foto) }}"
                             style="width: 220px; height: 200px;" class="img-fluid" alt=""></div>
-                    <div class="member-info">
+                    <div class="member-info col-md-5  ml-1">
                         <h4>{{$data->nama_alat}}</h4>
                         <span>@currency($data->harga) /bahu</span>
                         <p>{{$data->desc}}</p>
