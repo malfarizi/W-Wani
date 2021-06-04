@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Mitra;
 use App\Alat;
+use App\Produk;
 
 use DB;
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ class DashboardController extends Controller
     }
      public function dashboardmitra()
     {
-       
-    	return view('mitra.dashboardmitra');
+        $alat = Alat::where('id_mitra', session('id_mitra'))->count();
+        $produk = Produk::where('id_mitra', session('id_mitra'))->count();
+    	return view('mitra.dashboardmitra', compact('alat', 'produk'));
    
     }
     public function admin()

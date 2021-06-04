@@ -11,8 +11,8 @@ class AdminController extends Controller
 {
 
     public function admin(){
-        $datas = Admin::where('email', session('email'))->get();
-    	return view('admin.admin', compact('datas'));
+        $data = Admin::where('email', session('email'))->first();
+    	return view('admin.admin', compact('data'));
     }
 
 

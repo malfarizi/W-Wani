@@ -66,8 +66,9 @@ Route::middleware('auth:admin')->group(function(){
     
 });
 
-//====================== Penyewaan Alat ===================
-
+//====================== Profil Mitra ===================
+Route::get('profilmitra','MitraController@profilmitra');
+Route::put('editProfilmitra/{id}','MitraController@updateprofil');
 //====================== Alat Tani=========================
 Route::get('alattani','AlatController@index');
 Route::post('addAlattani', 'AlatController@create');
