@@ -61,6 +61,40 @@
               </div>
             </div>
 
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Total Saldo</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">@currency($grand)</div>
+                      
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-coins fa-2x text-info"></i>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Profit</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">@currency($profit)</div>
+                      
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-wallet fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 

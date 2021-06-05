@@ -16,24 +16,24 @@ class PembayaranAlatController extends Controller
 {
     public function pembayaranalat($id_pemesanan_alat)
     {
-        $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
-    	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
-            [
-                'status_pembayaran' => 'Ditolak'
-            ] 
-        );
-        $vendor = DB::table('pemesanan_alat')
-        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-        ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
-        ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
-        ->where('mitra.level', '=', 'Vendor')
-        ->first();
+        
+    	// $waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
+        //     [
+        //         'status_pembayaran' => 'Ditolak'
+        //     ] 
+        // );
+        // $vendor = DB::table('pemesanan_alat')
+        // ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        // ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
+        // ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
+        // ->where('mitra.level', '=', 'Vendor')
+        // ->first();
 
         $datas = PemesananAlat::find($id_pemesanan_alat);
           
           Carbon::setLocale('id');
         $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
-    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor', 'waktu', 'waktupemesanan'));
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok'));
     }
 
     public function cetakpembayaranalat($tanggal_bukti)
@@ -49,7 +49,7 @@ class PembayaranAlatController extends Controller
         ->where('pembayaran_alat.tanggal_bukti', $tanggal_bukti)
         ->get();
 
-        $pdf = PDF::loadview('mitra.alat_tani.laporanalattani',['datas'=>$datas]);
+        $pdf = PDF::loadview('mitra.alat_tani.laporanalattani',['datas'=>$datas])->setPaper('a4', 'landscape');
                 // return $pdf->download('laporan-pembayaranalat.pdf');
                 return $pdf->stream();
     }

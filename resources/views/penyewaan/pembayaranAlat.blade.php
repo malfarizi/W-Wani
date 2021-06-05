@@ -84,8 +84,8 @@
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold  text-warning text-truncate message-title">
                                         Batas Pembayaran Sampai : <br>{{$besok}} WIB</div>
-                                        <label hidden>{{$waktu}}</label>
-                                        <label hidden>{{$waktupemesanan}}</label>
+                                        
+                                        
 
                                 </div>
                                 <hr>
@@ -105,11 +105,11 @@
                         </div>
                         <div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Nama Rekening :<strong>{{$vendor->nama_rekening}}</strong>
+                                <li class="list-group-item">Nama Rekening :<strong>{{$datas->alat->mitra->nama_rekening}}</strong>
                                 </li>
-                                <li class="list-group-item">No Rekening : <strong> {{$vendor->no_rek}} </strong></li>
-                                <li class="list-group-item">Nama Bank : <strong> {{$vendor->nama_bank}}</strong></li>
-                                <li class="list-group-item">A.N : <strong> {{$vendor->nama_rekening}}</strong></li>
+                                <li class="list-group-item">No Rekening : <strong> {{$datas->alat->mitra->no_rek}} </strong></li>
+                                <li class="list-group-item">Nama Bank : <strong> {{$datas->alat->mitra->nama_bank}}</strong></li>
+                                <li class="list-group-item">A.N : <strong> {{$datas->alat->mitra->nama_rekening}}</strong></li>
 
                             </ul>
 

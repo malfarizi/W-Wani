@@ -25,7 +25,7 @@
         @endif
     </div>
     <div class="row mb-3">
-        @if(('level') == 'Vendor')
+        @if(session('level') == 'Vendor')
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -45,7 +45,7 @@
         @endif
    
 
-    
+        @if(session('level') == 'Petani')
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -62,5 +62,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
     @endsection

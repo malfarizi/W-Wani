@@ -37,7 +37,7 @@ class PemesananAlatController extends Controller
 
     public function index($id_alat)
     {
-        $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
+        // $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
         // $tgldisable = DB::table('pemesanan_alat')->where('id_alat', $id_alat)->pluck('tanggal');
     	
         $tgl = array(
@@ -53,7 +53,7 @@ class PemesananAlatController extends Controller
         ->where('mitra.id_mitra', session('id_mitra'))
         ->first();
     	
-    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgl','waktupemesanan'));
+    	return view('penyewaan.formulirsewaalat', compact('datas', 'mitra','tgl'));
     }
 
     public function listpenyewaanPetani()

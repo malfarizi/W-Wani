@@ -36,17 +36,17 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
         type="text/css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
     <script type="text/javascript">
         $(function () {
             $(".datepicker").datepicker({
-                minDate: moment().add('d', 1).toDate(),
+                minDate: 0,
                 format: 'yyyy-mm-dd',
                 autoclose: true,
                 todayHighlight: true,
@@ -59,6 +59,7 @@
                     $("#tanggal_kembali").val($("#tanggal_sewa").val());
                 }
             });
+
         });
 
     </script>
@@ -197,7 +198,7 @@
     <script src="frontend/vendor/waypoints/jquery.waypoints.min.js"></script>
     <script src="frontend/vendor/owl.carousel/owl.carousel.min.js"></script>
 
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <!-- Template Main JS File -->
