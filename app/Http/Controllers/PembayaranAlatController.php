@@ -49,7 +49,7 @@ class PembayaranAlatController extends Controller
         ->where('pembayaran_alat.tanggal_bukti', $tanggal_bukti)
         ->get();
 
-        $pdf = PDF::loadview('mitra.alat_tani.laporanalattani',['datas'=>$datas]);
+        $pdf = PDF::loadview('mitra.alat_tani.laporanalattani',['datas'=>$datas])->setPaper('a4', 'landscape');
                 // return $pdf->download('laporan-pembayaranalat.pdf');
                 return $pdf->stream();
     }

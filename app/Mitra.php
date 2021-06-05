@@ -33,7 +33,7 @@ class Mitra extends Authenticatable
     public $timestamps = false;
 
     public function alamat(){
-        return $this->hasOne('App\Alamat', 'id_alamat');
+        return $this->belongsTo('App\Alamat', 'id_alamat');
     }
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);

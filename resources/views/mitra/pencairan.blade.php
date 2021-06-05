@@ -31,35 +31,50 @@
             {{ session('success') }}
         </div>
         @endif
+
+        @if(session('error'))
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    {{ session('error') }}
+</div>
+@endif
     </div>
-    @if($errors->any())
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+   
 <div class="card w-50 ml-3 shadow-lg p-3 mb-3 bg-white rounded">
   <div class="card-body">
     <h5 class="card-title">Total Saldo</h5>
-    <p class="card-text">@currency($saldo)</p>
+    <p class="card-text">@currency($total_saldo)</p>
     
   </div>
 </div>
 {{-- Modal Tambah --}}
+
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
+  
+    @foreach ($datas as $item)
+        @if ($item->status_pencairan == 'Menunggu Validasi')
+        <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
         data-target="#exampleModal" id="#myBtn">
         <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
         <span class="text">Pencairan</span>
+        </button>
+
+        @elseif ($total_saldo <= 0)
+        <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
+    data-target="#exampleModal" id="#myBtn">
+    <span class="icon text-white-50">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Pencairan</span>
     </button>
+        @endif
+    @endforeach
+
+
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,20 +94,19 @@
                             <input type="text" class="form-control" id="jumlah" name="jumlah"
                                 placeholder="Jumlah Pencairan">
                         </div>
-                        <input type="text" value="{{session('id_mitra')}}">
+                        <small class="form-text text-muted">Setiap Pencairan Saldo Terdapat pemotongan sebesar 1 %</small>
+                        <input type="hidden" value="{{session('id_mitra')}}">
 
                         <div class="form-group">
                             <!-- <label for="status">id mitra</label> -->
-                            <input type="text" hidden class="form-control" id="id_mitra" name="id_mitra"
+                            <input type="hidden" hidden class="form-control" id="id_mitra" name="id_mitra"
                                 value="{{session('id_mitra')}}">
                         </div>
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger"
                             data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="btn btn-success">Cairkan</button>
                     </div>
             </div>
         </div>
@@ -107,6 +121,7 @@
                                 <th>No.</th>
                                 <th>Tanggal Pencairan</th>
                                 <th>Jumlah Pencairan Saldo</th>
+                                <th>Potongan 1%</th>
                                 <th>Status</th>
                                 
                             </tr>
@@ -117,10 +132,17 @@
                             <tr>
                                 
                                <td>{{$loop->iteration}}</td>
-                               <td>{{$data->created_at}}</td>
-                               <td>{{$data->jumlah}}</td>
-                               <td>{{$data->status_pencairan}}</td>
-                               
+                               <td>{{date('d-m-Y', strtotime($data->created_at))}}</td>
+                               <td>@currency($data->jumlah)</td>
+                               <td>@currency($data->profit)</td>
+                              
+                               <td>@if ($data->status_pencairan == 'Menunggu Validasi')
+                                <span class="badge badge-warning">Menunggu Validasi</span>
+                              @elseif ($data->status_pencairan == 'Ditolak')
+                              <span class="badge badge-danger">Ditolak</span>
+                              @elseif ($data->status_pencairan == 'Diterima')
+                              <span class="badge badge-success">Diterima</span>
+                              @endif</td>
                             </tr>
                            @endforeach
                         </tbody>

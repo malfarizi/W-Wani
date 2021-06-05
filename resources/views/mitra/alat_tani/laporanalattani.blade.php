@@ -38,8 +38,8 @@
         
     </center>
     <p> <strong>Vendor</strong> : {{session('nama_mitra')}}</h3></p>
-    <table class='table table-border  table-dark'>
-        <thead class="thead-dark">
+    <table class='table table-border '>
+        <thead>
             <tr>
                 <th>No.</th>
                 <th>Nomor Pemesanan</th>
