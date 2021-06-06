@@ -18,6 +18,7 @@
     <link href="{{url('css/ruang-admin.min.css')}}" rel="stylesheet">
     <link href="{{url('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{url('vendor/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body id="page-top">
@@ -222,6 +223,12 @@
     <script src="{{url('js/ruang-admin.min.js')}}"></script>
     <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>
     <script src="{{url('js/demo/chart-area-demo.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('#dataTable').DataTable();
+      });
+  </script> 
 </body>
 
 </html>
