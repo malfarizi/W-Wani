@@ -12,7 +12,7 @@
      <div class="carousel-inner" role="listbox">
 
        <!-- Slide 1 -->
-       <div class="carousel-item active" style="background-image: url(frontend/img/slide/nyangkul.jpeg)">
+       <div class="carousel-item active" style="background-image: url(/frontend/img/slide/nyangkul.jpeg)">
          <div class="carousel-container">
            <div class="container">
              <h2 class="animate__animated animate__fadeInDown">Warung Tani </h2>
@@ -23,7 +23,7 @@
        </div>
 
        <!-- Slide 2 -->
-       <div class="carousel-item" style="background-image: url(frontend/img/slide/sayuran.png)">
+       <div class="carousel-item" style="background-image: url(/frontend/img/slide/sayuran.png)">
          <div class="carousel-container">
            <div class="container">
              <h2 class="animate__animated animate__fadeInDown">Warung Tani</h2>

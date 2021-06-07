@@ -20,7 +20,10 @@ class CreateAdminTable extends Migration
             $table->string('password');
             $table->enum('jk',['laki-laki', 'perempuan']);
             $table->string('no_telp');
-            $table->string('foto');
+            $table->string('foto')->nullable();
+            $table->string('nama_bank');
+            $table->string('no_rek');
+            $table->string('nama_rek');
         });
     }
 

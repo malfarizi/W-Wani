@@ -14,12 +14,13 @@ class CreateDetailKeranjangTable extends Migration
     public function up()
     {
         Schema::create('detail_keranjang', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_detail_keranjang');
             $table->unsignedInteger('id_keranjang');
             $table->foreign('id_keranjang')->references('id_keranjang')->on('keranjang');
             $table->integer('qty');
             $table->double('subtotal');
-            $table->integer('produk');
+            $table->unsignedInteger('id_produk');
+            $table->foreign('id_produk')->references('id_produk')->on('produk');
             $table->timestamps();
         });
     }

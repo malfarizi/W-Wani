@@ -13,7 +13,7 @@ class KategoriSeeder extends Seeder
     {
         DB::table('kategori')->insert([
         	'id_kategori' => 1,
-        	'nama_kategori' => 'Sayur',
+        	'nama_kategori' => 'Apel',
         ]);
     }
 }

@@ -11,8 +11,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{url('frontend/img/favicon.png')}}" rel="icon">
-    <link href="{{url('frontend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{url('/frontend/img/favicon.png')}}" rel="icon">
+    <link href="{{url('/frontend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -21,15 +21,15 @@
 
     <!-- Vendor CSS Files -->
     <script src="https://momentjs.com/downloads/moment.js"></script>
-    <link href="{{url('frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/venobox/venobox.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/venobox/venobox.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
     <!-- Template Main CSS File -->
-    <link href="{{url('frontend/css/style.css')}}" rel="stylesheet">
+    <link href="{{url('/frontend/css/style.css')}}" rel="stylesheet">
 
     <!-- Dropdown Search CDN -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -189,20 +189,20 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="frontend/vendor/jquery/jquery.min.js"></script>
-    <script src="frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="frontend/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="frontend/vendor/php-email-form/validate.js"></script>
-    <script src="frontend/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="frontend/vendor/venobox/venobox.min.js"></script>
-    <script src="frontend/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="frontend/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/frontend/vendor/jquery/jquery.min.js"></script>
+    <script src="/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontend/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/frontend/vendor/php-email-form/validate.js"></script>
+    <script src="/frontend/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/frontend/vendor/venobox/venobox.min.js"></script>
+    <script src="/frontend/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/frontend/vendor/owl.carousel/owl.carousel.min.js"></script>
 
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="frontend/js/main.js"></script>
+    <script src="/frontend/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
