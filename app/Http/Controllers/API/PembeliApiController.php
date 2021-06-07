@@ -22,6 +22,7 @@ class PembeliApiController extends Controller
         if($auth->attempt($credentials)) {
             $pembeli   = Pembeli::with('alamat.kota.provinsi')->where('email', $email)->first();
 	    $keranjang = Keranjang::whereIdPembeli($pembeli->id_pembeli)->value('id_keranjang');
+
             return response()->json([
                 'error'   => 0,
                 'message'   => 'Login berhasil',
@@ -52,7 +53,10 @@ class PembeliApiController extends Controller
         $create = Pembeli::create($data);
         
         if($create){
-            return response()->json($create);
+            return response()->json([
+		'message' => 'Data berhasil disimpan', 
+		'data' => $create
+	    ]);
         }
     }
 
