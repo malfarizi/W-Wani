@@ -18,30 +18,39 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Route::get('/rajaongkir/getCost/{origin}/{destination}/{weight}', 'RajaOngkirController@getCost');
+Route::post('/rajaongkir/getCost', 'RajaOngkirController@getCost');
+
 Route::get('/getProvinsi', 'API\ProvinsiApiController@getAll');
 
 Route::get('/getKota', 'API\KotaApiController@getAll');
 Route::get('/getKota/{id}', 'API\KotaApiController@getById');
 
-Route::get('/produk/getAll', 'API\ProdukApiController@getAll');
-Route::get('/produk/getByKategori/{id}', 'API\ProdukApiController@getByKategori');
+Route::prefix('produk')->group(function() {
+    Route::get('getAll', 'API\ProdukApiController@getAll');
+    Route::get('getByKategori/{id}', 'API\ProdukApiController@getByKategori');
+    Route::put('/edit/{id}', 'API\ProdukApiController@update');
+});
 
 Route::get('/kategori/getAll', 'API\KategoriApiController@getAll');
 
 Route::prefix('keranjang')->group(function() {
     Route::post('/createCart', 'API\KeranjangApiController@store');
-    Route::post('/addCart', 'API\DetailKeranjangApiController@store');
+    Route::post('/addDetailCart', 'API\DetailKeranjangApiController@store');
+    Route::delete('/deleteDetailCart/{id}', 'API\DetailKeranjangApiController@destroy');
     Route::get('/getByUser/{id}', 'API\DetailKeranjangApiController@getByUser');
-    Route::delete('/delete/{id}', 'API\DetailKeranjangApiController@destroy');
 });
 
-Route::get('/pemesananBarang/add/{id}', 'API\PemesananBarangApiController@create');
+Route::post('/pemesananBarang/add', 'API\PemesananBarangApiController@create');
 
 Route::prefix('pemesanan')->group(function() {
     Route::post('/add', 'API\PemesananApiController@store');
-    Route::put('/uploadBuktiTF', 'API\PemesananApiController@update');
     //Route::delete('delete', 'API\PemesananApiController@destroy');
 });
+
+Route::get('/pembayaran/daftarTransaksi/{id}', 'API\PembayaranApiController@get');
+Route::post('/pembayaran/add', 'API\PembayaranApiController@store');
+Route::post('/pembayaran/uploadBukti', 'API\PembayaranApiController@uploadImage');
 
 Route::prefix('pembeli')->group(function(){
     Route::post('/login', 'API\PembeliApiController@login');

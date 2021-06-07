@@ -12,7 +12,14 @@ class AlamatApiController extends Controller
     {
         $data   = $request->only('id_kota', 'alamat_lengkap');
         $create = Alamat::create($data);
-        if($create) return response()->json($create);
+        
+	    if($create){
+	        return response()->json([
+                'erorr'     => 0,
+                'data'      => $create,
+                'message'   => 'Data berhasil disimpan'
+            ]);
+	    } 
     }
 
     public function show($id)

@@ -12,7 +12,7 @@ class PencairanController extends Controller
     public function index()
     {
         $datas = Pencairan::all();
-       return view ('admin.saldo');
+        return view ('admin.saldo');
     }
 
     public function store(Request $request)

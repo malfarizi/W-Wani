@@ -29,7 +29,6 @@ class AlatController extends Controller
             
         ],
         [
-            
             'nama_alat.min'              => 'Nama Alat minimal 3',
             'nama_alat.required'         => 'Nama Alat harus diisi',
             'harga.required'             => 'Harga harus diisi',

@@ -16,7 +16,7 @@ class Pemesanan extends Model
         'total_harga', 
         'alamat_lengkap',
         'kurir',
-        'tanggal'
+        'tanggal',
         'id_pembeli'
     ];
 
