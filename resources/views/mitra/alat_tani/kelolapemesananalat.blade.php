@@ -1,15 +1,15 @@
 @extends('mitra.templatemitra')
 
-@section('title', 'Kelola Pemesanan Alat Tani')
+@section('title', 'Pembayaran Alat Tani')
 
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Kelola Pemesanan Alat Tani</h1>
+        <h1 class="h3 mb-0 text-gray-800"></h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Kelola Pemesanan Alat Tani</li>
+            <li class="breadcrumb-item active" aria-current="page">Data Pembayaran Alat Tani</li>
         </ol>
     </div>
 
@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Kelola Pemesanan Alat Tani</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Pembayaran Alat Tani</h6>
                 </div>
 
                 <div class="card-header">
@@ -54,9 +54,10 @@
 
                             <tr>
                                 <th>No.</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
-                                <th>Tanggal Pemesanan</th>
+                                <th>Tanggal Sewa / Sampai</th>
                                 <th>Luas Tanah(bahu)</th>
                                 <th>Total Harga</th>
                                 <th>Alamat</th>
@@ -68,9 +69,10 @@
                             @foreach($datas as $data)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$data->id_pemesanan_alat}}</td>
                                 <td>{{$data->nama_alat}}</td>
                                 <td>{{$data->nama_mitra}}</td>
-                                <td>{{$data->tanggal}}</td>
+                                <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>
@@ -82,7 +84,6 @@
                                     </button>
                                 </td>
                                 <td>
-
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_pembayaran_alat}}">
                                         <i class="fas fa-user-edit"></i>
@@ -104,10 +105,7 @@
         </div>
 
 
-
-
         @foreach($datas as $data)
-
         <div class="modal fade" id="modal-detail-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -138,6 +136,8 @@
         @endforeach
 
 
+
+
         @foreach($datas as $data)
         {{-- Modal edit --}}
         <div class="modal fade" id="edit-data-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog"
@@ -165,7 +165,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tanggal">Total Harga : {{$data->total_harga}}</label>
+                                <label for="tanggal">Total Harga : @currency($data->total_harga)}</label>
                             </div>
 
                             <div class="form-group">

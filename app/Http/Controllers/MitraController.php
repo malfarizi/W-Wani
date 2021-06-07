@@ -20,6 +20,54 @@ class MitraController extends Controller
          return view('registermitra', compact('kota'));
     }
 
+    public function profilmitra()
+    {
+        $kota = Kota::all();
+        $data = Mitra::where('id_mitra', session('id_mitra'))->first();
+        
+         return view('mitra.profilmitra', compact('data', 'kota'));
+    }
+
+    public function updateprofil(Request $request, $id){
+      
+
+    	
+       
+        // $alamat = [
+        //     'id_kota' => $request->id_kota,
+        //     'alamat_lengkap' => $request->alamat
+        // ];
+        
+        // $id_alamat =  Alamat::create($alamat);
+       
+
+    $data = Mitra::findOrFail($id);
+       
+        $data->nama_mitra = $request->input('nama_mitra');
+        $data->email = $request->input('email');
+        $data->no_telp = $request->input('no_telp');
+      
+        $data->no_rek = $request->input('no_rek');
+        $data->nama_rekening = $request->input('nama_rekening');
+        $data->nama_bank = $request->input('nama_bank');
+        
+        // $data->id_alamat = $id_alamat;
+        
+        if (empty($request->file('foto')))
+        {
+            $data->foto = $data->foto;
+        }
+        else{
+            unlink('images/foto_mitra/'.$data->foto); //menghapus file lama
+            $foto = $request->file('foto');
+            $ext = $foto->getClientOriginalExtension();
+            $newName = rand(100000,1001238912).".".$ext;
+            $foto->move('images/foto_mitra',$newName);
+            $data->foto = $newName;
+        }
+        $data->update();
+        return redirect()->back()->with('success', 'Data berhasil didubah');
+    }
     
 	public function registerPost(Request $request )
     {
@@ -61,6 +109,7 @@ class MitraController extends Controller
            
         $status = 'Belum Diterima';
         $level = 'Petani';
+        
 
         $image      = $request->file('foto');
         $imageName  = time() . "_" . $image->getClientOriginalName();
@@ -73,7 +122,7 @@ class MitraController extends Controller
             'password' =>$request->password, 
             'jk' =>$request->jk,
             'no_telp' =>$request->no_telp,
-            'foto' =>$image,
+            'foto' => $imageName,
             'status' =>$status,
             'level' =>$level,
             'no_rek' =>$request->no_rek,
@@ -146,7 +195,7 @@ class MitraController extends Controller
             'password' =>$request->password, 
             'jk' =>$request->jk,
             'no_telp' =>$request->no_telp,
-            'foto' =>$image,
+            'foto' =>$imageName,
             'status' =>$status,
             'level' =>$level,
             'no_rek' =>$request->no_rek,

@@ -67,8 +67,9 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>No.</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Nama Alat</th>
-                                <th>Tanggal Pemesanan</th>
+                                <th>Tanggal Sewa / Sampai</th>
                                 <th>Luas Tanah</th>
                                 <th>Total harga</th>
                                 <th>Alamat</th>
@@ -80,9 +81,10 @@
                         <tbody>
                             @foreach($datas as $data)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->id_pemesanan_alat}}</td>
                                 <td>{{$data->nama_alat}}</td>
-                                <td>{{$data->tanggal}}</td>
+                                <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>

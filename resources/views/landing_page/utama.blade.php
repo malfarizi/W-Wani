@@ -58,23 +58,20 @@
 
        <div class="row content">
          <div class="col-lg-6">
-           <h2>Eum ipsam laborum deleniti velitena</h2>
-           <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+           <h2>Selamat Datang Di Warung Tani</h2>
+           <h3></h3>
          </div>
          <div class="col-lg-6 pt-4 pt-lg-0">
            <p>
-             Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-             velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-             culpa qui officia deserunt mollit anim id est laborum
+            
            </p>
            <ul>
-             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
+             <!-- <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-           </ul>
+           </ul> -->
            <p class="font-italic">
-             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-             magna aliqua.
+            
            </p>
          </div>
        </div>
@@ -89,54 +86,33 @@
      <div class="container">
 
        <div class="section-title">
-         <h2>Service</h2>
-         <p>The Services We Offer</p>
+         <h2>Highlight</h2>
+         <p>HAL-HAL YANG ADA DI WARUNG TANI</p>
        </div>
 
        <div class="row">
          <div class="col-md-6">
            <div class="icon-box">
-             <i class="icofont-computer"></i>
-             <h4><a href="#">Lorem Ipsum</a></h4>
-             <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+             <i class="icofont-tools"></i>
+             <h4><a href="#">Penyewaan Alat Tani</a></h4>
+             <p>Diperuntukan bagi Petani yang ingin menyewa alat tani</p>
            </div>
          </div>
+         
+          <div class="col-md-6 mt-4 mt-md-0">
+            <div class="icon-box">
+              <i class="icofont-user"></i>
+              <h4><a href="#">Mitra Petani Dan Vendor</a></h4>
+              <p>Petani dapat menjual hasil tani dan Vendor dapat menyewakan alat tani bagi Petani</p>
+            </div>
+          </div>
          <div class="col-md-6 mt-4 mt-md-0">
            <div class="icon-box">
-             <i class="icofont-chart-bar-graph"></i>
-             <h4><a href="#">Dolor Sitema</a></h4>
-             <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+             <i class="icofont-fruits"></i>
+             <h4><a href="#">Penjualan Hasil Tani</a></h4>
+             <p>Di Warung Tani, para Petani dapat menjual produknya di Warung Tani, dan para Pembeli dapat membeli produk yang dijual oleh Petani</p>
            </div>
          </div>
-         <div class="col-md-6 mt-4 mt-md-0">
-           <div class="icon-box">
-             <i class="icofont-image"></i>
-             <h4><a href="#">Sed ut perspiciatis</a></h4>
-             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-           </div>
-         </div>
-         <div class="col-md-6 mt-4 mt-md-0">
-           <div class="icon-box">
-             <i class="icofont-settings"></i>
-             <h4><a href="#">Nemo Enim</a></h4>
-             <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-           </div>
-         </div>
-         <div class="col-md-6 mt-4 mt-md-0">
-           <div class="icon-box">
-             <i class="icofont-earth"></i>
-             <h4><a href="#">Magni Dolore</a></h4>
-             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-           </div>
-         </div>
-         <div class="col-md-6 mt-4 mt-md-0">
-           <div class="icon-box">
-             <i class="icofont-tasks-alt"></i>
-             <h4><a href="#">Eiusmod Tempor</a></h4>
-             <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-           </div>
-         </div>
-       </div>
 
      </div>
    </section><!-- End Services Section -->

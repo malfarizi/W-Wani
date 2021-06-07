@@ -33,8 +33,11 @@ Route::get('logoutadmin', 'AdminController@logout');
 Route::get('admin', 'AdminController@admin');
 Route::put('editAdmin/{id}', 'AdminController@update');
 
-//======================Admin===================
+//======================Saldo===================
 Route::get('pencairan-saldo','PencairanController@index');
+Route::get('pencairan','PencairanController@create');
+Route::post('Aksipencairan','PencairanController@store');
+Route::put('editpencairan/{id}','PencairanController@update');
 
 //======================Login Mitra===================
 Route::get('loginmitra','MitraController@loginmitra');
@@ -64,8 +67,9 @@ Route::middleware('auth:admin')->group(function(){
     
 });
 
-//====================== Penyewaan Alat ===================
-
+//====================== Profil Mitra ===================
+Route::get('profilmitra','MitraController@profilmitra');
+Route::put('editProfilmitra/{id}','MitraController@updateprofil');
 //====================== Alat Tani=========================
 Route::get('alattani','AlatController@index');
 Route::post('addAlattani', 'AlatController@create');
@@ -81,14 +85,19 @@ Route::delete('deleteProduk/{id}','ProdukController@delete');
 //====================== Kelola Pemesanan Alat Tani=========================
 Route::get('kelolapemesananalat','PemesananAlatController@kelolapemesananalat');
 Route::get('pemesananalat-diterima','PemesananAlatController@pemesananalat_diterima');
+Route::get('pemesananalat-selesai','PemesananAlatController@pemesananalat_selesai');
 Route::get('pemesananalat-petani','PemesananAlatController@pemesananalat_petani');
 Route::get('pemesananmitra', 'PemesananAlatController@listpenyewaanPetani');
 Route::put('editPemesananAlat/{id}','PemesananAlatController@update');
 Route::delete('deletePemesananAlat/{id}','PemesananAlatController@delete');
 
-
+Route::get('pesananproduk','PembayaranController@index');
+Route::get('cetaklaporanproduk/{tanggal_bukti}','PembayaranController@cetakpembayaranproduk');
+Route::put('editPembayaran/{id}','PembayaranController@update');
+Route::delete('deletePembayaran/{id}','PembayaranController@delete');
 
 Route::get('alattani-list','PemesananAlatController@alattani_list');
+Route::get('alattani-traktor','PemesananAlatController@alattani_traktor');
 Route::get('FormulirSewaAlat/{id}','PemesananAlatController@index');
 Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
 Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
@@ -97,4 +106,6 @@ Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayarana
 Route::get('pembayaranProduk', 'PembayaranController@index');
 Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
 Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
+Route::get('cetaklaporanalat/{tanggal_bukti}','PembayaranAlatController@cetakpembayaranalat');
 Route::get('cari','PembayaranAlatController@cari');
+

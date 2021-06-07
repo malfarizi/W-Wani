@@ -55,7 +55,9 @@
                                     <li class="list-group-item">Nomor Pemesanan : {{$datas->id_pemesanan_alat}}</li>
                                     <li class="list-group-item">Nama Pemesan : {{$datas->Mitra->nama_mitra}}</li>
                                     <li class="list-group-item">Nama Alat : {{$datas->alat->nama_alat}}</li>
-                                    <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal}}</li>
+                                    <li class="list-group-item">Harga : @currency($datas->alat->harga)/bahu</li>
+                                    <li class="list-group-item">Tanggal Sewa : {{$datas->tanggal_sewa}}</li>
+                                    <li class="list-group-item">Sampai Tanggal : {{$datas->tanggal_kembali}}</li>
 
                                 </ul>
                             </div>
@@ -82,7 +84,8 @@
                                 <div class="align-items-center">
                                     <div class=" font-weight-bold  text-warning text-truncate message-title">
                                         Batas Pembayaran Sampai : <br>{{$besok}} WIB</div>
-                                        <!--  -->
+                                        
+                                        
 
                                 </div>
                                 <hr>
@@ -102,11 +105,11 @@
                         </div>
                         <div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Nama Rekening :<strong>{{$vendor->nama_rekening}}</strong>
+                                <li class="list-group-item">Nama Rekening :<strong>{{$datas->alat->mitra->nama_rekening}}</strong>
                                 </li>
-                                <li class="list-group-item">No Rekening : <strong> {{$vendor->no_rek}} </strong></li>
-                                <li class="list-group-item">Nama Bank : <strong> {{$vendor->nama_bank}}</strong></li>
-                                <li class="list-group-item">A.N : <strong> {{$vendor->nama_rekening}}</strong></li>
+                                <li class="list-group-item">No Rekening : <strong> {{$datas->alat->mitra->no_rek}} </strong></li>
+                                <li class="list-group-item">Nama Bank : <strong> {{$datas->alat->mitra->nama_bank}}</strong></li>
+                                <li class="list-group-item">A.N : <strong> {{$datas->alat->mitra->nama_rekening}}</strong></li>
 
                             </ul>
 

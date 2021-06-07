@@ -9,11 +9,16 @@
     <meta name="author" content="">
     <link href="img/logo/logo.jpg" rel="icon">
     <title>@yield('title')</title>
+    <!-- Dropdown Search CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link href="{{url('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="{{url('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('css/ruang-admin.min.css')}}" rel="stylesheet">
     <link href="{{url('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{url('vendor/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body id="page-top">
@@ -90,8 +95,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Kelola Alat Tani</h6>
                         <a class="collapse-item" href="{{url('alattani')}}">Data Alat Tani</a>
-                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima </a>
+                        <a class="collapse-item" href="{{url('kelolapemesananalat')}}">Pesanan Menunggu <br>Diterima
+                        </a>
                         <a class="collapse-item" href="{{url('pemesananalat-diterima')}}">Pesanan Diterima</a>
+                        <a class="collapse-item" href="{{url('pemesananalat-selesai')}}">Pesanan Selesai</a>
                     </div>
                 </div>
             </li>
@@ -102,13 +109,14 @@
           <span>Data Penjualan</span>
         </a>
       </li> -->
+      @if(session('level') == 'Petani')
             <li class="nav-item">
-        <a class="nav-link" href="{{url('')}}">
-            <i class="fas fa-wallet"></i>
-          <span>Pencairan Saldo</span>
-        </a>
-      </li> 
-
+                <a class="nav-link" href="{{url('pencairan')}}">
+                    <i class="fas fa-wallet"></i>
+                    <span>Pencairan Saldo</span>
+                </a>
+            </li>
+        @endif
 
             <hr class="sidebar-divider">
             <div class="version" id="version-ruangadmin"></div>
@@ -215,6 +223,12 @@
     <script src="{{url('js/ruang-admin.min.js')}}"></script>
     <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>
     <script src="{{url('js/demo/chart-area-demo.js')}}"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $('#dataTable').DataTable();
+      });
+  </script> 
 </body>
 
 </html>

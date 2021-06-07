@@ -42,6 +42,7 @@ class AlatController extends Controller
     	$data->nama_alat = $request->nama_alat;
     	$data->desc = $request->desc;
         $data->harga = $request->harga;
+        $data->kategori = $request->kategori;
         $data->status = $request->status;
         $data->id_mitra = $request->id_mitra;
 
@@ -78,6 +79,7 @@ class AlatController extends Controller
         $data->nama_alat = $request->input('nama_alat');
         $data->desc = $request->input('desc');
         $data->harga = $request->input('harga');
+        $data->kategori = $request->input('kategori');
         $data->status = $request->input('status');
         
         if (empty($request->file('foto')))

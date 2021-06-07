@@ -1,16 +1,16 @@
 @extends('mitra.templatemitra')
 
-@section('title', 'Kelola Pemesanan Alat Tani')
+@section('title', 'Pembayaran Alat Tani')
 
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pemesanan Alat 
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pemesanan Alat Tani Diterima</li>
-            </ol>
+        <h1 class="h3 mb-0 text-gray-800"></h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data Pembayaran Alat Tani</li>
+        </ol>
     </div>
 
     <div class="row">
@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary"> Pemesanan Alat Tani Diterima</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Pembayaran Alat Tani</h6>
                 </div>
 
                 <div class="card-header">
@@ -51,11 +51,13 @@
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush" id="dataTable">
                         <thead class="thead-light">
+
                             <tr>
                                 <th>No.</th>
+                                <th>Nomor Pemesanan</th>
                                 <th>Nama Alat</th>
                                 <th>Mitra Pemesan</th>
-                                <th>Tanggal Pemesanan</th>
+                                <th>Tanggal Sewa / Sampai</th>
                                 <th>Luas Tanah(bahu)</th>
                                 <th>Total Harga</th>
                                 <th>Alamat</th>
@@ -66,10 +68,11 @@
                         <tbody>
                             @foreach($datas as $data)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
+                                <td>{{$loop->iteration}}.</td>
+                                <td>{{$data->id_pemesanan_alat}}</td>
                                 <td>{{$data->nama_alat}}</td>
                                 <td>{{$data->nama_mitra}}</td>
-                                <td>{{$data->tanggal}}</td>
+                                <td>{{$data->tanggal_sewa}} / {{$data->tanggal_kembali}}</td>
                                 <td>{{$data->luas_tanah}}</td>
                                 <td>@currency($data->total_harga)</td>
                                 <td>{{$data->alamat_lengkap}}</td>
@@ -82,10 +85,10 @@
                                 </td>
                                 <td>
 
-                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#edit-data-{{$data->id_pembayaran_alat}}">
                                         <i class="fas fa-user-edit"></i>
-                                    </button> -->
+                                    </button>
                                     <form action="{{url('deletePemesananAlat', $data->id_pembayaran_alat)}}"
                                         method="POST" class="d-inline">
                                         @csrf
@@ -103,8 +106,6 @@
         </div>
 
 
-
-
         @foreach($datas as $data)
 
         <div class="modal fade" id="modal-detail-{{$data->id_pembayaran_alat}}" tabindex="-1" role="dialog"
@@ -119,11 +120,11 @@
                     </div>
                     <div class="modal-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Foto : <img src="{{ url('images/bukti/'.$data->foto) }}"
+                            <li class="list-group-item">Foto : <img src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
                                     style="width: 200px; height: 150px;"> </li>
                             <li class="list-group-item">Nama Alat : {{$data->nama_alat}}</li>
-                            <li class="list-group-item">Tanggal Bukti : {{$data->tanggal}} </li>
-                            <li class="list-group-item">Status : {{$data->status}} </li>
+                            <li class="list-group-item">Tanggal Bukti : {{$data->tanggal_bukti}} </li>
+                            <li class="list-group-item">Status : {{$data->status_pembayaran}} </li>
 
                         </ul>
                     </div>
@@ -134,6 +135,8 @@
             </div>
         </div>
         @endforeach
+
+
 
 
         @foreach($datas as $data)
@@ -159,22 +162,24 @@
                                 <label for="id_mitra">Mitra Pemesan : {{$data->nama_mitra}}</label>
                             </div>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal}}</label>
+                                <label for="tanggal">Tanggal Bayar : {{$data->tanggal_bukti}}</label>
                             </div>
 
                             <div class="form-group">
-                                <label for="tanggal">Total Harga : {{$data->total_harga}}</label>
+                                <label for="tanggal">Total Harga : @currency($data->total_harga)</label>
                             </div>
 
                             <div class="form-group">
                                 <label for="tanggal">Bukti Foto : </label>
-                                <img src="{{ url('images/bukti/'.$data->foto) }}" style="width: 200px; height: 150px;">
+                                <img src="{{ url('images/foto_bukti/'.$data->foto_bukti) }}"
+                                    style="width: 200px; height: 150px;">
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <select name="status" class="form-control"> {{$data->status}}
-                                    <option value="Diterima">Diterima</option>
-                                    <option value="Ditolak">Ditolak</option>
+                                <select class="form-control" name="status_pembayaran" id="status_pembayaran"
+                                    style="width: 100%">
+                                    <option value="">Pilih Status</option>
+                                    <option value="Selesai">Selesai</option>
                                 </select>
                             </div>
 

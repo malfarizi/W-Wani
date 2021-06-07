@@ -16,6 +16,7 @@ class Alat extends Model
         'foto', 
         'harga',
         'nama_alat',
+        'kategori',
         'id_mitra'
     ];
 

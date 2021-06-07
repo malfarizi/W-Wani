@@ -14,10 +14,11 @@ class Pembayaran extends Model
         'no_resi',
         'status',
         'foto',
-        'id_pemesanan',   
+        'id_pemesanan',
+        'created_at'   
     ];
 
     public function pemesanan(){
-    	return $this->hasOne('App\Pemesanan', 'id_pemesanan');
+    	return $this->belongsTo('App\Pemesanan', 'id_pemesanan');
     }
 }

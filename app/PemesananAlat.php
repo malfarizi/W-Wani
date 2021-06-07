@@ -12,7 +12,8 @@ class PemesananAlat extends Model
 
     protected $fillable = [
         'luas_tanah',
-        'tanggal',
+        'tanggal_sewa',
+        'tanggal_kembali',
         'total_harga', 
         'alamat_lengkap',
         'id_alat',

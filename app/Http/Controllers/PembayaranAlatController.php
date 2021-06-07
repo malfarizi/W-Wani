@@ -10,31 +10,49 @@ use App\PemesananAlat;
 use App\PembayaranAlat;
 use Session;
 use Carbon\Carbon;
+use PDF;
 
 class PembayaranAlatController extends Controller
 {
     public function pembayaranalat($id_pemesanan_alat)
     {
-        $waktupemesanan = PemesananAlat::whereRaw('created_at < now() - interval 1 day')->delete();
-    	$waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
-            [
-                'status_pembayaran' => 'Ditolak'
-            ] 
-        );
-        $vendor = DB::table('pemesanan_alat')
-        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
-        ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
-        ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
-        ->where('mitra.level', '=', 'Vendor')
-        ->first();
+        
+    	// $waktu = pembayaranalat::whereRaw('created_at < now() - interval 1 DAY')->update(
+        //     [
+        //         'status_pembayaran' => 'Ditolak'
+        //     ] 
+        // );
+        // $vendor = DB::table('pemesanan_alat')
+        // ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        // ->join('mitra','alat.id_mitra', '=', 'mitra.id_mitra')
+        // ->select('pemesanan_alat.*', 'alat.*', 'mitra.*')
+        // ->where('mitra.level', '=', 'Vendor')
+        // ->first();
 
         $datas = PemesananAlat::find($id_pemesanan_alat);
           
           Carbon::setLocale('id');
         $besok = $datas->created_at->addDays(1)->format('l, d F Y H:i');
-    	return view('penyewaan.pembayaranAlat', compact('datas','besok', 'vendor', 'waktu'));
+    	return view('penyewaan.pembayaranAlat', compact('datas','besok'));
     }
 
+    public function cetakpembayaranalat($tanggal_bukti)
+    { 
+     
+        $datas = DB::table('pembayaran_alat')
+        ->join('pemesanan_alat', 'pemesanan_alat.id_pemesanan_alat', '=', 'pembayaran_alat.id_pemesanan_alat')
+        ->join('alat', 'pemesanan_alat.id_alat', '=', 'alat.id_alat')
+        ->join('mitra','pemesanan_alat.id_mitra', '=', 'mitra.id_mitra')
+        ->select('pemesanan_alat.*','pembayaran_alat.*', 'alat.nama_alat', 'mitra.nama_mitra')
+        ->where('alat.id_mitra', session('id_mitra'))
+        ->where('pembayaran_alat.status_pembayaran', 'Selesai')
+        ->where('pembayaran_alat.tanggal_bukti', $tanggal_bukti)
+        ->get();
+
+        $pdf = PDF::loadview('mitra.alat_tani.laporanalattani',['datas'=>$datas])->setPaper('a4', 'landscape');
+                // return $pdf->download('laporan-pembayaranalat.pdf');
+                return $pdf->stream();
+    }
     public function cari(Request $request)
     {
         Carbon::setLocale('id');

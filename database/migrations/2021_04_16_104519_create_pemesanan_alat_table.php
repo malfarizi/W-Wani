@@ -19,7 +19,8 @@ class CreatePemesananAlatTable extends Migration
             $table->foreign('id_alat')->references('id_alat')->on('alat');
             $table->unsignedInteger('id_mitra');
             $table->foreign('id_mitra')->references('id_mitra')->on('mitra');
-            $table->date('tanggal');
+            $table->date('tanggal_sewa');
+            $table->date('tanggal_kembali');
             $table->integer('luas_tanah');
             $table->integer('total_harga');
             $table->text('alamat_lengkap');
