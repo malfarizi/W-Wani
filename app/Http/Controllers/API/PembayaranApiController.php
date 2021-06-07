@@ -25,7 +25,12 @@ class PembayaranApiController extends Controller
 
     public function store(Request $request)
     {
-	$data = [
+        /* if($request->hasFile('foto')) {
+            $name = time()."_".$request->file('foto')->getClientOriginalName();
+            $request->file('foto')->move(public_path('images/foto_bukti'), $name);
+        } */
+
+	    $data = [
             'id_pemesanan' => $request->id_pemesanan,
             'foto' => $request->foto,
             'status' => 'Menunggu validasi'
@@ -42,11 +47,12 @@ class PembayaranApiController extends Controller
 
     public function uploadImage(Request $request)
     {
+        //dd($request->hasFile('image'));
         if($request->hasFile('image')) {
-            $name = time()."_".$request->file('image')->getClientOriginalName();
+            $name = $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('images/foto_bukti'), $name);
         }
-        return response()->json(['message' => 'Foto berhasil diupload']);
+        return response()->json(['name' => $name, 'message' => 'Foto berhasil diupload']);
 
     }
 

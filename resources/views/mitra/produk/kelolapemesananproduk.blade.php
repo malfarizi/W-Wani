@@ -61,7 +61,7 @@
                                 <th>Qty</th>
                                 <th>Tanggal Pesan</th>
                                 <th>Kurir</th>
-                                <th>Alamat</th>
+                                
                                 <th>Detail Pembayaran</th>
                                 <th>Aksi</th>
                             </tr>
@@ -72,10 +72,10 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->nama_pembeli}}</td>
                                 <td>{{$data->nama_produk}}</td>
-                                <td>{{$data->qty}}</td>
+                                <td>{{$data->qty}} {{$data->satuan}}</td>
                                 <td>{{$data->tanggal}}</td>
                                 <td>{{$data->kurir}}</td>
-                                <td>{{$data->alamat_lengkap}}</td>
+                               
 
                                 <td><button type="button" class="btn btn-primary btn-icon-split btn-sm"
                                         data-toggle="modal" data-target="#modal-detail-{{$data->id_pembayaran}}">
@@ -121,7 +121,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="id_alat">No Resi</label>
-                                <input type="text" class="form-control" id="no_resi" name="no_resi" value="  ">
+                                <input type="text" class="form-control" id="no_resi" name="no_resi" value=" {{$data->no_resi}} ">
                             </div>
 
                             <div class="form-group">
@@ -162,8 +162,10 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><img src="{{ url('images/foto_bukti/'.$data->foto) }}"
                                     style="width: 200px; height: 150px;"> </li>
+                                    <li class="list-group-item">No Resi : {{$data->no_resi}} </li>        
                             <li class="list-group-item">Nama Produk : {{$data->nama_produk}}</li>
-                            <li class="list-group-item">Subtotal : @currency($data->total_harga)</li>
+                            <li class="list-group-item">Total : @currency($data->total_harga)</li>
+                            <li class="list-group-item">{{$data->alamat_lengkap}}, {{$data->tipe}} {{$data->nama_kota}} - {{$data->kodepos}} {{$data->nama_provinsi}} </li>
                             <li class="list-group-item">Status : {{$data->status}} </li>
 
                         </ul>

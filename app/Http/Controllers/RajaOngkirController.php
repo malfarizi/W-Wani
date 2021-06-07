@@ -55,7 +55,7 @@ class RajaOngkirController extends Controller
         }
     } 
 
-    public function getCost(Request $request){
+    public function getCost($origin, $destination, $weight){
         $client = new Client();
         $options = [
             'headers' => [
@@ -63,15 +63,15 @@ class RajaOngkirController extends Controller
                 'content-Type'  => 'application/x-www-form-urlencoded',
             ],
             'form_params' => [
-                'origin'        => $request->origin,
-                'destination'   => $request->destination,
-                'weight'        => $request->weight,
+                'origin'        => $origin,
+                'destination'   => $destination,
+                'weight'        => $weight,
                 'courier'       => 'jne'
             ]
         ];
         $result      = $client->post('https://api.rajaongkir.com/starter/cost', $options);
         $response    = json_decode($result->getBody()->getContents(), true);
-        $data_ongkir = $response['rajaongkir']['results'][0]['costs'][1]['cost'][0];
+        $data_ongkir = $response['rajaongkir']['results'];
         return response()->json($data_ongkir);
     } 
 }

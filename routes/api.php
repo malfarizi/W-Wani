@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('/rajaongkir/getCost/{origin}/{destination}/{weight}', 'RajaOngkirController@getCost');
+Route::get('/rajaongkir/getCost/{origin}/{destination}/{weight}', 'RajaOngkirController@getCost');
 Route::post('/rajaongkir/getCost', 'RajaOngkirController@getCost');
 
 Route::get('/getProvinsi', 'API\ProvinsiApiController@getAll');

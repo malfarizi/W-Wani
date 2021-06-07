@@ -48,7 +48,7 @@
                     <div class="card-body">
                         
                         <h5 class="card-title">Total Saldo</h5>
-                        <p class="card-text">@currency($total_saldo)</p>
+                        <p class="card-text">@currency($grand)</p>
 
                     </div>
                 </div>

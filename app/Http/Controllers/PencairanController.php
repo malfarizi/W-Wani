@@ -12,8 +12,8 @@ class PencairanController extends Controller
     
     public function index()
     {
-        $datas = Pencairan::all();
-        return view ('admin.saldo');
+        // $datas = Pencairan::all();
+        // return view ('admin.saldo');
 
         // $saldo = $datas = DB::table('pembayaran')
         // ->join('pemesanan', 'pemesanan.id_pemesanan', '=', 'pembayaran.id_pemesanan')
