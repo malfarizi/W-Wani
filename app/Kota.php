@@ -20,6 +20,6 @@ class Kota extends Model
     public $timestamps = false;
 
     public function provinsi(){
-        return $this->hasOne('App\Provinsi', 'id_provinsi');
+        return $this->belongsTo('App\Provinsi', 'id_provinsi');
     }
 }
