@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/','LandingPageController@index');
+Route::get('/','LandingPageController@index')->name('landingpage');
 Route::get('daftar','LandingPageController@daftar');
 
-Route::get('dashboard','DashboardController@dashboard');
+
 
 
 Route::get('rajaongkir', 'RajaOngkirController@apiRajaOngkir');
@@ -30,7 +30,7 @@ Route::get('test', 'DummyController@test');
 Route::get('loginadmin','AdminController@loginadmin');
 Route::post('loginAdminPost', 'AdminController@loginAdminPost');
 Route::get('logoutadmin', 'AdminController@logout');
-Route::get('admin', 'AdminController@admin');
+
 Route::put('editAdmin/{id}', 'AdminController@update');
 
 //======================Saldo===================
@@ -50,31 +50,38 @@ Route::post('registerPost','MitraController@registerPost');
 Route::get('registerVendor','MitraController@registerVendor');
 Route::post('registerPostVendor','MitraController@PostregisterVendor');
 //======================Verifikasi Mitra===================
-Route::get('dashboardmitra','DashboardController@dashboardmitra');
+
 Route::get('mitra','MitraController@mitra');
 Route::get('calonmitra','MitraController@calonmitra');
 Route::put('editMitra/{id}','MitraController@update');  
 Route::delete('deleteMitra/{id}','MitraController@delete');
 
-//====================== Kategori ===================
-Route::get('kategori','KategoriController@index');
-Route::post('addKategori', 'KategoriController@create');
-Route::put('editKategori/{id}','KategoriController@update');
-Route::delete('deleteKategori/{id}','KategoriController@delete');
+
 
 
 Route::middleware('auth:admin')->group(function(){
-    
+    Route::get('dashboard','DashboardController@dashboard');
+    Route::get('admin', 'AdminController@admin');
+    Route::get('kategori','KategoriController@index');
+    Route::post('addKategori', 'KategoriController@create');
+    Route::put('editKategori/{id}','KategoriController@update');
+    Route::delete('deleteKategori/{id}','KategoriController@delete'); 
+});
+
+Route::middleware('auth:mitra')->group(function(){
+    Route::get('dashboardmitra','DashboardController@dashboardmitra');
+    Route::get('profilmitra','MitraController@profilmitra');
+    Route::put('editProfilmitra/{id}','MitraController@updateprofil');
+    Route::get('alattani','AlatController@index');
+    Route::post('addAlattani', 'AlatController@create');
+    Route::put('editAlattani/{id}','AlatController@update');
+    Route::delete('deleteAlattani/{id}','AlatController@delete');
 });
 
 //====================== Profil Mitra ===================
-Route::get('profilmitra','MitraController@profilmitra');
-Route::put('editProfilmitra/{id}','MitraController@updateprofil');
+
 //====================== Alat Tani=========================
-Route::get('alattani','AlatController@index');
-Route::post('addAlattani', 'AlatController@create');
-Route::put('editAlattani/{id}','AlatController@update');
-Route::delete('deleteAlattani/{id}','AlatController@delete');
+
 
 //====================== Produk =========================
 Route::get('produk_admin','ProdukController@produk_admin');
