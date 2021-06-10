@@ -82,6 +82,7 @@ class MitraController extends Controller
             'id_kota'   => 'required',
             'nama_bank' =>  'required',
             'password' =>  'required',
+            'confirmation' => 'required|same:password' 
         ],
         [
             'id_kota.required'               =>"Kota Tidak Boleh Kosong",
@@ -97,6 +98,7 @@ class MitraController extends Controller
             'foto.image'            => 'File Harus Berupa jpeg, jpg, png',
             'nama_bank.required'             => "Bank Tidak Boleh Kosong",
             'password.required'             => "Password Tidak Boleh Kosong",
+            'confirmation' => "password harus sama",
             ]);
         
             
@@ -157,6 +159,7 @@ class MitraController extends Controller
             'id_kota'   => 'required',
             'nama_bank' =>  'required',
             'password' =>  'required',
+            'confirmation' => 'required|same:password'
         ],
         [
             'id_kota.required'               =>"Kota Tidak Boleh Kosong",
@@ -172,6 +175,7 @@ class MitraController extends Controller
             'foto.image'            => 'File Harus Berupa jpeg, jpg, png',
             'nama_bank.required'             => "Bank Tidak Boleh Kosong",
             'password.required'             => "Password Tidak Boleh Kosong",
+            'confirmation' => "password harus sama",
         ]);
  
 

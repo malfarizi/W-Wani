@@ -46,7 +46,9 @@
                 @endif
 
                 {{-- Modal Tambah --}}
+               
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    @if(session('level') == 'Petani')
                     <button type="button" class="btn btn-success btn-icon-split btn-sm" data-toggle="modal"
                         data-target="#exampleModal" id="#myBtn">
                         <span class="icon text-white-50">
@@ -54,6 +56,7 @@
                         </span>
                         <span class="text">Tambah Produk</span>
                     </button>
+                @endif
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">

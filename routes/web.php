@@ -34,8 +34,8 @@ Route::get('logoutadmin', 'AdminController@logout');
 Route::put('editAdmin/{id}', 'AdminController@update');
 
 //======================Saldo===================
-Route::get('pencairan-saldo','PencairanController@index');
-Route::get('pencairan','PencairanController@create');
+
+
 Route::post('Aksipencairan','PencairanController@store');
 Route::put('editpencairan/{id}','PencairanController@update');
 
@@ -51,13 +51,8 @@ Route::get('registerVendor','MitraController@registerVendor');
 Route::post('registerPostVendor','MitraController@PostregisterVendor');
 //======================Verifikasi Mitra===================
 
-Route::get('mitra','MitraController@mitra');
-Route::get('calonmitra','MitraController@calonmitra');
 Route::put('editMitra/{id}','MitraController@update');  
 Route::delete('deleteMitra/{id}','MitraController@delete');
-
-
-
 
 Route::middleware('auth:admin')->group(function(){
     Route::get('dashboard','DashboardController@dashboard');
@@ -66,9 +61,13 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('addKategori', 'KategoriController@create');
     Route::put('editKategori/{id}','KategoriController@update');
     Route::delete('deleteKategori/{id}','KategoriController@delete'); 
+    Route::get('pencairan-saldo','PencairanController@index');
+    Route::get('calonmitra','MitraController@calonmitra');
+    Route::get('mitra','MitraController@mitra');
 });
 
 Route::middleware('auth:mitra')->group(function(){
+    Route::get('pembayaranProduk', 'PembayaranController@index');
     Route::get('dashboardmitra','DashboardController@dashboardmitra');
     Route::get('profilmitra','MitraController@profilmitra');
     Route::put('editProfilmitra/{id}','MitraController@updateprofil');
@@ -76,6 +75,8 @@ Route::middleware('auth:mitra')->group(function(){
     Route::post('addAlattani', 'AlatController@create');
     Route::put('editAlattani/{id}','AlatController@update');
     Route::delete('deleteAlattani/{id}','AlatController@delete');
+    Route::get('pencairan','PencairanController@create');
+    Route::get('produk','ProdukController@index');
 });
 
 //====================== Profil Mitra ===================
@@ -85,7 +86,7 @@ Route::middleware('auth:mitra')->group(function(){
 
 //====================== Produk =========================
 Route::get('produk_admin','ProdukController@produk_admin');
-Route::get('produk','ProdukController@index');
+
 Route::post('addProduk', 'ProdukController@create');
 Route::put('editProduk/{id}','ProdukController@update');
 Route::delete('deleteProduk/{id}','ProdukController@delete');
@@ -110,7 +111,7 @@ Route::post('aksipesanalat','PemesananAlatController@aksipesanalat');
 Route::get('pembayaran/{id_pemesanan_alat}','PemesananAlatController@pembayaranalat');
 
 
-Route::get('pembayaranProduk', 'PembayaranController@index');
+
 Route::post('aksibayaralat','PembayaranAlatController@aksibayaralat');
 Route::get('pembayaranAlat/{id_pemesanan_alat}','PembayaranAlatController@pembayaranalat');
 Route::get('cetaklaporanalat/{tanggal_bukti}','PembayaranAlatController@cetakpembayaranalat');
