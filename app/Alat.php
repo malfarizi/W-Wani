@@ -10,15 +10,7 @@ class Alat extends Model
 
     protected $primaryKey = 'id_alat';
 
-    protected $fillable = [
-        'status',
-        'desc',
-        'foto', 
-        'harga',
-        'nama_alat',
-        'kategori',
-        'id_mitra'
-    ];
+    protected $guarded = ['id_alat'];
 
     public function mitra(){
     	return $this->belongsTo('App\Mitra', 'id_mitra');

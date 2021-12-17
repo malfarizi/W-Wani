@@ -11,22 +11,12 @@ class Pembeli extends Authenticatable
     use notifiable;
 
     protected $table = 'pembeli';
-
+    
     protected $primaryKey = 'id_pembeli';
+    
+    protected $guarded = ['id_pembeli'];
 
-    protected $fillable = [
-        'nama_pembeli',
-        'email',
-        'password', 
-        'jk',
-        'no_telp',
-        'foto',
-        'id_alamat'
-    ];
-
-    protected $hidden = [
-        'password','remember_token'
-    ];
+    protected $hidden = ['password'];
     
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);

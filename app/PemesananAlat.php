@@ -10,15 +10,7 @@ class PemesananAlat extends Model
 
     protected $primaryKey = 'id_pemesanan_alat';
 
-    protected $fillable = [
-        'luas_tanah',
-        'tanggal_sewa',
-        'tanggal_kembali',
-        'total_harga', 
-        'alamat_lengkap',
-        'id_alat',
-        'id_mitra'
-    ];
+    protected $guarded = ['id_pemesanan_alat'];
 
     public function alat(){
     	return $this->belongsTo('App\Alat', 'id_alat');

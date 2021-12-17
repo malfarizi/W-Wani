@@ -15,6 +15,6 @@ class Provinsi extends Model
     public $timestamps = false;
 
     public function kota(){
-        return $this->belongsTo('App\Kota', 'id_kota');
+        return $this->hasMany('App\Kota', 'id_kota');
     }
 }

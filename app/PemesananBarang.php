@@ -10,12 +10,7 @@ class PemesananBarang extends Model
 
     protected $primaryKey = 'id_pemesanan_barang';
 
-    protected $fillable = [
-        'qty',
-        'subtotal',
-        'id_produk',
-        'id_pemesanan'
-    ];
+    protected $guarded = ['id_pemesanan_barang'];
 
     public function produk(){
     	return $this->belongsTo('App\Produk', 'id_produk');

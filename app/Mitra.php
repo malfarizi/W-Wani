@@ -14,28 +14,21 @@ class Mitra extends Authenticatable
 
     protected $primaryKey = 'id_mitra';
 
-    protected $fillable = [
-        'nama_mitra',
-        'email',
-        'password', 
-        'jk',
-        'no_telp',
-        'foto',
-        'status',
-        'level',
-        'no_rek',
-        'nama_rekening',
-        'nama_bank',
-        'id_alamat'
-    ];
-    protected $hidden = ['password', 'remember_token'];
+    protected $guarded = ['id_mitra'];
+
+    protected $hidden = ['password'];
 
     public $timestamps = false;
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
 
     public function alamat(){
         return $this->belongsTo('App\Alamat', 'id_alamat');
     }
-    public function setPasswordAttribute($value){
-        $this->attributes['password'] = bcrypt($value);
+
+    public function alat(){
+        return $this->hasMany('App\Alat', 'id_alat');
     }
 }

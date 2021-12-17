@@ -2,75 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Provinsi;
 use App\Kota;
+use App\Provinsi;
 use Illuminate\Http\Request;
-
-//guzzle
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Http;
 
 class RajaOngkirController extends Controller
 { 
-    public function apiRajaOngkir(){
-        $client = new Client();
-        $result = $client->request('GET', 
-            'https://api.rajaongkir.com/starter/province', [
-                'query' => [
-                    'key'   => '7f4acdf11c42f0677ee7bc41bc4bbb23'
-                ]
-        ]);
-        $response = json_decode($result->getBody());
-        foreach($response as $key => $data){
-            for($i = 0; $i < sizeof($data->results); $i++){
-                //store province
-                $provinsi = new Provinsi;
-                $provinsi->id_provinsi = $data->results[$i]->province_id;
-                $provinsi->nama_provinsi = $data->results[$i]->province;
-                $provinsi->save();
+    private $key;
+    private $api_url;
 
-                $result2 = $client->request('GET', 
-                    'https://api.rajaongkir.com/starter/city', [
-                        'query' => [
-                            'key'         => '7f4acdf11c42f0677ee7bc41bc4bbb23',
-                            'province'    => $i+1
-                        ]
+    public function __construct()
+    {
+        $this->api_url = 'https://api.rajaongkir.com/starter';
+        $this->key     = ['key' => env('RAJAONGKIR_KEY')];  
+
+    }
+
+    public function apiRajaOngkir()
+    {
+        $provinces      = Http::withHeaders($this->key)->get($this->api_url.'/province');
+        $province_json  = $provinces->object()->rajaongkir->results;
+
+        foreach($province_json as $province){
+            //store province 
+            Provinsi::create([
+                'id_provinsi'   => $province->province_id,
+                'nama_provinsi' => $province->province
+            ]);
+
+            $cities = Http::withHeaders($this->key)->get($this->api_url.'/city', [
+                'province' => $province->province_id
+            ]);
+
+            $cities_json = $cities->object()->rajaongkir->results;
+
+            foreach ($cities_json as $city) {
+                Kota::create([
+                    'id_kota'       => $city->city_id,
+                    'id_provinsi'   => $city->province_id,
+                    'tipe'          => $city->type,
+                    'nama_kota'     => $city->city_name,
+                    'kodepos'       => $city->postal_code
                 ]);
-
-                $res = json_decode($result2->getBody());
-
-                foreach ($res as $key => $value) {
-                    for($x = 0; $x < sizeof($value->results); $x++){
-                        //store city
-                        $kota = new Kota;
-                        $kota->id_kota      = $value->results[$x]->city_id;
-                        $kota->id_provinsi  = $value->results[$x]->province_id;
-                        $kota->tipe         = $value->results[$x]->type;
-                        $kota->nama_kota    = $value->results[$x]->city_name;
-                        $kota->kodepos      = $value->results[$x]->postal_code;
-                        $kota->save();
-                    }
-                }
             }
         }
+
+        return response()->json([
+            'status'  => 200,
+            'message' => "Ok"
+        ]);
     } 
 
     public function getCost($origin, $destination, $weight){
-        $client = new Client();
-        $options = [
-            'headers' => [
-                'key'           => '7f4acdf11c42f0677ee7bc41bc4bbb23',
-                'content-Type'  => 'application/x-www-form-urlencoded',
-            ],
-            'form_params' => [
-                'origin'        => $origin,
-                'destination'   => $destination,
-                'weight'        => $weight,
-                'courier'       => 'jne'
-            ]
+        
+        $data = [
+            'origin'        => $origin,
+            'destination'   => $destination,
+            'weight'        => $weight,
+            'courier'       => 'jne'
         ];
-        $result      = $client->post('https://api.rajaongkir.com/starter/cost', $options);
-        $response    = json_decode($result->getBody()->getContents(), true);
+
+        $response = Http::asForm()
+            ->withHeaders($this->key)
+            ->post($this->api_url.'/cost', $data);
+
+        //$data_ongkir = $response['rajaongkir']['results'][0]['costs'][1]['cost'][0];
         $data_ongkir = $response['rajaongkir']['results'];
         return response()->json($data_ongkir);
     } 

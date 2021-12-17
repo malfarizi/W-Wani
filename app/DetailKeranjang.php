@@ -9,13 +9,8 @@ class DetailKeranjang extends Model
     protected $table = 'detail_keranjang';
 
     protected $primaryKey = 'id_detail_keranjang';
-
-    protected $fillable = [
-        'qty',
-        'subtotal',
-        'id_produk', 
-        'id_keranjang'
-    ];
+    
+    protected $guarded = ['id_detail_keranjang'];
 
     public function produk(){
     	return $this->belongsTo('App\Produk', 'id_produk');

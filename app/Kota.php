@@ -10,12 +10,7 @@ class Kota extends Model
 
     protected $primaryKey = 'id_kota';
 
-    protected $fillable = [
-        'nama_kota',
-        'tipe',
-        'kodepos', 
-        'id_provinsi'
-    ];
+    protected $guarded = ['id_kota'];
 
     public $timestamps = false;
 

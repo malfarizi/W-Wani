@@ -287,7 +287,7 @@
 
     </div>
 </section>
-< @endsection @section('js') <script>
+@endsection @section('js') <script>
     $(document).ready(function () {
     // Select2 Single with Placeholder
 

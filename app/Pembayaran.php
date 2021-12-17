@@ -9,14 +9,8 @@ class Pembayaran extends Model
     protected $table = 'pembayaran';
 
     protected $primaryKey = 'id_pembayaran';
-
-    protected $fillable = [
-        'no_resi',
-        'status',
-        'foto',
-        'id_pemesanan',
-        'created_at'   
-    ];
+    
+    protected $guarded = ['id_pembayaran'];
 
     public function pemesanan(){
     	return $this->belongsTo('App\Pemesanan', 'id_pemesanan');

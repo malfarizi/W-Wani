@@ -10,7 +10,7 @@ class Alamat extends Model
 
     protected $primaryKey = 'id_alamat';
 
-    protected $fillable = ['id_kota', 'alamat_lengkap'];
+    protected $guarded = ['id_alamat'];
 
     public function kota(){
         return $this->belongsTo('App\Kota', 'id_kota');

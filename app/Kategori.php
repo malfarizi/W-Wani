@@ -9,8 +9,10 @@ class Kategori extends Model
     protected $table = 'kategori';
 
     protected $primaryKey = 'id_kategori';
-
-    protected $fillable = ['id_kategori', 'nama_kategori'];
-
     
+    protected $guarded = ['id_kategori'];
+    
+    public function produk() {
+        return $this->hasMany('App\Produk', 'id_produk');
+    }
 }
